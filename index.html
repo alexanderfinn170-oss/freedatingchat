@@ -1,74 +1,204 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Casino Demo</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Exclusive Profile</title>
 <style>
+/* Reset */
+*{margin:0;padding:0;box-sizing:border-box;font-family:Arial,sans-serif;}
+
+/* Fullscreen background image */
 body{
-  font-family: Arial;
-  background:#0b0f1a;
-  color:white;
+  background: url('https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhGafVolayRPmQ2XZT_X8KKZ8ohX4N6AGEdCy_EZoOaxKuHTMgm3NzFUugmZGTK68KT2ZjxKc-4CASuhIgvH-rXHl6mgkTN3yTsGQ-rFxF5NYsybHk00FT0_ItoTARINkGBxO7pSG7qQOww6HRFG-8o7WsS_Px1I0CLXJ8i11UYT4iL3AvV47epshZ8SxA/s2937/%F0%9D%97%A7%F0%9D%97%B2%F0%9D%97%B9%F0%9D%97%B2%F0%9D%97%B4%F0%9D%97%BF%F0%9D%97%AE%F0%9D%97%BA%20@%F0%9D%97%A0%F0%9D%97%BC%F0%9D%97%B1%F0%9D%97%B2%F0%9D%97%B9%F0%9D%97%A6%F0%9D%97%AE%F0%9D%97%B9%F0%9D%97%B2%F0%9D%97%BF%20(12)%20(1).jpg') no-repeat center center fixed;
+  background-size: cover;
+  height: 100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
   text-align:center;
+  color:#fff;
+  overflow-x:hidden;
 }
-.box{
-  background:#151c2e;
+
+/* Container */
+.container{
+  background: rgba(0,0,0,0.4);
   padding:20px;
-  margin:20px auto;
-  width:320px;
-  border-radius:10px;
+  border-radius:15px;
+  max-width:380px;
 }
-button{
-  padding:10px 20px;
-  margin:5px;
+
+/* Headline */
+h1{
+  font-size:22px;
+  margin-bottom:20px;
+  text-shadow: 1px 1px 5px #000;
+}
+
+/* Slider */
+.slider{
+  width:280px;
+  aspect-ratio:4/5;
+  overflow:hidden;
+  border-radius:15px;
+  margin: 0 auto 20px auto;
+  cursor:pointer;
+  position:relative;
+}
+
+.slides{
+  display:flex;
+  width:500%;
+  animation: slide 5s infinite;
+}
+
+.slides img{
+  width:100%;
+  height:auto;
+  object-fit:contain; /* পুরো ছবি দেখাবে */
+  border-radius:15px;
+}
+
+@keyframes slide{
+  0%{margin-left:0%;}
+  20%{margin-left:0%;}
+  25%{margin-left:-100%;}
+  45%{margin-left:-100%;}
+  50%{margin-left:-200%;}
+  70%{margin-left:-200%;}
+  75%{margin-left:-300%;}
+  95%{margin-left:-300%;}
+  100%{margin-left:-400%;}
+}
+
+/* Animated main button */
+.main-btn{
+  padding:15px 30px;
+  font-size:18px;
   border:none;
-  border-radius:5px;
-  background:#ff9800;
-  color:white;
-  font-weight:bold;
+  border-radius:50px;
+  cursor:pointer;
+  color:#fff;
+  animation: colorChange 3s infinite,float 2s ease-in-out infinite;
+  transition:0.3s;
+  text-shadow: 1px 1px 3px #000;
 }
-input{
-  padding:8px;
-  width:80px;
+
+@keyframes colorChange{
+  0%{background:#ff0066;}
+  25%{background:#ff6600;}
+  50%{background:#00cc66;}
+  75%{background:#0066ff;}
+  100%{background:#ff0066;}
+}
+
+@keyframes float{
+  0%{transform:translateY(0);}
+  50%{transform:translateY(-5px);}
+  100%{transform:translateY(0);}
+}
+
+/* Modal */
+.modal{
+  display:none;
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  background-size: cover;
+  background-position: center;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
+  padding:20px;
+}
+
+.modal-content{
+  background: rgba(0,0,0,0.6);
+  padding:25px;
+  border-radius:15px;
+  max-width:380px;
+  color:#fff;
+  text-shadow: 1px 1px 5px #000;
+  animation: fadeIn 0.8s ease-in-out;
+}
+
+@keyframes fadeIn{
+  from {opacity:0; transform:translateY(-20px);}
+  to {opacity:1; transform:translateY(0);}
+}
+
+/* Signup button inside modal */
+.signup-btn{
+  margin-top:20px;
+  padding:15px 30px;
+  border:none;
+  border-radius:40px;
+  font-size:18px;
+  cursor:pointer;
+  background:linear-gradient(45deg,#ff0066,#ffcc00);
+  color:#fff;
+  animation: float 2s infinite;
+  text-shadow: 1px 1px 3px #000;
 }
 </style>
 </head>
-
 <body>
 
-<h1>🎰 Demo Casino (Simulation)</h1>
+<div class="container">
+  <h1>You Were Forced into This Profile Because This Woman is Looking For a Men For Hard Fuck💋.</h1>
+  
+  <div class="slider" onclick="openModal(this)">
+    <div class="slides">
+      <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjEk9-rTnDIbyk37aD36E23IrJKqXgof_sRW3O4X_1lvRLBXaNTGsThLySy2hVJSLpqWZWz6Lr1-6BM2Bm4oH6LrdsEWZ98nSZtmK3H5obFtcDDqSOBWaR-425MniJuwLQrN5aSfW_V-76tgxCYzEA1VRcIiIOY4P-ZcYzJ-cLKy73pvT9-AKATE7yD0-g/s1920/ezgif.com-webp-maker%20(3).webp">
+      <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEg5jbqAkX4OK__x24HzIBA86v91zZWkTr3CBFjVHu_yc-geAsKwDFF31quzuftkaXNrT0-wWuOdGNlv2_kHZTrCe247FZ_fv4oNz5Id4oyje2CMzL52OTo9ExM61i4PWQkuujrnplPgOhd9K_UngpFs3gK90AGmdceVJZMwi0VYQOnj1uJaSosKu5jv9ro/s1920/ezgif.com-webp-maker%20(5).webp">
+      <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgCnJkZGTsIEoix4xkb6Prmnrgan2-0NIq3Jfp4qG894469B2tQBd3pEDAtO9Y6TLRU5Cefthey2iwGrB2UZ9WBiP7ry80B56GRokRvJE_nDiudrMBv3AMRF1vqwFLKNSDt_fySX4jaoyI5Av5DC3DZ0rolfSzh9equZspq_PIZ3X5HWYPv6gggp_5cYsU/s1920/ezgif.com-webp-maker%20(4).webp">
+      <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiKSMAi8iTc0nPvIOU9E9cJ7TVIa2DNJ23p5CZ9TbvWDsylpjUHx-K4iPBZJMtOMgnBWt7qWA8zYgllWq9f9dgK5XeryrA0vVSQNPjWK-msqDZnhQ3k-ef9TXGTb-MJF8KqMa3Imrlu4oRgQEJoaJmpIbqLiVXXTnYQBn4wQMz7Kk9qsU7nBXktxag7n_k/s1920/ezgif.com-webp-maker%20(6).webp">
+      <img srchttps://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhimBhmykiJUObYaZJGjPUx0rKUwpCOvf4Zbxme8CCqUWTSQAzFv4QzO0YG5cfzwgrnlK_RjvdQk5EZOPWpuc5oEiosAq_quGlPHpak7WL0Nz_6HW_EDSGY0VfiUjb3a9g5KptuaP969s44VQnE5Pr77WvIr1U4MYdRuFaXtHIMVB8dfDo3QE8PPP5AzjQ/s1920/ezgif.com-webp-maker%20(2).webp">
+    </div>
+  </div>
+  
+  <button class="main-btn" onclick="openModal()">Continue With Her ➡️</button>
+</div>
 
-<div class="box">
-<h3>Balance: <span id="bal">1000</span> Coins</h3>
-
-<input type="number" id="bet" value="50">
-<br><br>
-
-<button onclick="play()">Spin</button>
-
-<h2 id="result"></h2>
+<!-- Modal -->
+<div class="modal" id="modal">
+  <div class="modal-content">
+    <h2>❌ Important ❌</h2>
+    <p>Only enter this profile if you are over 18+ age</p>
+    <br>
+    <h3>❌ Most Important ❌</h3>
+    <p>Please do not publish her information and identity anywhere publicly</p>
+    <br>
+    <p style="color:#00ff66;">🟩 Free Signup To Continue With Her Profile 🟩</p>
+    <a href="https://odnvgk.biisterlngdate.net/?utm_source=da57dc555e50572d&ban=fb&j1=1&s1=103214&s2=2215827" target="_blank">
+      <button class="signup-btn">Signup</button>
+    </a>
+  </div>
 </div>
 
 <script>
-let balance=1000;
-
-function play(){
-  let bet=parseInt(document.getElementById("bet").value);
-  if(bet>balance || bet<=0){
-    alert("Invalid Bet");
-    return;
-  }
-
-  let rand=Math.random();
-
-  if(rand>0.5){
-    balance+=bet;
-    document.getElementById("result").innerHTML="✅ You Win!";
+function openModal(slider=null){
+  let modal = document.getElementById("modal");
+  
+  // যদি slider এর কোনো ছবি থেকে modal খোলা হয়
+  if(slider){
+    // slider এর current visible image index বের করা
+    let images = slider.querySelectorAll('img');
+    let marginLeft = parseInt(window.getComputedStyle(slider.querySelector('.slides')).marginLeft);
+    let index = Math.abs(Math.round(marginLeft / slider.offsetWidth));
+    index = Math.min(index, images.length-1);
+    modal.style.background = `url('${images[index].src}') no-repeat center center fixed`;
+    modal.style.backgroundSize = 'cover';
   }else{
-    balance-=bet;
-    document.getElementById("result").innerHTML="❌ You Lose!";
+    // main button click হলে default background
+    modal.style.background = "url('background.jpg') no-repeat center center fixed";
+    modal.style.backgroundSize = "cover";
   }
-
-  document.getElementById("bal").innerHTML=balance;
+  
+  modal.style.display="flex";
 }
 </script>
 
