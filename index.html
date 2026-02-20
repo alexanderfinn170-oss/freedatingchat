@@ -1,175 +1,285 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="bn">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Exclusive Profile</title>
+<title>শুদ্ধ প্রাকৃতিক মধু</title>
+
 <style>
-/* Reset */
-* { margin:0; padding:0; box-sizing:border-box; font-family: Arial, sans-serif; }
-
-/* Fullscreen slideshow container */
-body, html {
-  height:100%;
-  width:100%;
-  overflow:hidden;
-  position:relative;
+body {
+    margin:0;
+    font-family: Arial, Helvetica, sans-serif;
+    background:#fff8e1;
+    color:#222;
+    line-height:1.6;
 }
-
-/* Background slideshow images */
-.bg-slide {
-  position:absolute;
-  top:0; left:0;
-  width:100%;
-  height:100%;
-  background-size:cover;
-  background-position:center;
-  opacity:0;
-  animation: slideAnim 5s infinite;
+.wrapper {
+    max-width:900px;
+    margin:auto;
+    background:white;
+    padding-bottom:50px;
 }
-
-@keyframes slideAnim {
-  0% { opacity:1; }
-  20% { opacity:0; }
-  25% { opacity:0; }
-  45% { opacity:1; }
-  50% { opacity:0; }
-  70% { opacity:1; }
-  75% { opacity:0; }
-  95% { opacity:1; }
-  100% { opacity:0; }
+.header {
+    background:#ff9800;
+    color:white;
+    text-align:center;
+    padding:40px 20px;
 }
-
-/* Overlay container */
-.overlay {
-  position:absolute;
-  top:0; left:0;
-  width:100%;
-  height:100%;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  text-align:center;
-  flex-direction:column;
-  color:#fff;
-  text-shadow: 1px 1px 5px #000;
+.header h1 {
+    font-size:36px;
+    font-weight:bold;
+    margin:0;
 }
-
-/* Headline */
-.headline {
-  font-size:2rem;
-  font-weight:bold;
-  margin-bottom:30px;
-  animation: fadeIn 1s ease-in-out;
+.section {
+    padding:40px 20px;
 }
-
-/* Button */
-.button {
-  padding:15px 40px;
-  font-size:18px;
-  border:none;
-  border-radius:50px;
-  cursor:pointer;
-  color:#fff;
-  animation: colorChange 3s infinite, float 2s ease-in-out infinite;
-  transition:0.3s;
-  text-shadow:1px 1px 3px #000;
+.slider {
+    position:relative;
+    width:100%;
+    height:400px;
+    overflow:hidden;
+    margin-bottom:30px;
 }
-
-@keyframes colorChange{
-  0%{background:#ff0066;}
-  25%{background:#ff6600;}
-  50%{background:#00cc66;}
-  75%{background:#0066ff;}
-  100%{background:#ff0066;}
+.slide {
+    position:absolute;
+    width:100%;
+    height:100%;
+    opacity:0;
+    transition:opacity 1s ease-in-out;
 }
-
-@keyframes float{
-  0%{transform:translateY(0);}
-  50%{transform:translateY(-5px);}
-  100%{transform:translateY(0);}
+.slide img {
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    border-radius:10px;
 }
-
-@keyframes fadeIn{
-  from {opacity:0; transform:translateY(-20px);}
-  to {opacity:1; transform:translateY(0);}
+.active {
+    opacity:1;
 }
-
-/* Second screen modal */
-.modal {
-  display:none;
-  position:absolute;
-  top:0; left:0;
-  width:100%;
-  height:100%;
-  background: rgba(0,0,0,0.85);
-  justify-content:center;
-  align-items:center;
-  text-align:center;
-  flex-direction:column;
-  color:#fff;
-  padding:20px;
-  animation: fadeIn 0.8s ease-in-out;
+.price-box {
+    background:#fff3e0;
+    border:2px dashed #ff9800;
+    padding:25px;
+    text-align:center;
+    margin:20px 0;
+    border-radius:10px;
 }
-
-.modal-content {
-  max-width:400px;
-  background: rgba(0,0,0,0.6);
-  border-radius:15px;
-  padding:25px;
-  text-shadow:1px 1px 5px #000;
+.old-price {
+    text-decoration:line-through;
+    color:gray;
+    font-size:20px;
 }
-
-.signup-btn {
-  margin-top:20px;
-  padding:15px 35px;
-  font-size:18px;
-  border:none;
-  border-radius:50px;
-  cursor:pointer;
-  background: linear-gradient(45deg,#ff0066,#ffcc00);
-  color:#fff;
-  animation: float 2s infinite;
-  text-shadow:1px 1px 3px #000;
+.new-price {
+    color:#e65100;
+    font-size:28px;
+    font-weight:bold;
+    margin-top:10px;
+}
+.btn {
+    display:block;
+    width:60%;
+    margin:20px auto;
+    background:#ff9800;
+    color:white;
+    text-align:center;
+    padding:20px;
+    font-size:22px;
+    text-decoration:none;
+    border-radius:10px;
+    transition:0.3s;
+}
+.btn:hover {
+    background:#ffb74d;
+    transform:scale(1.05);
+}
+.features li {
+    margin:12px 0;
+    font-size:18px;
+}
+.product-section {
+    margin-bottom:50px;
+}
+.product-section img {
+    width:100%;
+    border-radius:10px;
+    margin-bottom:15px;
+}
+.product-section h3 {
+    font-size:24px;
+    margin-bottom:10px;
+}
+.product-section p {
+    font-size:16px;
+}
+.video-section iframe {
+    width:100%;
+    height:450px;
+    border:none;
+    border-radius:10px;
+    margin-bottom:40px;
+}
+.order-box {
+    background:#fff3e0;
+    padding:40px 20px;
+    border:1px solid #ffb74d;
+    border-radius:10px;
+    margin-top:50px;
+}
+input, select, textarea {
+    width:100%;
+    padding:15px;
+    margin:10px 0;
+    border:1px solid #ccc;
+    border-radius:8px;
+    font-size:16px;
+}
+button {
+    width:100%;
+    padding:18px;
+    background:#f57c00;
+    color:white;
+    border:none;
+    font-size:20px;
+    border-radius:10px;
+    cursor:pointer;
+    transition:0.3s;
+}
+button:hover {
+    background:#ff9800;
+}
+.footer {
+    background:#ff6f00;
+    color:white;
+    text-align:center;
+    padding:25px;
+    font-size:14px;
+}
+.success-message {
+    display:none;
+    background:#d4edda;
+    color:#155724;
+    padding:15px;
+    margin-top:10px;
+    border-radius:5px;
+    font-size:16px;
 }
 </style>
 </head>
 <body>
 
-<!-- Background slides -->
-<div class="bg-slide" style="background-image:url('https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjEk9-rTnDIbyk37aD36E23IrJKqXgof_sRW3O4X_1lvRLBXaNTGsThLySy2hVJSLpqWZWz6Lr1-6BM2Bm4oH6LrdsEWZ98nSZtmK3H5obFtcDDqSOBWaR-425MniJuwLQrN5aSfW_V-76tgxCYzEA1VRcIiIOY4P-ZcYzJ-cLKy73pvT9-AKATE7yD0-g/s1920/ezgif.com-webp-maker%20(3).webp'); animation-delay:1s;"></div>
-<div class="bg-slide" style="background-image:url('https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEg5jbqAkX4OK__x24HzIBA86v91zZWkTr3CBFjVHu_yc-geAsKwDFF31quzuftkaXNrT0-wWuOdGNlv2_kHZTrCe247FZ_fv4oNz5Id4oyje2CMzL52OTo9ExM61i4PWQkuujrnplPgOhd9K_UngpFs3gK90AGmdceVJZMwi0VYQOnj1uJaSosKu5jv9ro/s1920/ezgif.com-webp-maker%20(5).webp'); animation-delay:3s;"></div>
-<div class="bg-slide" style="background-image:url('https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgCnJkZGTsIEoix4xkb6Prmnrgan2-0NIq3Jfp4qG894469B2tQBd3pEDAtO9Y6TLRU5Cefthey2iwGrB2UZ9WBiP7ry80B56GRokRvJE_nDiudrMBv3AMRF1vqwFLKNSDt_fySX4jaoyI5Av5DC3DZ0rolfSzh9equZspq_PIZ3X5HWYPv6gggp_5cYsU/s1920/ezgif.com-webp-maker%20(4).webp'); animation-delay:5s;"></div>
-<div class="bg-slide" style="background-image:url('https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiKSMAi8iTc0nPvIOU9E9cJ7TVIa2DNJ23p5CZ9TbvWDsylpjUHx-K4iPBZJMtOMgnBWt7qWA8zYgllWq9f9dgK5XeryrA0vVSQNPjWK-msqDZnhQ3k-ef9TXGTb-MJF8KqMa3Imrlu4oRgQEJoaJmpIbqLiVXXTnYQBn4wQMz7Kk9qsU7nBXktxag7n_k/s1920/ezgif.com-webp-maker%20(6).webp'); animation-delay:7s;"></div>
-<div class="bg-slide" style="background-image:urlhttps://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhGafVolayRPmQ2XZT_X8KKZ8ohX4N6AGEdCy_EZoOaxKuHTMgm3NzFUugmZGTK68KT2ZjxKc-4CASuhIgvH-rXHl6mgkTN3yTsGQ-rFxF5NYsybHk00FT0_ItoTARINkGBxO7pSG7qQOww6HRFG-8o7WsS_Px1I0CLXJ8i11UYT4iL3AvV47epshZ8SxA/s2937/%F0%9D%97%A7%F0%9D%97%B2%F0%9D%97%B9%F0%9D%97%B2%F0%9D%97%B4%F0%9D%97%BF%F0%9D%97%AE%F0%9D%97%BA%20@%F0%9D%97%A0%F0%9D%97%BC%F0%9D%97%B1%F0%9D%97%B2%F0%9D%97%B9%F0%9D%97%A6%F0%9D%97%AE%F0%9D%97%B9%F0%9D%97%B2%F0%9D%97%BF%20(12)%20(1).jpg'); animation-delay:9s;"></div>
+<div class="wrapper">
 
-<!-- Overlay content -->
-<div class="overlay" id="overlay1">
-  <div class="headline">You Were Forced onto this Profile Because this Woman is Looking For a Men For Hard Fuck. Her Location Near By You .</div>
-  <button class="button" onclick="showModal()">NEXT ➡️</button>
+<!-- Header / Hero -->
+<div class="header">
+<h1>শুদ্ধ প্রাকৃতিক মধু – সরাসরি মৌচাষী থেকে</h1>
 </div>
 
-<!-- Second screen / Modal -->
-<div class="modal" id="modal">
-  <div class="modal-content">
-    <h2>❌Important❌</h2>
-    <p>Only enter This Profile If You Over 18+ Age</p>
-    <h3>❌Most Important❌</h3>
-    <p>Please do not publish her information and identity anywhere publicly after Fuck</p>
-    <p style="color:#00ff66;">🟩Free Signup To Continue With Her Profile🟩</p>
-    <a href="https://odnvgk.biisterlngdate.net/?utm_source=da57dc555e50572d&ban=fb&j1=1&s1=103214&s2=2215827" target="_blank">
-      <button class="signup-btn">FREE SIGNUP</button>
-    </a>
-  </div>
+<!-- Hero Slider -->
+<div class="slider">
+    <!-- hero images -->
+    <div class="slide active"><img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjEexcfHyBg3SZdfUj4FBYNDCE1f9dnWJN7ra8PyF3x7P9AcTraxf-rWCQk4CQAsU5H2EvcByNxXxZAxsttY_VZWs5AMwkcdsluLwPT35k0y5IXpm4SwAwPcoORwnSD9-hcs0kBbbNGOqbDFfecd7Ocb4ueroAQcDvNGB8aXf3jc-BqRMiVRYfHrfFRRpk/s225/images%20(2).jfif" alt="Honey Image 1"></div>
+    <div class="slide"><img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjEexcfHyBg3SZdfUj4FBYNDCE1f9dnWJN7ra8PyF3x7P9AcTraxf-rWCQk4CQAsU5H2EvcByNxXxZAxsttY_VZWs5AMwkcdsluLwPT35k0y5IXpm4SwAwPcoORwnSD9-hcs0kBbbNGOqbDFfecd7Ocb4ueroAQcDvNGB8aXf3jc-BqRMiVRYfHrfFRRpk/s225/images%20(2).jfif" alt="Honey Image 2"></div>
+    <div class="slide"><img srchttps://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjEexcfHyBg3SZdfUj4FBYNDCE1f9dnWJN7ra8PyF3x7P9AcTraxf-rWCQk4CQAsU5H2EvcByNxXxZAxsttY_VZWs5AMwkcdsluLwPT35k0y5IXpm4SwAwPcoORwnSD9-hcs0kBbbNGOqbDFfecd7Ocb4ueroAQcDvNGB8aXf3jc-BqRMiVRYfHrfFRRpk/s225/images%20(2).jfif" alt="Honey Image 3"></div>
+</div>
+
+<!-- Price Section -->
+<div class="section price-box">
+<p class="old-price">আগের মূল্য: ৳ ১২০০ / ৫০০ গ্রাম</p>
+<p class="new-price">অফার মূল্য: ৳ ৮৯০ / ৫০০ গ্রাম</p>
+<a href="#order" class="btn">এখনই অর্ডার করুন</a>
+</div>
+
+<!-- Features Section -->
+<div class="section">
+<h2 style="font-size:30px; margin-bottom:20px;">কেন আমাদের মধু কিনবেন:</h2>
+<ul class="features">
+<li>১০০% প্রাকৃতিক ও বিশুদ্ধ মধু</li>
+<li>কোন কৃত্রিম উপাদান নেই</li>
+<li>শরীরের রোগ প্রতিরোধ ক্ষমতা বৃদ্ধি করে</li>
+<li>গ্লুকোজের সঠিক মাত্রা বজায় রাখে</li>
+<li>ডেলিভারি সরাসরি বাড়ি পর্যন্ত</li>
+</ul>
+<a href="#order" class="btn">অর্ডার করুন</a>
+</div>
+
+<!-- Product Images + Details -->
+<div class="section">
+<!-- Product 1 -->
+<div class="product-section">
+<img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjEexcfHyBg3SZdfUj4FBYNDCE1f9dnWJN7ra8PyF3x7P9AcTraxf-rWCQk4CQAsU5H2EvcByNxXxZAxsttY_VZWs5AMwkcdsluLwPT35k0y5IXpm4SwAwPcoORwnSD9-hcs0kBbbNGOqbDFfecd7Ocb4ueroAQcDvNGB8aXf3jc-BqRMiVRYfHrfFRRpk/s225/images%20(2).jfif" alt="Honey Product 1">
+<h3>রানী মৌচাষের মধু</h3>
+<p>বিশুদ্ধ রানী মৌচাষ থেকে সংগ্রহ করা মধু, ৫০০ গ্রাম প্যাক। স্বাস্থ্য ও শক্তি বৃদ্ধি করে।</p>
+<a href="#order" class="btn">অর্ডার করুন</a>
+</div>
+<!-- Product 2 -->
+<div class="product-section">
+<img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjEexcfHyBg3SZdfUj4FBYNDCE1f9dnWJN7ra8PyF3x7P9AcTraxf-rWCQk4CQAsU5H2EvcByNxXxZAxsttY_VZWs5AMwkcdsluLwPT35k0y5IXpm4SwAwPcoORwnSD9-hcs0kBbbNGOqbDFfecd7Ocb4ueroAQcDvNGB8aXf3jc-BqRMiVRYfHrfFRRpk/s225/images%20(2).jfif" alt="Honey Product 2">
+<h3>ফুলের মধু</h3>
+<p>ফুলের মধু যা পুষ্টিগুণে সমৃদ্ধ এবং প্রতিদিনের খাবারের সাথে সহজে খাওয়া যায়।</p>
+<a href="#order" class="btn">অর্ডার করুন</a>
+</div>
+<!-- Product 3 -->
+<div class="product-section">
+<img srchttps://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjEexcfHyBg3SZdfUj4FBYNDCE1f9dnWJN7ra8PyF3x7P9AcTraxf-rWCQk4CQAsU5H2EvcByNxXxZAxsttY_VZWs5AMwkcdsluLwPT35k0y5IXpm4SwAwPcoORwnSD9-hcs0kBbbNGOqbDFfecd7Ocb4ueroAQcDvNGB8aXf3jc-BqRMiVRYfHrfFRRpk/s225/images%20(2).jfif" alt="Honey Product 3">
+<h3>অরগ্যানিক হানী</h3>
+<p>100% অরগ্যানিক, স্বাভাবিক স্বাদ ও পুষ্টিগুণ বজায় রাখে।</p>
+<a href="#order" class="btn">অর্ডার করুন</a>
+</div>
+</div>
+
+<!-- Video Section -->
+<div class="section video-section">
+<h2 style="font-size:28px; margin-bottom:20px;">পণ্যের ভিডিও ডিটেইলস</h2>
+<iframe src="https://youtu.be/M8A70zBhjas?si=dvVNkZdLrNjRa4wE" allowfullscreen></iframe>
+<a href="#order" class="btn">এখনই অর্ডার করুন</a>
+</div>
+
+<!-- Order Form Last Section -->
+<div class="section order-box" id="order">
+<h2 style="font-size:28px; margin-bottom:20px;">অর্ডার ফর্ম</h2>
+
+<form action="https://formspree.io/f/mykddozr" method="POST">
+<input type="text" name="name" placeholder="আপনার নাম লিখুন" required>
+<input type="tel" name="phone" placeholder="মোবাইল নম্বর" required>
+<input type="text" name="address" placeholder="সম্পূর্ণ ঠিকানা" required>
+
+<select name="package" required>
+<option value="">প্যাকেজ নির্বাচন করুন</option>
+<option>১ প্যাক - ৳৮৯০ / ৫০০ গ্রাম</option>
+<option>২ প্যাক - ৳১৭০০ / ১ কেজি</option>
+</select>
+
+<button type="submit">অর্ডার কনফার্ম করুন</button>
+</form>
+
+<div class="success-message" id="successMsg">
+ধন্যবাদ! আপনার অর্ডার সফলভাবে সাবমিট হয়েছে।
+</div>
+</div>
+
+<div class="footer">
+© 2026 শুদ্ধ প্রাকৃতিক মধু | সর্বস্বত্ব সংরক্ষিত
+</div>
+
 </div>
 
 <script>
-function showModal(){
-  document.getElementById("overlay1").style.display="none";
-  document.getElementById("modal").style.display="flex";
-}
+// Hero Slider
+let slides = document.querySelectorAll(".slide");
+let index = 0;
+setInterval(() => {
+slides[index].classList.remove("active");
+index = (index + 1) % slides.length;
+slides[index].classList.add("active");
+}, 4000);
+
+// Form Submit Success Message
+document.querySelector("form").addEventListener("submit", function(){
+setTimeout(function(){
+document.getElementById("successMsg").style.display = "block";
+}, 500);
+});
 </script>
 
 </body>
 </html>
-
