@@ -3,174 +3,245 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>শুদ্ধ প্রাকৃতিক মধু</title>
+<title>প্রিমিয়াম হেডফোন ল্যান্ডিং পেজ</title>
 
-<!-- Facebook Pixel Code -->
+<!-- ================= FACEBOOK PIXEL ================= -->
 <script>
-  !function(f,b,e,v,n,t,s)
-  {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-  n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-  if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-  n.queue=[];t=b.createElement(e);t.async=!0;
-  t.src=v;s=b.getElementsByTagName(e)[0];
-  s.parentNode.insertBefore(t,s)}(window, document,'script',
-  'https://connect.facebook.net/en_US/fbevents.js');
-  fbq('init', 'YOUR_PIXEL_ID'); 
-  fbq('track', 'PageView');
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', 'YOUR_PIXEL_ID_HERE');
+fbq('track', 'PageView');
 </script>
 <noscript>
-  <img height="1" width="1" style="display:none"
-  src="https://www.facebook.com/tr?id=YOUR_PIXEL_ID&ev=PageView&noscript=1"/>
+<img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=YOUR_PIXEL_ID_HERE&ev=PageView&noscript=1"/>
 </noscript>
-<!-- End Facebook Pixel Code -->
+<!-- =================================================== -->
 
 <style>
-body {margin:0;font-family:Arial,Helvetica,sans-serif;background:#fff8e1;color:#222;line-height:1.6;}
-.wrapper {max-width:900px;margin:auto;background:white;padding-bottom:50px;}
-.header {background:#ff9800;color:white;text-align:center;padding:40px 20px; position: relative;}
-.header img.logo {width:100px; height:100px; border-radius:50%; object-fit:cover; display:block; margin:0 auto 20px;}
-.header h1 {font-size:36px;font-weight:bold;margin:0;}
-.section {padding:40px 20px;}
-.slider {position:relative;width:100%;height:400px;overflow:hidden;margin-bottom:30px;}
-.slide {position:absolute;width:100%;height:100%;opacity:0;transition:opacity 1s ease-in-out;}
-.slide img {width:100%;height:100%;object-fit:cover;border-radius:10px;}
-.active {opacity:1;}
-.price-box {background:#fff3e0;border:2px dashed #ff9800;padding:25px;text-align:center;margin:20px 0;border-radius:10px;}
-.old-price {text-decoration:line-through;color:gray;font-size:20px;}
-.new-price {color:#e65100;font-size:28px;font-weight:bold;margin-top:10px;}
-.btn {display:block;width:60%;margin:20px auto;background:#ff9800;color:white;text-align:center;padding:20px;font-size:22px;text-decoration:none;border-radius:10px;transition:0.3s;}
-.btn:hover {background:#ffb74d;transform:scale(1.05);}
-.features li {margin:12px 0;font-size:18px;}
-.product-section {margin-bottom:50px;}
-.product-section img {width:100%;border-radius:10px;margin-bottom:15px;}
-.product-section h3 {font-size:24px;margin-bottom:10px;}
-.product-section p {font-size:16px;}
-.video-section iframe {width:100%;height:450px;border:none;border-radius:10px;margin-bottom:40px;}
-.order-box {background:#fff3e0;padding:40px 20px;border:1px solid #ffb74d;border-radius:10px;margin-top:50px;}
-input, select, textarea {width:100%;padding:15px;margin:10px 0;border:1px solid #ccc;border-radius:8px;font-size:16px;}
-button {width:100%;padding:18px;background:#f57c00;color:white;border:none;font-size:20px;border-radius:10px;cursor:pointer;transition:0.3s;}
-button:hover {background:#ff9800;}
-.footer {background:#ff6f00;color:white;text-align:center;padding:25px;font-size:14px;}
-.success-message {display:none;background:#d4edda;color:#155724;padding:15px;margin-top:10px;border-radius:5px;font-size:16px;}
+
+/* ===== BODY ===== */
+body{
+margin:0;
+font-family:Arial, Helvetica, sans-serif;
+background:#0f172a;
+color:#fff;
+}
+
+/* ===== LOGO SECTION ===== */
+.logo-container{
+text-align:center;
+padding:20px;
+background:#111827;
+}
+
+.logo-container img{
+width:120px;
+height:120px;
+border-radius:50%;
+object-fit:cover;
+}
+
+/* ===== HEADER ===== */
+.header{
+text-align:center;
+padding:50px 20px;
+background:linear-gradient(135deg,#0f172a,#1e3a8a);
+}
+
+.header h1{
+color:#38bdf8;
+font-size:2.5em;
+}
+
+.header p{
+color:#cbd5e1;
+font-size:1.2em;
+}
+
+.button{
+background:#38bdf8;
+color:#000;
+padding:15px 30px;
+border:none;
+border-radius:5px;
+cursor:pointer;
+font-weight:bold;
+margin-top:20px;
+}
+
+.button:hover{
+background:#0ea5e9;
+}
+
+/* ===== SLIDER ===== */
+.slider{
+width:100%;
+max-width:600px;
+margin:40px auto;
+overflow:hidden;
+border-radius:12px;
+}
+
+.slides{
+display:flex;
+width:300%;
+animation:slide 9s infinite;
+}
+
+.slides img{
+width:100%;
+}
+
+@keyframes slide{
+0%{margin-left:0;}
+33%{margin-left:-100%;}
+66%{margin-left:-200%;}
+100%{margin-left:0;}
+}
+
+/* ===== PRODUCT INFO ===== */
+.product{
+text-align:center;
+padding:40px 20px;
+background:#111827;
+}
+
+.product h2{
+color:#38bdf8;
+}
+
+.product p{
+color:#d1d5db;
+line-height:1.6;
+}
+
+/* ===== VIDEO SECTION ===== */
+.video-section{
+padding:40px 20px;
+text-align:center;
+background:#1f2937;
+}
+
+.video-section h2{
+color:#38bdf8;
+margin-bottom:20px;
+}
+
+.video-section iframe{
+width:100%;
+max-width:560px;
+height:315px;
+border-radius:10px;
+}
+
+/* ===== ORDER FORM ===== */
+.order-form{
+background:#111827;
+padding:40px 20px;
+text-align:center;
+}
+
+.order-form h2{
+color:#38bdf8;
+}
+
+.order-form input,
+.order-form textarea{
+width:80%;
+padding:12px;
+margin:10px 0;
+border-radius:6px;
+border:none;
+}
+
+.order-form button{
+background:#38bdf8;
+color:#000;
+padding:15px 30px;
+border:none;
+border-radius:6px;
+cursor:pointer;
+font-weight:bold;
+}
+
+.order-form button:hover{
+background:#0ea5e9;
+}
+
+/* ===== FOOTER ===== */
+.footer{
+background:#0f172a;
+text-align:center;
+padding:20px;
+color:#94a3b8;
+}
+
 </style>
 </head>
+
 <body>
 
-<div class="wrapper">
+<!-- LOGO -->
+<div class="logo-container">
+<img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEizie5O7tgoVd2aJp2A4PpGeyKR57iapRSXklgbczV7TAp9XjP9kn_393MnS3QK0vwuDQKAdgp8wzVfguUDSbfvGz1Wazwnk0fjriknjmGQbWpnX_wHgRv6sedtpf6MVvO9XtxSNAxb_XS5TSAOqo42B3_gSEcQJr_50nJ0FKvORnyqpEyE28dAz97dVSI/s225/images%20(1).jfif" alt="Company Logo">
+</div>
 
-<!-- Header / Hero -->
+<!-- HEADER -->
 <div class="header">
-<img class="logo" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgCKGQ-_PqJ7DiBAEVvxt4cWozC0eEx3tyS6iCwErDkbLB7DCoBJVdqo7u5by2_5T_FOWQANgrPQF72FbbWClRaovOda1dKjgUQY4ExomHz5VGApg_H3ozbJZx8po1C3kT4vpeM_BJ7upGpmEiIkmVD2VPwC91OHaXnm8XczYn8ijCQSkicJ2PVrarbFG4/s225/download%20(2).jfif" alt="কোম্পানি লোগো">
-<h1>শুদ্ধ প্রাকৃতিক মধু – সরাসরি মৌচাষী থেকে</h1>
+<h1>প্রিমিয়াম ব্লুটুথ হেডফোন</h1>
+<p>Crystal Clear Sound, Deep Bass এবং দীর্ঘ ব্যাটারি লাইফ</p>
+<button class="button">এখনই অর্ডার করুন</button>
 </div>
 
-<!-- Hero Slider -->
+<!-- IMAGE SLIDER -->
 <div class="slider">
-    <div class="slide active"><img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjEexcfHyBg3SZdfUj4FBYNDCE1f9dnWJN7ra8PyF3x7P9AcTraxf-rWCQk4CQAsU5H2EvcByNxXxZAxsttY_VZWs5AMwkcdsluLwPT35k0y5IXpm4SwAwPcoORwnSD9-hcs0kBbbNGOqbDFfecd7Ocb4ueroAQcDvNGB8aXf3jc-BqRMiVRYfHrfFRRpk/s225/images%20(2).jfif" alt="Honey Image 1"></div>
-    <div class="slide"><img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjEexcfHyBg3SZdfUj4FBYNDCE1f9dnWJN7ra8PyF3x7P9AcTraxf-rWCQk4CQAsU5H2EvcByNxXxZAxsttY_VZWs5AMwkcdsluLwPT35k0y5IXpm4SwAwPcoORwnSD9-hcs0kBbbNGOqbDFfecd7Ocb4ueroAQcDvNGB8aXf3jc-BqRMiVRYfHrfFRRpk/s225/images%20(2).jfif" alt="Honey Image 2"></div>
-    <div class="slide"><img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjEexcfHyBg3SZdfUj4FBYNDCE1f9dnWJN7ra8PyF3x7P9AcTraxf-rWCQk4CQAsU5H2EvcByNxXxZAxsttY_VZWs5AMwkcdsluLwPT35k0y5IXpm4SwAwPcoORwnSD9-hcs0kBbbNGOqbDFfecd7Ocb4ueroAQcDvNGB8aXf3jc-BqRMiVRYfHrfFRRpk/s225/images%20(2).jfif" alt="Honey Image 3"></div>
-</div>
-
-<!-- Price Section -->
-<div class="section price-box">
-<p class="old-price">আগের মূল্য: ৳ ১২০০ / ৫০০ গ্রাম</p>
-<p class="new-price">অফার মূল্য: ৳ ৮৯০ / ৫০০ গ্রাম</p>
-<a href="#order" class="btn">এখনই অর্ডার করুন</a>
-</div>
-
-<!-- Features Section -->
-<div class="section">
-<h2 style="font-size:30px; margin-bottom:20px;">কেন আমাদের মধু কিনবেন:</h2>
-<ul class="features">
-<li>১০০% প্রাকৃতিক ও বিশুদ্ধ মধু</li>
-<li>কোন কৃত্রিম উপাদান নেই</li>
-<li>শরীরের রোগ প্রতিরোধ ক্ষমতা বৃদ্ধি করে</li>
-<li>গ্লুকোজের সঠিক মাত্রা বজায় রাখে</li>
-<li>ডেলিভারি সরাসরি বাড়ি পর্যন্ত</li>
-</ul>
-<a href="#order" class="btn">অর্ডার করুন</a>
-</div>
-
-<!-- Product Images + Details -->
-<div class="section">
-<div class="product-section">
-<img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjEexcfHyBg3SZdfUj4FBYNDCE1f9dnWJN7ra8PyF3x7P9AcTraxf-rWCQk4CQAsU5H2EvcByNxXxZAxsttY_VZWs5AMwkcdsluLwPT35k0y5IXpm4SwAwPcoORwnSD9-hcs0kBbbNGOqbDFfecd7Ocb4ueroAQcDvNGB8aXf3jc-BqRMiVRYfHrfFRRpk/s225/images%20(2).jfif" alt="Honey Product 1">
-<h3>রানী মৌচাষের মধু</h3>
-<p>বিশুদ্ধ রানী মৌচাষ থেকে সংগ্রহ করা মধু, ৫০০ গ্রাম প্যাক। স্বাস্থ্য ও শক্তি বৃদ্ধি করে।</p>
-<a href="#order" class="btn">অর্ডার করুন</a>
-</div>
-
-<div class="product-section">
-<img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjEexcfHyBg3SZdfUj4FBYNDCE1f9dnWJN7ra8PyF3x7P9AcTraxf-rWCQk4CQAsU5H2EvcByNxXxZAxsttY_VZWs5AMwkcdsluLwPT35k0y5IXpm4SwAwPcoORwnSD9-hcs0kBbbNGOqbDFfecd7Ocb4ueroAQcDvNGB8aXf3jc-BqRMiVRYfHrfFRRpk/s225/images%20(2).jfif" alt="Honey Product 2">
-<h3>ফুলের মধু</h3>
-<p>ফুলের মধু যা পুষ্টিগুণে সমৃদ্ধ এবং প্রতিদিনের খাবারের সাথে সহজে খাওয়া যায়।</p>
-<a href="#order" class="btn">অর্ডার করুন</a>
-</div>
-
-<div class="product-section">
-<img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjEexcfHyBg3SZdfUj4FBYNDCE1f9dnWJN7ra8PyF3x7P9AcTraxf-rWCQk4CQAsU5H2EvcByNxXxZAxsttY_VZWs5AMwkcdsluLwPT35k0y5IXpm4SwAwPcoORwnSD9-hcs0kBbbNGOqbDFfecd7Ocb4ueroAQcDvNGB8aXf3jc-BqRMiVRYfHrfFRRpk/s225/images%20(2).jfif" alt="Honey Product 3">
-<h3>অরগ্যানিক হানী</h3>
-<p>100% অরগ্যানিক, স্বাভাবিক স্বাদ ও পুষ্টিগুণ বজায় রাখে।</p>
-<a href="#order" class="btn">অর্ডার করুন</a>
+<div class="slides">
+<img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjvue_7KqAgNNFxOzKGq3bDL4GHo-WvxwCKyBq9k4MDgP_7RJEGHlso9Nh5VP1ZMSD1TzLNbhw4_SqVAnv2LIWfPNxiylCvNmq6_Iar8VpAL_j7LhTd8u0E5uz_08tg_MRT8VTbXI9Rra_uPaVNf-twF6yDlo_6g3hqfF_Na-Q9FjEN8qXYl-eOgWQnTTY/s184/download.jfif" alt="Headphone 1">
+<img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhNzr-HfG3KIiI4O3Y12x487ZskmHw_TAmqfArJDViCI1C_ccC9wGFo09yqPM3cy37RKM8ARkgl_57qtk-WBuk03WxbN2D-bzwhHX7BOU8o_XNXT1ASMW-6pUmqlGaOXniuzvduR7mj789OhClyI1iqNEz9JNe0cJ-Dwjc0r4y88HKsaDy3EoWN2SdVZ3w/s262/download%20(1).jfif" alt="Headphone 2">
+<img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEizie5O7tgoVd2aJp2A4PpGeyKR57iapRSXklgbczV7TAp9XjP9kn_393MnS3QK0vwuDQKAdgp8wzVfguUDSbfvGz1Wazwnk0fjriknjmGQbWpnX_wHgRv6sedtpf6MVvO9XtxSNAxb_XS5TSAOqo42B3_gSEcQJr_50nJ0FKvORnyqpEyE28dAz97dVSI/s225/images%20(1).jfif" alt="Headphone 3">
 </div>
 </div>
 
-<!-- Video Section (Fixed) -->
-<div class="section video-section">
-<h2 style="font-size:28px; margin-bottom:20px;">পণ্যের ভিডিও ডিটেইলস</h2>
-<iframe src="https://www.youtube.com/embed/qV-iQLGW-kY" allowfullscreen></iframe>
-<a href="#order" class="btn">এখনই অর্ডার করুন</a>
+<!-- PRODUCT INFO -->
+<div class="product">
+<h2>কেন আমাদের হেডফোন কিনবেন?</h2>
+<p>
+🔊 শক্তিশালী Deep Bass সাউন্ড<br>
+🔋 ৪০ ঘণ্টা ব্যাটারি ব্যাকআপ<br>
+🎧 আরামদায়ক কুশন ডিজাইন<br>
+📶 Bluetooth 5.3 দ্রুত সংযোগ
+</p>
 </div>
 
-<!-- Order Form -->
-<div class="section order-box" id="order">
-<h2 style="font-size:28px; margin-bottom:20px;">অর্ডার ফর্ম</h2>
+<!-- VIDEO -->
+<div class="video-section">
+<h2>প্রোডাক্ট ভিডিও রিভিউ</h2>
+<iframe src="https://www.youtube.com/embed/M8A70zBhjas"
+allowfullscreen></iframe>
+</div>
 
-<form action="https://formspree.io/f/mykddozr" method="POST">
-<input type="text" name="name" placeholder="আপনার নাম লিখুন" required>
-<input type="tel" name="phone" placeholder="মোবাইল নম্বর" required>
-<input type="text" name="address" placeholder="সম্পূর্ণ ঠিকানা" required>
-
-<select name="package" required>
-<option value="">প্যাকেজ নির্বাচন করুন</option>
-<option>১ প্যাক - ৳৮৯০ / ৫০০ গ্রাম</option>
-<option>২ প্যাক - ৳১৭০০ / ১ কেজি</option>
-</select>
-
+<!-- ORDER FORM -->
+<div class="order-form">
+<h2>অর্ডার ফর্ম</h2>
+<form action="#" method="POST">
+<input type="text" name="name" placeholder="আপনার নাম" required><br>
+<input type="tel" name="phone" placeholder="আপনার ফোন নম্বর" required><br>
+<textarea name="address" placeholder="ডেলিভারি ঠিকানা" rows="4" required></textarea><br>
 <button type="submit">অর্ডার কনফার্ম করুন</button>
 </form>
-
-<div class="success-message" id="successMsg">
-ধন্যবাদ! আপনার অর্ডার সফলভাবে সাবমিট হয়েছে।
-</div>
 </div>
 
+<!-- FOOTER -->
 <div class="footer">
-© 2026 শুদ্ধ প্রাকৃতিক মধু | সর্বস্বত্ব সংরক্ষিত
+© 2026 আপনার ইলেকট্রনিক্স স্টোর PJ | All Rights Reserved
 </div>
-
-</div>
-
-<script>
-// Hero Slider
-let slides = document.querySelectorAll(".slide");
-let index = 0;
-setInterval(() => {
-slides[index].classList.remove("active");
-index = (index + 1) % slides.length;
-slides[index].classList.add("active");
-}, 4000);
-
-// Form Submit Success Message + FB Pixel Lead Event
-document.querySelector("form").addEventListener("submit", function(e){
-setTimeout(function(){
-document.getElementById("successMsg").style.display = "block";
-}, 500);
-
-// Facebook Pixel Lead Event
-fbq('track', 'Lead');
-});
-</script>
 
 </body>
 </html>
