@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>প্রিমিয়াম হেডফোন ল্যান্ডিং পেজ</title>
 
-<!-- ================= FACEBOOK PIXEL ================= -->
+<!-- FACEBOOK PIXEL -->
 <script>
 !function(f,b,e,v,n,t,s)
 {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
@@ -18,15 +18,12 @@ s.parentNode.insertBefore(t,s)}(window, document,'script',
 fbq('init', 'YOUR_PIXEL_ID_HERE');
 fbq('track', 'PageView');
 </script>
-<noscript>
-<img height="1" width="1" style="display:none"
-src="https://www.facebook.com/tr?id=YOUR_PIXEL_ID_HERE&ev=PageView&noscript=1"/>
-</noscript>
-<!-- =================================================== -->
 
 <style>
+html{
+scroll-behavior:smooth;
+}
 
-/* ===== BODY ===== */
 body{
 margin:0;
 font-family:Arial, Helvetica, sans-serif;
@@ -34,7 +31,7 @@ background:#0f172a;
 color:#fff;
 }
 
-/* ===== LOGO SECTION ===== */
+/* LOGO */
 .logo-container{
 text-align:center;
 padding:20px;
@@ -48,7 +45,7 @@ border-radius:50%;
 object-fit:cover;
 }
 
-/* ===== HEADER ===== */
+/* HEADER */
 .header{
 text-align:center;
 padding:50px 20px;
@@ -62,7 +59,6 @@ font-size:2.5em;
 
 .header p{
 color:#cbd5e1;
-font-size:1.2em;
 }
 
 .button{
@@ -74,13 +70,15 @@ border-radius:5px;
 cursor:pointer;
 font-weight:bold;
 margin-top:20px;
+display:inline-block;
+text-decoration:none;
 }
 
 .button:hover{
 background:#0ea5e9;
 }
 
-/* ===== SLIDER ===== */
+/* SLIDER */
 .slider{
 width:100%;
 max-width:600px;
@@ -106,7 +104,7 @@ width:100%;
 100%{margin-left:0;}
 }
 
-/* ===== PRODUCT INFO ===== */
+/* PRODUCT SECTION */
 .product{
 text-align:center;
 padding:40px 20px;
@@ -122,11 +120,34 @@ color:#d1d5db;
 line-height:1.6;
 }
 
-/* ===== VIDEO SECTION ===== */
+/* EXTRA PRODUCT DETAIL SECTION */
+.extra-product{
+text-align:center;
+padding:50px 20px;
+background:#1f2937;
+}
+
+.extra-product img{
+width:280px;
+max-width:90%;
+border-radius:12px;
+margin-bottom:20px;
+}
+
+.extra-product h2{
+color:#38bdf8;
+}
+
+.extra-product p{
+color:#e5e7eb;
+line-height:1.6;
+}
+
+/* VIDEO */
 .video-section{
 padding:40px 20px;
 text-align:center;
-background:#1f2937;
+background:#111827;
 }
 
 .video-section h2{
@@ -141,9 +162,9 @@ height:315px;
 border-radius:10px;
 }
 
-/* ===== ORDER FORM ===== */
+/* ORDER FORM */
 .order-form{
-background:#111827;
+background:#1f2937;
 padding:40px 20px;
 text-align:center;
 }
@@ -175,14 +196,13 @@ font-weight:bold;
 background:#0ea5e9;
 }
 
-/* ===== FOOTER ===== */
+/* FOOTER */
 .footer{
 background:#0f172a;
 text-align:center;
 padding:20px;
 color:#94a3b8;
 }
-
 </style>
 </head>
 
@@ -190,22 +210,22 @@ color:#94a3b8;
 
 <!-- LOGO -->
 <div class="logo-container">
-<img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEizie5O7tgoVd2aJp2A4PpGeyKR57iapRSXklgbczV7TAp9XjP9kn_393MnS3QK0vwuDQKAdgp8wzVfguUDSbfvGz1Wazwnk0fjriknjmGQbWpnX_wHgRv6sedtpf6MVvO9XtxSNAxb_XS5TSAOqo42B3_gSEcQJr_50nJ0FKvORnyqpEyE28dAz97dVSI/s225/images%20(1).jfif" alt="Company Logo">
+<img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhNzr-HfG3KIiI4O3Y12x487ZskmHw_TAmqfArJDViCI1C_ccC9wGFo09yqPM3cy37RKM8ARkgl_57qtk-WBuk03WxbN2D-bzwhHX7BOU8o_XNXT1ASMW-6pUmqlGaOXniuzvduR7mj789OhClyI1iqNEz9JNe0cJ-Dwjc0r4y88HKsaDy3EoWN2SdVZ3w/s262/download%20(1).jfif" alt="Company Logo">
 </div>
 
 <!-- HEADER -->
 <div class="header">
 <h1>প্রিমিয়াম ব্লুটুথ হেডফোন</h1>
 <p>Crystal Clear Sound, Deep Bass এবং দীর্ঘ ব্যাটারি লাইফ</p>
-<button class="button">এখনই অর্ডার করুন</button>
+<a href="#order" class="button">এখনই অর্ডার করুন</a>
 </div>
 
-<!-- IMAGE SLIDER -->
+<!-- SLIDER -->
 <div class="slider">
 <div class="slides">
-<img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjvue_7KqAgNNFxOzKGq3bDL4GHo-WvxwCKyBq9k4MDgP_7RJEGHlso9Nh5VP1ZMSD1TzLNbhw4_SqVAnv2LIWfPNxiylCvNmq6_Iar8VpAL_j7LhTd8u0E5uz_08tg_MRT8VTbXI9Rra_uPaVNf-twF6yDlo_6g3hqfF_Na-Q9FjEN8qXYl-eOgWQnTTY/s184/download.jfif" alt="Headphone 1">
-<img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhNzr-HfG3KIiI4O3Y12x487ZskmHw_TAmqfArJDViCI1C_ccC9wGFo09yqPM3cy37RKM8ARkgl_57qtk-WBuk03WxbN2D-bzwhHX7BOU8o_XNXT1ASMW-6pUmqlGaOXniuzvduR7mj789OhClyI1iqNEz9JNe0cJ-Dwjc0r4y88HKsaDy3EoWN2SdVZ3w/s262/download%20(1).jfif" alt="Headphone 2">
-<img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEizie5O7tgoVd2aJp2A4PpGeyKR57iapRSXklgbczV7TAp9XjP9kn_393MnS3QK0vwuDQKAdgp8wzVfguUDSbfvGz1Wazwnk0fjriknjmGQbWpnX_wHgRv6sedtpf6MVvO9XtxSNAxb_XS5TSAOqo42B3_gSEcQJr_50nJ0FKvORnyqpEyE28dAz97dVSI/s225/images%20(1).jfif" alt="Headphone 3">
+<img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhNzr-HfG3KIiI4O3Y12x487ZskmHw_TAmqfArJDViCI1C_ccC9wGFo09yqPM3cy37RKM8ARkgl_57qtk-WBuk03WxbN2D-bzwhHX7BOU8o_XNXT1ASMW-6pUmqlGaOXniuzvduR7mj789OhClyI1iqNEz9JNe0cJ-Dwjc0r4y88HKsaDy3EoWN2SdVZ3w/s262/download%20(1).jfif">
+<img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEizie5O7tgoVd2aJp2A4PpGeyKR57iapRSXklgbczV7TAp9XjP9kn_393MnS3QK0vwuDQKAdgp8wzVfguUDSbfvGz1Wazwnk0fjriknjmGQbWpnX_wHgRv6sedtpf6MVvO9XtxSNAxb_XS5TSAOqo42B3_gSEcQJr_50nJ0FKvORnyqpEyE28dAz97dVSI/s225/images%20(1).jfif">
+<img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjvue_7KqAgNNFxOzKGq3bDL4GHo-WvxwCKyBq9k4MDgP_7RJEGHlso9Nh5VP1ZMSD1TzLNbhw4_SqVAnv2LIWfPNxiylCvNmq6_Iar8VpAL_j7LhTd8u0E5uz_08tg_MRT8VTbXI9Rra_uPaVNf-twF6yDlo_6g3hqfF_Na-Q9FjEN8qXYl-eOgWQnTTY/s184/download.jfif">
 </div>
 </div>
 
@@ -220,6 +240,18 @@ color:#94a3b8;
 </p>
 </div>
 
+<!-- NEW EXTRA PRODUCT DETAIL (Video এর উপরে) -->
+<div class="extra-product">
+<img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEizie5O7tgoVd2aJp2A4PpGeyKR57iapRSXklgbczV7TAp9XjP9kn_393MnS3QK0vwuDQKAdgp8wzVfguUDSbfvGz1Wazwnk0fjriknjmGQbWpnX_wHgRv6sedtpf6MVvO9XtxSNAxb_XS5TSAOqo42B3_gSEcQJr_50nJ0FKvORnyqpEyE28dAz97dVSI/s225/images%20(1).jfif" alt="Product Detail">
+<h2>স্পেশাল এডিশন প্রিমিয়াম হেডফোন</h2>
+<p>
+উন্নতমানের Noise Cancellation প্রযুক্তি<br>
+Gaming ও Music এর জন্য পারফেক্ট সাউন্ড<br>
+Premium Build Quality এবং Stylish Look
+</p>
+<a href="#order" class="button">এখনই অর্ডার করুন</a>
+</div>
+
 <!-- VIDEO -->
 <div class="video-section">
 <h2>প্রোডাক্ট ভিডিও রিভিউ</h2>
@@ -228,7 +260,7 @@ allowfullscreen></iframe>
 </div>
 
 <!-- ORDER FORM -->
-<div class="order-form">
+<div class="order-form" id="order">
 <h2>অর্ডার ফর্ম</h2>
 <form action="#" method="POST">
 <input type="text" name="name" placeholder="আপনার নাম" required><br>
@@ -240,7 +272,7 @@ allowfullscreen></iframe>
 
 <!-- FOOTER -->
 <div class="footer">
-© 2026 আপনার ইলেকট্রনিক্স স্টোর PJ | All Rights Reserved
+© 2026 আপনার ইলেকট্রনিক্স স্টোর | All Rights Reserved
 </div>
 
 </body>
