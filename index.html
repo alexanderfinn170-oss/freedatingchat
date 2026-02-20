@@ -3,221 +3,90 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>প্রিমিয়াম হেডফোন ল্যান্ডিং পেজ</title>
-
-<!-- FACEBOOK PIXEL -->
-<script>
-!function(f,b,e,v,n,t,s)
-{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-n.queue=[];t=b.createElement(e);t.async=!0;
-t.src=v;s=b.getElementsByTagName(e)[0];
-s.parentNode.insertBefore(t,s)}(window, document,'script',
-'https://connect.facebook.net/en_US/fbevents.js');
-fbq('init', 'YOUR_PIXEL_ID_HERE');
-fbq('track', 'PageView');
-</script>
+<title>Premium Headphone</title>
 
 <style>
 html{scroll-behavior:smooth;}
 body{
 margin:0;
 font-family:Arial, Helvetica, sans-serif;
-background:#0a0a0a; /* changed */
+background:#0e0e0e;
 color:#fff;
 }
 
-/* LOGO */
-.logo-container{
-text-align:center;
-padding:20px;
-background:#111111; /* changed */
+/* Floating Button Animation */
+@keyframes floatBtn{
+0%{transform:translateY(0px);}
+50%{transform:translateY(-6px);}
+100%{transform:translateY(0px);}
 }
-.logo-container img{
-width:120px;
-height:120px;
-border-radius:50%;
-object-fit:cover;
+@keyframes pulse{
+0%{box-shadow:0 0 0 0 rgba(255,140,0,0.7);}
+70%{box-shadow:0 0 0 15px rgba(255,140,0,0);}
+100%{box-shadow:0 0 0 0 rgba(255,140,0,0);}
 }
 
-/* HEADER */
-.header{
-text-align:center;
-padding:50px 20px;
-background:linear-gradient(135deg,#1a0000,#7f1d1d); /* changed */
-}
-.header h1{color:#ff4d4d;font-size:2.5em;}
-.header p{color:#e5e5e5;}
 .button{
-background:#ff4d4d;
+background:#ff8c00;
 color:#000;
 padding:15px 30px;
 border:none;
-border-radius:5px;
-cursor:pointer;
+border-radius:6px;
 font-weight:bold;
-margin-top:20px;
+cursor:pointer;
 display:inline-block;
 text-decoration:none;
+animation:floatBtn 3s ease-in-out infinite, pulse 2s infinite;
+transition:0.3s;
 }
-.button:hover{background:#dc2626;}
-
-/* SLIDER */
-.slider{
-width:100%;
-max-width:600px;
-margin:40px auto;
-overflow:hidden;
-border-radius:12px;
-}
-.slides{
-display:flex;
-width:300%;
-animation:slide 9s infinite;
-}
-.slides img{width:100%;}
-@keyframes slide{
-0%{margin-left:0;}
-33%{margin-left:-100%;}
-66%{margin-left:-200%;}
-100%{margin-left:0;}
+.button:hover{
+background:#ff6a00;
+transform:scale(1.05);
 }
 
-/* PRODUCT INFO */
-.product{
-text-align:center;
-padding:40px 20px;
-background:#141414; /* changed */
-}
-.product h2{color:#ff4d4d;}
-.product p{color:#d1d5db;line-height:1.6;}
-
-/* EXTRA PRODUCT */
-.extra-product{
-text-align:center;
-padding:50px 20px;
-background:#1f1f1f; /* changed */
-}
-.extra-product img{
-width:280px;
-max-width:90%;
-border-radius:12px;
-margin-bottom:20px;
-}
-.extra-product h2{color:#ff4d4d;}
-.extra-product p{color:#e5e7eb;}
-
-/* VIDEO */
-.video-section{
-padding:40px 20px;
-text-align:center;
-background:#141414; /* changed */
-}
-.video-section h2{color:#ff4d4d;margin-bottom:20px;}
-.video-section iframe{
-width:100%;
-max-width:560px;
-height:315px;
-border-radius:10px;
-}
-
-/* ORDER FORM */
-.order-form{
-background:#1a0000; /* changed */
-padding:40px 20px;
-text-align:center;
-}
-.order-form h2{color:#ff4d4d;}
-.order-form input,
-.order-form textarea{
-width:80%;
-padding:12px;
-margin:10px 0;
-border-radius:6px;
-border:none;
-}
-.order-form button{
-background:#ff4d4d;
-color:#000;
-padding:15px 30px;
-border:none;
-border-radius:6px;
-cursor:pointer;
-font-weight:bold;
-}
-.order-form button:hover{background:#dc2626;}
-
-/* FOOTER */
-.footer{
-background:#0a0a0a; /* changed */
-text-align:center;
-padding:20px;
-color:#9ca3af;
-}
+/* Sections */
+.header{padding:60px 20px;text-align:center;background:linear-gradient(135deg,#1a1a1a,#ff6a00);}
+.product{padding:50px 20px;text-align:center;background:#1a1a1a;}
+.extra-product{padding:50px 20px;text-align:center;background:#262626;}
+.video-section{padding:50px 20px;text-align:center;background:#1a1a1a;}
+.order-form{padding:50px 20px;text-align:center;background:#111;}
+.footer{padding:20px;text-align:center;background:#000;color:#aaa;}
 </style>
 </head>
-
 <body>
 
-<div class="logo-container">
-<img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEizie5O7tgoVd2aJp2A4PpGeyKR57iapRSXklgbczV7TAp9XjP9kn_393MnS3QK0vwuDQKAdgp8wzVfguUDSbfvGz1Wazwnk0fjriknjmGQbWpnX_wHgRv6sedtpf6MVvO9XtxSNAxb_XS5TSAOqo42B3_gSEcQJr_50nJ0FKvORnyqpEyE28dAz97dVSI/s225/images%20(1).jfif" alt="Company Logo">
-</div>
-
 <div class="header">
-<h1>প্রিমিয়াম ব্লুটুথ হেডফোন</h1>
-<p>Crystal Clear Sound, Deep Bass এবং দীর্ঘ ব্যাটারি লাইফ</p>
+<h1>🔥 প্রিমিয়াম ব্লুটুথ হেডফোন</h1>
+<p>Deep Bass | Long Battery | Noise Cancellation</p>
 <a href="#order" class="button">এখনই অর্ডার করুন</a>
-</div>
-
-<div class="slider">
-<div class="slides">
-<img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEizie5O7tgoVd2aJp2A4PpGeyKR57iapRSXklgbczV7TAp9XjP9kn_393MnS3QK0vwuDQKAdgp8wzVfguUDSbfvGz1Wazwnk0fjriknjmGQbWpnX_wHgRv6sedtpf6MVvO9XtxSNAxb_XS5TSAOqo42B3_gSEcQJr_50nJ0FKvORnyqpEyE28dAz97dVSI/s225/images%20(1).jfif">
-<img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjvue_7KqAgNNFxOzKGq3bDL4GHo-WvxwCKyBq9k4MDgP_7RJEGHlso9Nh5VP1ZMSD1TzLNbhw4_SqVAnv2LIWfPNxiylCvNmq6_Iar8VpAL_j7LhTd8u0E5uz_08tg_MRT8VTbXI9Rra_uPaVNf-twF6yDlo_6g3hqfF_Na-Q9FjEN8qXYl-eOgWQnTTY/s184/download.jfif">
-<img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjvue_7KqAgNNFxOzKGq3bDL4GHo-WvxwCKyBq9k4MDgP_7RJEGHlso9Nh5VP1ZMSD1TzLNbhw4_SqVAnv2LIWfPNxiylCvNmq6_Iar8VpAL_j7LhTd8u0E5uz_08tg_MRT8VTbXI9Rra_uPaVNf-twF6yDlo_6g3hqfF_Na-Q9FjEN8qXYl-eOgWQnTTY/s184/download.jfif">
-</div>
 </div>
 
 <div class="product">
-<h2>কেন আমাদের হেডফোন কিনবেন?</h2>
-<p>
-🔊 শক্তিশালী Deep Bass সাউন্ড<br>
-🔋 ৪০ ঘণ্টা ব্যাটারি ব্যাকআপ<br>
-🎧 আরামদায়ক কুশন ডিজাইন<br>
-📶 Bluetooth 5.3 দ্রুত সংযোগ
-</p>
+<h2>কেন কিনবেন?</h2>
+<p>৪০ ঘণ্টা ব্যাটারি 🔋<br>Premium Sound 🔊<br>Bluetooth 5.3 📶</p>
 </div>
 
 <div class="extra-product">
-<img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjvue_7KqAgNNFxOzKGq3bDL4GHo-WvxwCKyBq9k4MDgP_7RJEGHlso9Nh5VP1ZMSD1TzLNbhw4_SqVAnv2LIWfPNxiylCvNmq6_Iar8VpAL_j7LhTd8u0E5uz_08tg_MRT8VTbXI9Rra_uPaVNf-twF6yDlo_6g3hqfF_Na-Q9FjEN8qXYl-eOgWQnTTY/s184/download.jfif">
-<h2>স্পেশাল এডিশন প্রিমিয়াম হেডফোন</h2>
-<p>
-উন্নতমানের Noise Cancellation প্রযুক্তি<br>
-Gaming ও Music এর জন্য পারফেক্ট সাউন্ড<br>
-Premium Build Quality এবং Stylish Look
-</p>
-<a href="#order" class="button">এখনই অর্ডার করুন</a>
+<h2>স্পেশাল অফার!</h2>
+<p>আজ অর্ডার করলে পাচ্ছেন বিশেষ ডিসকাউন্ট 🎁</p>
+<a href="#order" class="button">অর্ডার করুন</a>
 </div>
 
 <div class="video-section">
-<h2>প্রোডাক্ট ভিডিও রিভিউ</h2>
-<iframe src="https://www.youtube.com/embed/M8A70zBhjas" allowfullscreen></iframe>
+<h2>ভিডিও রিভিউ</h2>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/M8A70zBhjas" allowfullscreen></iframe>
 </div>
 
 <div class="order-form" id="order">
 <h2>অর্ডার ফর্ম</h2>
-
-<form action="https://formspree.io/f/mykddozr" method="POST">
-<input type="text" name="Customer Name" placeholder="আপনার নাম" required><br>
-<input type="tel" name="Customer Phone" placeholder="আপনার ফোন নম্বর" required><br>
-<textarea name="Delivery Address" placeholder="ডেলিভারি ঠিকানা" rows="4" required></textarea><br>
-<input type="hidden" name="Product" value="Premium Bluetooth Headphone">
-<button type="submit">অর্ডার কনফার্ম করুন</button>
-</form>
+<input type="text" placeholder="আপনার নাম"><br><br>
+<input type="tel" placeholder="ফোন নম্বর"><br><br>
+<textarea placeholder="ঠিকানা"></textarea><br><br>
+<button class="button">অর্ডার কনফার্ম করুন</button>
 </div>
 
 <div class="footer">
-© 2026 আপনার ইলেকট্রনিক্স স্টোর TY5Y | All Rights Reserved
+© 2026 All Rights Reserved DEMO LANDING
 </div>
 
 </body>
