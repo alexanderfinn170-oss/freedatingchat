@@ -24,31 +24,16 @@ html{scroll-behavior:smooth;}
 body{
 margin:0;
 font-family:Arial, Helvetica, sans-serif;
-background:#0a0a0a;
+background:#0f172a;
 color:#fff;
-}
-
-/* ================= BUTTON ANIMATION ================= */
-
-@keyframes floatBtn{
-0%{transform:translateY(0px);}
-50%{transform:translateY(-6px);}
-100%{transform:translateY(0px);}
-}
-
-@keyframes pulseGlow{
-0%{box-shadow:0 0 0 0 rgba(255,77,77,0.7);}
-70%{box-shadow:0 0 0 15px rgba(255,77,77,0);}
-100%{box-shadow:0 0 0 0 rgba(255,77,77,0);}
 }
 
 /* LOGO */
 .logo-container{
 text-align:center;
 padding:20px;
-background:#111111;
+background:#111827;
 }
-
 .logo-container img{
 width:120px;
 height:120px;
@@ -56,35 +41,28 @@ border-radius:50%;
 object-fit:cover;
 }
 
-/* NEW: COMPANY NAME STYLE */
+/* COMPANY NAME STYLE */
 .company-name{
 margin-top:15px;
 font-size:28px;
 font-weight:bold;
-letter-spacing:2px;
-background:linear-gradient(90deg,#ff4d4d,#ffffff,#ff4d4d);
+background:linear-gradient(45deg,#38bdf8,#0ea5e9,#3b82f6);
 -webkit-background-clip:text;
 -webkit-text-fill-color:transparent;
-text-transform:uppercase;
-animation:glowText 2.5s ease-in-out infinite alternate;
-}
-
-@keyframes glowText{
-from{text-shadow:0 0 5px rgba(255,77,77,0.5);}
-to{text-shadow:0 0 20px rgba(255,77,77,1);}
+letter-spacing:2px;
+text-shadow:0 0 15px rgba(56,189,248,0.6);
 }
 
 /* HEADER */
 .header{
 text-align:center;
 padding:50px 20px;
-background:linear-gradient(135deg,#1a0000,#7f1d1d);
+background:linear-gradient(135deg,#0f172a,#1e3a8a);
 }
-.header h1{color:#ff4d4d;font-size:2.5em;}
-.header p{color:#e5e5e5;}
-
+.header h1{color:#38bdf8;font-size:2.5em;}
+.header p{color:#cbd5e1;}
 .button{
-background:#ff4d4d;
+background:#38bdf8;
 color:#000;
 padding:15px 30px;
 border:none;
@@ -94,15 +72,8 @@ font-weight:bold;
 margin-top:20px;
 display:inline-block;
 text-decoration:none;
-animation:floatBtn 3s ease-in-out infinite,
-pulseGlow 2.5s infinite;
-transition:0.3s;
 }
-
-.button:hover{
-background:#dc2626;
-transform:scale(1.05);
-}
+.button:hover{background:#0ea5e9;}
 
 /* SLIDER */
 .slider{
@@ -129,16 +100,16 @@ animation:slide 9s infinite;
 .product{
 text-align:center;
 padding:40px 20px;
-background:#141414;
+background:#111827;
 }
-.product h2{color:#ff4d4d;}
+.product h2{color:#38bdf8;}
 .product p{color:#d1d5db;line-height:1.6;}
 
 /* EXTRA PRODUCT */
 .extra-product{
 text-align:center;
 padding:50px 20px;
-background:#1f1f1f;
+background:#1f2937;
 }
 .extra-product img{
 width:280px;
@@ -146,16 +117,16 @@ max-width:90%;
 border-radius:12px;
 margin-bottom:20px;
 }
-.extra-product h2{color:#ff4d4d;}
+.extra-product h2{color:#38bdf8;}
 .extra-product p{color:#e5e7eb;}
 
 /* VIDEO */
 .video-section{
 padding:40px 20px;
 text-align:center;
-background:#141414;
+background:#111827;
 }
-.video-section h2{color:#ff4d4d;margin-bottom:20px;}
+.video-section h2{color:#38bdf8;margin-bottom:20px;}
 .video-section iframe{
 width:100%;
 max-width:560px;
@@ -165,11 +136,11 @@ border-radius:10px;
 
 /* ORDER FORM */
 .order-form{
-background:#1a0000;
+background:#1f2937;
 padding:40px 20px;
 text-align:center;
 }
-.order-form h2{color:#ff4d4d;}
+.order-form h2{color:#38bdf8;}
 .order-form input,
 .order-form textarea{
 width:80%;
@@ -179,48 +150,101 @@ border-radius:6px;
 border:none;
 }
 .order-form button{
-background:#ff4d4d;
+background:#38bdf8;
 color:#000;
 padding:15px 30px;
 border:none;
 border-radius:6px;
 cursor:pointer;
 font-weight:bold;
-animation:floatBtn 3s ease-in-out infinite,
-pulseGlow 2.5s infinite;
-transition:0.3s;
 }
-.order-form button:hover{
-background:#dc2626;
-transform:scale(1.05);
-}
+.order-form button:hover{background:#0ea5e9;}
 
 /* FOOTER */
 .footer{
-background:#0a0a0a;
+background:#0f172a;
 text-align:center;
 padding:20px;
-color:#9ca3af;
+color:#94a3b8;
 }
 </style>
 </head>
 
 <body>
 
+<!-- LOGO -->
 <div class="logo-container">
 <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEizie5O7tgoVd2aJp2A4PpGeyKR57iapRSXklgbczV7TAp9XjP9kn_393MnS3QK0vwuDQKAdgp8wzVfguUDSbfvGz1Wazwnk0fjriknjmGQbWpnX_wHgRv6sedtpf6MVvO9XtxSNAxb_XS5TSAOqo42B3_gSEcQJr_50nJ0FKvORnyqpEyE28dAz97dVSI/s225/images%20(1).jfif" alt="Company Logo">
 
-<!-- COMPANY NAME ADDED -->
-<div class="company-name">Big Brand ZD</div>
-
+<div class="company-name">Big Shope BD</div>
 </div>
 
-<!-- Rest of your page remains EXACTLY SAME -->
-
+<!-- HEADER -->
 <div class="header">
 <h1>প্রিমিয়াম ব্লুটুথ হেডফোন</h1>
 <p>Crystal Clear Sound, Deep Bass এবং দীর্ঘ ব্যাটারি লাইফ</p>
 <a href="#order" class="button">এখনই অর্ডার করুন</a>
 </div>
 
-<!-- (Remaining code unchanged below...) -->
+<!-- SLIDER -->
+<div class="slider">
+<div class="slides">
+<img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEizie5O7tgoVd2aJp2A4PpGeyKR57iapRSXklgbczV7TAp9XjP9kn_393MnS3QK0vwuDQKAdgp8wzVfguUDSbfvGz1Wazwnk0fjriknjmGQbWpnX_wHgRv6sedtpf6MVvO9XtxSNAxb_XS5TSAOqo42B3_gSEcQJr_50nJ0FKvORnyqpEyE28dAz97dVSI/s225/images%20(1).jfif">
+<img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjvue_7KqAgNNFxOzKGq3bDL4GHo-WvxwCKyBq9k4MDgP_7RJEGHlso9Nh5VP1ZMSD1TzLNbhw4_SqVAnv2LIWfPNxiylCvNmq6_Iar8VpAL_j7LhTd8u0E5uz_08tg_MRT8VTbXI9Rra_uPaVNf-twF6yDlo_6g3hqfF_Na-Q9FjEN8qXYl-eOgWQnTTY/s184/download.jfif">
+<img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjvue_7KqAgNNFxOzKGq3bDL4GHo-WvxwCKyBq9k4MDgP_7RJEGHlso9Nh5VP1ZMSD1TzLNbhw4_SqVAnv2LIWfPNxiylCvNmq6_Iar8VpAL_j7LhTd8u0E5uz_08tg_MRT8VTbXI9Rra_uPaVNf-twF6yDlo_6g3hqfF_Na-Q9FjEN8qXYl-eOgWQnTTY/s184/download.jfif">
+</div>
+</div>
+
+<!-- PRODUCT INFO -->
+<div class="product">
+<h2>কেন আমাদের হেডফোন কিনবেন?</h2>
+<p>
+🔊 শক্তিশালী Deep Bass সাউন্ড<br>
+🔋 ৪০ ঘণ্টা ব্যাটারি ব্যাকআপ<br>
+🎧 আরামদায়ক কুশন ডিজাইন<br>
+📶 Bluetooth 5.3 দ্রুত সংযোগ
+</p>
+</div>
+
+<!-- EXTRA PRODUCT SECTION -->
+<div class="extra-product">
+<img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjvue_7KqAgNNFxOzKGq3bDL4GHo-WvxwCKyBq9k4MDgP_7RJEGHlso9Nh5VP1ZMSD1TzLNbhw4_SqVAnv2LIWfPNxiylCvNmq6_Iar8VpAL_j7LhTd8u0E5uz_08tg_MRT8VTbXI9Rra_uPaVNf-twF6yDlo_6g3hqfF_Na-Q9FjEN8qXYl-eOgWQnTTY/s184/download.jfif">
+<h2>স্পেশাল এডিশন প্রিমিয়াম হেডফোন</h2>
+<p>
+উন্নতমানের Noise Cancellation প্রযুক্তি<br>
+Gaming ও Music এর জন্য পারফেক্ট সাউন্ড<br>
+Premium Build Quality এবং Stylish Look
+</p>
+<a href="#order" class="button">এখনই অর্ডার করুন</a>
+</div>
+
+<!-- VIDEO -->
+<div class="video-section">
+<h2>প্রোডাক্ট ভিডিও রিভিউ</h2>
+<iframe src="https://www.youtube.com/embed/M8A70zBhjas" allowfullscreen></iframe>
+</div>
+
+<!-- ORDER FORM -->
+<div class="order-form" id="order">
+<h2>অর্ডার ফর্ম</h2>
+
+<form action="https://formspree.io/f/mykddozr" method="POST">
+
+<input type="text" name="Customer Name" placeholder="আপনার নাম" required><br>
+<input type="tel" name="Customer Phone" placeholder="আপনার ফোন নম্বর" required><br>
+<textarea name="Delivery Address" placeholder="ডেলিভারি ঠিকানা" rows="4" required></textarea><br>
+
+<input type="hidden" name="Product" value="Premium Bluetooth Headphone">
+
+<button type="submit">অর্ডার কনফার্ম করুন</button>
+
+</form>
+</div>
+
+<!-- FOOTER -->
+<div class="footer">
+© 2026 আপনার ইলেকট্রনিক্স স্টোর TY5Y | All Rights Reserved
+</div>
+
+</body>
+</html>
