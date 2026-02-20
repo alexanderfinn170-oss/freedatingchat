@@ -3,173 +3,201 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>শুদ্ধ প্রাকৃতিক মধু</title>
+<title>মধু বিক্রির ল্যান্ডিং পেজ</title>
 
-<!-- Facebook Pixel Code -->
-<script>
-  !function(f,b,e,v,n,t,s)
-  {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-  n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-  if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-  n.queue=[];t=b.createElement(e);t.async=!0;
-  t.src=v;s=b.getElementsByTagName(e)[0];
-  s.parentNode.insertBefore(t,s)}(window, document,'script',
-  'https://connect.facebook.net/en_US/fbevents.js');
-  fbq('init', 'YOUR_PIXEL_ID'); 
-  fbq('track', 'PageView');
-</script>
-<noscript>
-  <img height="1" width="1" style="display:none"
-  src="https://www.facebook.com/tr?id=YOUR_PIXEL_ID&ev=PageView&noscript=1"/>
-</noscript>
-<!-- End Facebook Pixel Code -->
-
+<!-- =========================
+     CSS START
+========================= -->
 <style>
-body {margin:0;font-family:Arial,Helvetica,sans-serif;background:#fff8e1;color:#222;line-height:1.6;}
-.wrapper {max-width:900px;margin:auto;background:white;padding-bottom:50px;}
-.header {background:#ff9800;color:white;text-align:center;padding:40px 20px;}
-.header h1 {font-size:36px;font-weight:bold;margin:0;}
-.section {padding:40px 20px;}
-.slider {position:relative;width:100%;height:400px;overflow:hidden;margin-bottom:30px;}
-.slide {position:absolute;width:100%;height:100%;opacity:0;transition:opacity 1s ease-in-out;}
-.slide img {width:100%;height:100%;object-fit:cover;border-radius:10px;}
-.active {opacity:1;}
-.price-box {background:#808000;border:2px dashed #ff9800;padding:25px;text-align:center;margin:20px 0;border-radius:10px;}
-.old-price {text-decoration:line-through;color:gray;font-size:20px;}
-.new-price {color:#e65100;font-size:28px;font-weight:bold;margin-top:10px;}
-.btn {display:block;width:60%;margin:20px auto;background:#808000;color:white;text-align:center;padding:20px;font-size:22px;text-decoration:none;border-radius:10px;transition:0.3s;}
-.btn:hover {background:#808000;transform:scale(1.05);}
-.features li {margin:12px 0;font-size:18px;}
-.product-section {margin-bottom:50px;}
-.product-section img {width:100%;border-radius:10px;margin-bottom:15px;}
-.product-section h3 {font-size:24px;margin-bottom:10px;}
-.product-section p {font-size:16px;}
-.video-section iframe {width:100%;height:450px;border:none;border-radius:10px;margin-bottom:40px;}
-.order-box {background:#808000;padding:40px 20px;border:1px solid #ffb74d;border-radius:10px;margin-top:50px;}
-input, select, textarea {width:100%;padding:15px;margin:10px 0;border:1px solid #ccc;border-radius:8px;font-size:16px;}
-button {width:100%;padding:18px;background:#808000;color:white;border:none;font-size:20px;border-radius:10px;cursor:pointer;transition:0.3s;}
-button:hover {background:#808000;}
-.footer {background:#808000;color:white;text-align:center;padding:25px;font-size:14px;}
-.success-message {display:none;background:#808000;color:#155724;padding:15px;margin-top:10px;border-radius:5px;font-size:16px;}
+    /* Body background */
+    body {
+        margin:0;
+        font-family: Arial, Helvetica, sans-serif;
+        background:#FFFDE7; /* Light cream, changeable */
+        color:#222;
+        line-height:1.6;
+    }
+
+    /* Logo Section */
+    .logo-container {
+        width:100%;
+        text-align:center;
+        padding:20px 0;
+        background:#FFF8E1; /* Light yellow background */
+    }
+
+    .logo-container img {
+        width:100px;
+        height:100px;
+        border-radius:50%; /* Circular logo */
+        object-fit:cover;
+    }
+
+    /* Header Section */
+    .header {
+        background:#FFE082; /* Header background */
+        text-align:center;
+        padding:50px 20px;
+    }
+
+    .header h1 {
+        font-size:2.5em;
+        margin-bottom:10px;
+    }
+
+    .header p {
+        font-size:1.2em;
+    }
+
+    .header .button {
+        background:#FF9800;
+        color:#fff;
+        padding:15px 30px;
+        border:none;
+        border-radius:5px;
+        font-size:1em;
+        cursor:pointer;
+        margin-top:20px;
+    }
+
+    .header .button:hover {
+        background:#e68a00;
+    }
+
+    /* Product Section */
+    .product {
+        padding:40px 20px;
+        text-align:center;
+        background:#FFF3E0; /* Product background color */
+    }
+
+    .product img {
+        width:300px;
+        max-width:80%;
+        margin-bottom:20px;
+        border-radius:10px;
+    }
+
+    .product h2 {
+        font-size:1.8em;
+        margin-bottom:10px;
+        color:#333;
+    }
+
+    .product p {
+        font-size:1em;
+        color:#555;
+    }
+
+    /* Video Section */
+    .video-section {
+        padding:40px 20px;
+        text-align:center;
+        background:#E8F5E9; /* Soft green */
+    }
+
+    .video-section iframe {
+        width:100%;
+        max-width:560px;
+        height:315px;
+        border:none;
+        border-radius:10px;
+    }
+
+    /* Order Form Section */
+    .order-form {
+        background:#FFF3E0; /* Soft orange */
+        padding:40px 20px;
+        text-align:center;
+    }
+
+    .order-form input, .order-form textarea {
+        padding:10px;
+        width:80%;
+        margin:10px 0;
+        border:1px solid #ccc;
+        border-radius:5px;
+        font-size:1em;
+    }
+
+    .order-form button {
+        background:#4CAF50;
+        color:#fff;
+        padding:15px 30px;
+        border:none;
+        border-radius:5px;
+        cursor:pointer;
+        font-size:1em;
+        margin-top:10px;
+    }
+
+    .order-form button:hover {
+        background:#449d48;
+    }
+
+    /* Footer */
+    .footer {
+        background:#FFE082;
+        text-align:center;
+        padding:20px;
+        font-size:0.9em;
+    }
 </style>
+<!-- =========================
+     CSS END
+========================= -->
 </head>
 <body>
 
-<div class="wrapper">
+<!-- Logo Section -->
+<div class="logo-container">
+    <!-- Boss এখানে আপনার লোগো ছবি বসাবেন -->
+    <img src="logo-placeholder.png" alt="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjEexcfHyBg3SZdfUj4FBYNDCE1f9dnWJN7ra8PyF3x7P9AcTraxf-rWCQk4CQAsU5H2EvcByNxXxZAxsttY_VZWs5AMwkcdsluLwPT35k0y5IXpm4SwAwPcoORwnSD9-hcs0kBbbNGOqbDFfecd7Ocb4ueroAQcDvNGB8aXf3jc-BqRMiVRYfHrfFRRpk/s225/images%20(2).jfif">
+</div>
 
-<!-- Header / Hero -->
+<!-- Header Section -->
 <div class="header">
-<h1>শুদ্ধ প্রাকৃতিক মধু – সরাসরি মৌচাষী থেকে</h1>
+    <h1>স্বাস্থ্যকর মধু</h1>
+    <p>প্রাকৃতিক ও বিশুদ্ধ মধু সরাসরি গ্রাহকের কাছে</p>
+    <button class="button">অর্ডার করুন</button>
 </div>
 
-<!-- Hero Slider -->
-<div class="slider">
-    <div class="slide active"><img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjEexcfHyBg3SZdfUj4FBYNDCE1f9dnWJN7ra8PyF3x7P9AcTraxf-rWCQk4CQAsU5H2EvcByNxXxZAxsttY_VZWs5AMwkcdsluLwPT35k0y5IXpm4SwAwPcoORwnSD9-hcs0kBbbNGOqbDFfecd7Ocb4ueroAQcDvNGB8aXf3jc-BqRMiVRYfHrfFRRpk/s225/images%20(2).jfif" alt="Honey Image 1"></div>
-    <div class="slide"><img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjEexcfHyBg3SZdfUj4FBYNDCE1f9dnWJN7ra8PyF3x7P9AcTraxf-rWCQk4CQAsU5H2EvcByNxXxZAxsttY_VZWs5AMwkcdsluLwPT35k0y5IXpm4SwAwPcoORwnSD9-hcs0kBbbNGOqbDFfecd7Ocb4ueroAQcDvNGB8aXf3jc-BqRMiVRYfHrfFRRpk/s225/images%20(2).jfif" alt="Honey Image 2"></div>
-    <div class="slide"><img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjEexcfHyBg3SZdfUj4FBYNDCE1f9dnWJN7ra8PyF3x7P9AcTraxf-rWCQk4CQAsU5H2EvcByNxXxZAxsttY_VZWs5AMwkcdsluLwPT35k0y5IXpm4SwAwPcoORwnSD9-hcs0kBbbNGOqbDFfecd7Ocb4ueroAQcDvNGB8aXf3jc-BqRMiVRYfHrfFRRpk/s225/images%20(2).jfif" alt="Honey Image 3"></div>
+<!-- Product Sections -->
+<div class="product">
+    <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjEexcfHyBg3SZdfUj4FBYNDCE1f9dnWJN7ra8PyF3x7P9AcTraxf-rWCQk4CQAsU5H2EvcByNxXxZAxsttY_VZWs5AMwkcdsluLwPT35k0y5IXpm4SwAwPcoORwnSD9-hcs0kBbbNGOqbDFfecd7Ocb4ueroAQcDvNGB8aXf3jc-BqRMiVRYfHrfFRRpk/s225/images%20(2).jfif" alt="মধু পণ্য ১">
+    <h2>প্রিমিয়াম হারবাল মধু</h2>
+    <p>স্বাস্থ্য বজায় রাখে, রোগ প্রতিরোধ ক্ষমতা বাড়ায়।</p>
 </div>
 
-<!-- Price Section -->
-<div class="section price-box">
-<p class="old-price">আগের মূল্য: ৳ ১২০০ / ৫০০ গ্রাম</p>
-<p class="new-price">অফার মূল্য: ৳ ৮৯০ / ৫০০ গ্রাম</p>
-<a href="#order" class="btn">এখনই অর্ডার করুন</a>
+<div class="product">
+    <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjEexcfHyBg3SZdfUj4FBYNDCE1f9dnWJN7ra8PyF3x7P9AcTraxf-rWCQk4CQAsU5H2EvcByNxXxZAxsttY_VZWs5AMwkcdsluLwPT35k0y5IXpm4SwAwPcoORwnSD9-hcs0kBbbNGOqbDFfecd7Ocb4ueroAQcDvNGB8aXf3jc-BqRMiVRYfHrfFRRpk/s225/images%20(2).jfif" alt="মধু পণ্য ২">
+    <h2>নেচারাল অরগানিক মধু</h2>
+    <p>সারা দিনের শক্তি প্রদান করে এবং প্রাকৃতিক স্বাদ বজায় রাখে।</p>
 </div>
 
-<!-- Features Section -->
-<div class="section">
-<h2 style="font-size:30px; margin-bottom:20px;">কেন আমাদের মধু কিনবেন:</h2>
-<ul class="features">
-<li>১০০% প্রাকৃতিক ও বিশুদ্ধ মধু</li>
-<li>কোন কৃত্রিম উপাদান নেই</li>
-<li>শরীরের রোগ প্রতিরোধ ক্ষমতা বৃদ্ধি করে</li>
-<li>গ্লুকোজের সঠিক মাত্রা বজায় রাখে</li>
-<li>ডেলিভারি সরাসরি বাড়ি পর্যন্ত</li>
-</ul>
-<a href="#order" class="btn">অর্ডার করুন</a>
+<!-- Video Section -->
+<div class="video-section">
+    <h2>আমাদের পণ্যের ভিডিও বিবরণ</h2>
+    <!-- Boss, এখানে YouTube Video ID বসান "v=" এর পরের কোড দিয়ে -->
+    <iframe src="https://www.youtube.com/embed/TY-Qt74BE59ZdQE4" allowfullscreen></iframe>
 </div>
 
-<!-- Product Images + Details -->
-<div class="section">
-<div class="product-section">
-<img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjEexcfHyBg3SZdfUj4FBYNDCE1f9dnWJN7ra8PyF3x7P9AcTraxf-rWCQk4CQAsU5H2EvcByNxXxZAxsttY_VZWs5AMwkcdsluLwPT35k0y5IXpm4SwAwPcoORwnSD9-hcs0kBbbNGOqbDFfecd7Ocb4ueroAQcDvNGB8aXf3jc-BqRMiVRYfHrfFRRpk/s225/images%20(2).jfif" alt="Honey Product 1">
-<h3>রানী মৌচাষের মধু</h3>
-<p>বিশুদ্ধ রানী মৌচাষ থেকে সংগ্রহ করা মধু, ৫০০ গ্রাম প্যাক। স্বাস্থ্য ও শক্তি বৃদ্ধি করে।</p>
-<a href="#order" class="btn">অর্ডার করুন</a>
+<!-- Order Form Section -->
+<div class="order-form">
+    <h2>অর্ডার ফর্ম</h2>
+    <form action="https://formspree.io/f/mykddozr" method="POST">
+        <input type="text" name="name" placeholder="আপনার নাম" required><br>
+        <input type="email" name="email" placeholder="আপনার ইমেইল" required><br>
+        <input type="tel" name="phone" placeholder="আপনার ফোন নাম্বার" required><br>
+        <textarea name="address" placeholder="ডেলিভারি ঠিকানা" rows="4" required></textarea><br>
+        <button type="submit">অর্ডার কনফার্ম করুন</button>
+    </form>
 </div>
 
-<div class="product-section">
-<img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjEexcfHyBg3SZdfUj4FBYNDCE1f9dnWJN7ra8PyF3x7P9AcTraxf-rWCQk4CQAsU5H2EvcByNxXxZAxsttY_VZWs5AMwkcdsluLwPT35k0y5IXpm4SwAwPcoORwnSD9-hcs0kBbbNGOqbDFfecd7Ocb4ueroAQcDvNGB8aXf3jc-BqRMiVRYfHrfFRRpk/s225/images%20(2).jfif" alt="Honey Product 2">
-<h3>ফুলের মধু</h3>
-<p>ফুলের মধু যা পুষ্টিগুণে সমৃদ্ধ এবং প্রতিদিনের খাবারের সাথে সহজে খাওয়া যায়।</p>
-<a href="#order" class="btn">অর্ডার করুন</a>
-</div>
-
-<div class="product-section">
-<img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjEexcfHyBg3SZdfUj4FBYNDCE1f9dnWJN7ra8PyF3x7P9AcTraxf-rWCQk4CQAsU5H2EvcByNxXxZAxsttY_VZWs5AMwkcdsluLwPT35k0y5IXpm4SwAwPcoORwnSD9-hcs0kBbbNGOqbDFfecd7Ocb4ueroAQcDvNGB8aXf3jc-BqRMiVRYfHrfFRRpk/s225/images%20(2).jfif" alt="Honey Product 3">
-<h3>অরগ্যানিক হানী</h3>
-<p>100% অরগ্যানিক, স্বাভাবিক স্বাদ ও পুষ্টিগুণ বজায় রাখে।</p>
-<a href="#order" class="btn">অর্ডার করুন</a>
-</div>
-</div>
-
-<!-- Video Section (Fixed) -->
-<div class="section video-section">
-<h2 style="font-size:28px; margin-bottom:20px;">পণ্যের ভিডিও ডিটেইলস</h2>
-<!-- YouTube embed link (Must use /embed/VIDEO_ID) -->
-<iframe src="https://www.youtube.com/embed/cqEy92QQ-_L6inF4" allowfullscreen></iframe>
-<a href="#order" class="btn">এখনই অর্ডার করুন</a>
-</div>
-
-<!-- Order Form -->
-<div class="section order-box" id="order">
-<h2 style="font-size:28px; margin-bottom:20px;">অর্ডার ফর্ম</h2>
-
-<form action="https://formspree.io/f/mykddozr" method="POST">
-<input type="text" name="name" placeholder="আপনার নাম লিখুন" required>
-<input type="tel" name="phone" placeholder="মোবাইল নম্বর" required>
-<input type="text" name="address" placeholder="সম্পূর্ণ ঠিকানা" required>
-
-<select name="package" required>
-<option value="">প্যাকেজ নির্বাচন করুন</option>
-<option>১ প্যাক - ৳৮৯০ / ৫০০ গ্রাম</option>
-<option>২ প্যাক - ৳১৭০০ / ১ কেজি</option>
-</select>
-
-<button type="submit">অর্ডার কনফার্ম করুন</button>
-</form>
-
-<div class="success-message" id="successMsg">
-ধন্যবাদ! আপনার অর্ডার সফলভাবে সাবমিট হয়েছে।
-</div>
-</div>
-
+<!-- Footer -->
 <div class="footer">
-© 2026 শুদ্ধ প্রাকৃতিক মধু | সর্বস্বত্ব সংরক্ষিত
+    © 2026 আপনার ব্যবসার নাম | All rights reserved
 </div>
-
-</div>
-
-<script>
-// Hero Slider
-let slides = document.querySelectorAll(".slide");
-let index = 0;
-setInterval(() => {
-slides[index].classList.remove("active");
-index = (index + 1) % slides.length;
-slides[index].classList.add("active");
-}, 4000);
-
-// Form Submit Success Message + FB Pixel Lead Event
-document.querySelector("form").addEventListener("submit", function(e){
-setTimeout(function(){
-document.getElementById("successMsg").style.display = "block";
-}, 500);
-
-// Facebook Pixel Lead Event
-fbq('track', 'Lead');
-});
-</script>
 
 </body>
 </html>
