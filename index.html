@@ -13,8 +13,14 @@ text-align:center;
 background:#fff;
 }
 
+/* ✅ নতুন যোগ করা ছোট প্রোডাক্ট ছবি */
+.https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgAN-w08Gb55AD8HEwmiDiC_crYJ_EN0BLQfqn9gYgKKKnTMDMNog1PIwrfBNYyi4D6iMxbdwI6zNJzyaAtxSuwed3bzEoLBwe58VZ6EWFRwgtIRsqQlQdEYf9wHpjw_u9NtNcXgibLxJgu633h6Bf46fvpmBxP_Xm2aHSwPjZ2LjojMFIYAXkKhhzsg5o/s612/WhatsApp_Image_2026-02-24_at_12.56.43-removebg-preview.png{
+width:140px;
+margin-top:20px;
+}
+
 .offer-text{
-margin-top:30px;
+margin-top:20px;
 font-size:20px;
 font-weight:bold;
 color:black;
@@ -95,6 +101,9 @@ animation:pulse 1s infinite;
 
 <body>
 
+<!-- ✅ নতুন যোগ করা প্রোডাক্ট মেইন ছবি -->
+<img src="image.png" class="product-image">
+
 <div class="offer-text">
 রমজান উপলক্ষে Methi Mixd powder এ বিশেষ ডিসকাউন্ট!
 </div>
@@ -122,14 +131,11 @@ canvas.width=container.offsetWidth;
 canvas.height=container.offsetHeight;
 
 const originalPrice=900;
-
-// ২৫% থেকে ৫০% এর মধ্যে র‍্যান্ডম
 const discount=Math.floor(Math.random()*(50-25+1))+25;
 const finalPrice=Math.round(originalPrice-(originalPrice*discount/100));
 
 document.getElementById("discountText").innerText=discount+"% ডিসকাউন্ট";
 
-ctx.fillStyle="linear-gradient(red,blue)";
 ctx.fillStyle="gray";
 ctx.fillRect(0,0,canvas.width,canvas.height);
 
@@ -171,23 +177,30 @@ const message="অভিনন্দন! আপনি "+discount+"% ডিসক
 document.getElementById("messageBox").innerText=message;
 document.getElementById("orderBtn").style.display="inline-block";
 
-/* 🔊 100% Working Voice System */
-if('speechSynthesis' in window){
+/* ✅ নিশ্চিত অটো ভয়েস সিস্টেম */
+if ('speechSynthesis' in window) {
 
-const speakMessage=()=>{
+function playVoice(){
 window.speechSynthesis.cancel();
 
-let speech=new SpeechSynthesisUtterance(message);
-speech.lang="bn-BD";
-speech.volume=1; 
-speech.rate=0.9;
-speech.pitch=1;
+const speech = new SpeechSynthesisUtterance(message);
+speech.lang = "bn-BD";
+speech.volume = 1;
+speech.rate = 0.85;
+speech.pitch = 1;
 
 window.speechSynthesis.speak(speech);
-};
+}
 
-// কিছু মোবাইলে delay দরকার
-setTimeout(speakMessage,300);
+/* কিছু ব্রাউজারে voice load হতে সময় লাগে */
+if (speechSynthesis.getVoices().length === 0) {
+speechSynthesis.onvoiceschanged = function() {
+playVoice();
+};
+} else {
+playVoice();
+}
+
 }
 }
 </script>
