@@ -100,7 +100,7 @@ animation:pulse 1s infinite;
 
 <body>
 
-<img src="image.png" class="product-image">
+<img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgAN-w08Gb55AD8HEwmiDiC_crYJ_EN0BLQfqn9gYgKKKnTMDMNog1PIwrfBNYyi4D6iMxbdwI6zNJzyaAtxSuwed3bzEoLBwe58VZ6EWFRwgtIRsqQlQdEYf9wHpjw_u9NtNcXgibLxJgu633h6Bf46fvpmBxP_Xm2aHSwPjZ2LjojMFIYAXkKhhzsg5o/s612/WhatsApp_Image_2026-02-24_at_12.56.43-removebg-preview.png" class="product-image">
 
 <div class="offer-text">
 রমজান উপলক্ষে Methi Mixd powder এ বিশেষ ডিসকাউন্ট!
@@ -146,18 +146,18 @@ ctx.globalCompositeOperation="destination-out";
 
 let isDrawing=false;
 let scratched=false;
-let voiceReady=false;
+let voiceActivated=false;
 
-/* 🔥 Pre-activate voice system on first touch */
-document.body.addEventListener("touchstart",initVoice,{once:true});
-document.body.addEventListener("click",initVoice,{once:true});
+/* 🔥 Voice Engine Pre-Activation (Very Important) */
+document.addEventListener("touchstart",activateVoice,{once:true});
+document.addEventListener("click",activateVoice,{once:true});
 
-function initVoice(){
+function activateVoice(){
 if('speechSynthesis' in window){
-const dummy=new SpeechSynthesisUtterance(" ");
-dummy.volume=0;
-speechSynthesis.speak(dummy);
-voiceReady=true;
+let temp=new SpeechSynthesisUtterance(" ");
+temp.volume=0;
+speechSynthesis.speak(temp);
+voiceActivated=true;
 }
 }
 
@@ -189,13 +189,13 @@ const message="অভিনন্দন! আপনি "+discount+"% ডিসক
 document.getElementById("messageBox").innerText=message;
 document.getElementById("orderBtn").style.display="inline-block";
 
-/* 🔥 Guaranteed English Voice */
-if(voiceReady && 'speechSynthesis' in window){
+/* 🔥 Auto Voice Play */
+if(voiceActivated && 'speechSynthesis' in window){
 
 speechSynthesis.cancel();
 
 const speech=new SpeechSynthesisUtterance(
-"Your scratch card Discount is active Now. Confirm order Now."
+"Congratulations your Discount scratch card active Now confirm order"
 );
 
 speech.lang="en-US";
