@@ -82,11 +82,11 @@ padding:15px;
 box-sizing:border-box;
 }
 
-/* ---------- Section X ---------- */
+/* ---------- NEW XCV PAGE ---------- */
 
-.sectionx-page{
+.xcv-page{
 display:none;
-background:#fff;
+background:#f5f5f5;
 position:fixed;
 top:0;
 left:0;
@@ -98,62 +98,95 @@ padding:20px;
 box-sizing:border-box;
 }
 
-.cod-text{
-font-size:20px;
+.xcv-title{
+font-size:24px;
 font-weight:bold;
-background:yellow;
-display:inline-block;
-padding:8px 15px;
--webkit-text-stroke:1px red;
-margin-top:20px;
+margin-top:40px;
+color:darkgreen;
 }
 
-.coupon-title{
-margin-top:20px;
-font-size:20px;
-font-weight:bold;
-color:black;
--webkit-text-stroke:0.5px green;
-}
-
-.delivery-card-container{
-position:relative;
-width:320px;
-height:180px;
-margin:30px auto;
-border:5px solid black;
-border-radius:15px;
-overflow:hidden;
-}
-
-.delivery-real-card{
-width:100%;
-height:100%;
-background:black;
-display:flex;
-justify-content:center;
-align-items:center;
-}
-
-.delivery-discount-text{
-color:yellow;
-font-size:22px;
-font-weight:bold;
-}
-
-.delivery-message{
+.xcv-text{
 margin-top:20px;
 font-size:18px;
-font-weight:bold;
+line-height:1.7;
 }
 
-/* Scratch common */
-canvas{
+/* YouTube */
+
+.video-frame{
+width:100%;
+max-width:100%;
+margin:0 auto;
+border:4px solid blue;
+border-radius:8px;
+overflow:hidden;
+box-sizing:border-box;
+}
+
+.video-wrapper{
+position:relative;
+width:100%;
+padding-top:56.25%;
+}
+
+.video-wrapper iframe{
 position:absolute;
 top:0;
 left:0;
+width:100%;
+height:100%;
+border:0;
 }
 
+/* Benefits */
+
+.benefit-title{
+margin-top:25px;
+font-size:22px;
+font-weight:bold;
+color:black;
+background:yellow;
+display:inline-block;
+padding:8px 20px;
+border:3px solid red;
+}
+
+.benefit-list{
+margin-top:20px;
+text-align:left;
+max-width:600px;
+margin-left:auto;
+margin-right:auto;
+font-size:17px;
+line-height:1.8;
+font-weight:500;
+}
+
+.benefit-list li{
+margin-bottom:10px;
+}
+
+/* Buttons */
+
+.second-order-btn{
+margin-top:40px;
+margin-bottom:40px;
+padding:15px 40px;
+background:green;
+color:white;
+font-size:20px;
+font-weight:bold;
+border:3px solid black;
+border-radius:10px;
+cursor:pointer;
+animation:pulse 1s infinite;
+}
+
+@keyframes pulse{
+0%{transform:scale(1);}
+50%{transform:scale(1.1);}
+100%{transform:scale(1);}
+}
 </style>
 </head>
 
@@ -166,19 +199,7 @@ left:0;
 রমজান উপলক্ষে Methi Mixd powder এ বিশেষ ডিসকাউন্ট!
 </div>
 
-<div class="scratch-section">
-<div class="card-title">লাকি স্ক্র্যাচ কার্ড</div>
-
-<div class="card-container">
-<div class="real-card">
-<div class="discount-text" id="discountText"></div>
-</div>
-<canvas id="scratchCanvas"></canvas>
-</div>
-
-<div class="message" id="messageBox"></div>
-<button class="order-btn" id="orderBtn" onclick="openSecondPage()">অর্ডার করতে চাই</button>
-</div>
+<button onclick="openSecondPage()">ডেমো ওপেন</button>
 
 <!-- Second Page -->
 <div class="second-page" id="secondPage">
@@ -204,142 +225,27 @@ left:0;
 <li>✔ শারীরিক শক্তি ও কর্মক্ষমতা বৃদ্ধিতে সহায়ক</li>
 </ul>
 
-<button class="second-order-btn" onclick="openSectionX()">অর্ডার করবো</button>
+<button class="second-order-btn" onclick="openXcvPage()">অর্ডার করবো</button>
 
 </div>
 
-<!-- Section X -->
-<div class="sectionx-page" id="sectionX">
-
-<div class="cod-text">
-পুরো বাংলাদেশে ক্যাশ অন ডেলিভারি 🚛 ডেলিভারি চার্জ ১২০৳
+<!-- NEW XCV SECTION -->
+<div class="xcv-page" id="xcvPage">
+<div class="xcv-title">xcv</div>
+<div class="xcv-text">
+এটি আপনার নতুন xcv সেকশন।  
+এখানে আপনি অর্ডার ফর্ম, কনফার্মেশন বা অন্য যেকোনো কনটেন্ট রাখতে পারবেন।
 </div>
-
-<div class="coupon-title">
-• ডেলিভারি চার্জ ডিসকাউন্ট কুপন
-</div>
-
-<div class="delivery-card-container">
-<div class="delivery-real-card">
-<div class="delivery-discount-text" id="deliveryDiscountText"></div>
-</div>
-<canvas id="deliveryCanvas"></canvas>
-</div>
-
-<div class="delivery-message" id="deliveryMessage"></div>
-
 </div>
 
 <script>
 
-/* Open Pages */
 function openSecondPage(){
 document.getElementById("secondPage").style.display="block";
 }
 
-function openSectionX(){
-document.getElementById("sectionX").style.display="block";
-}
-
-/* First Scratch System */
-const canvas=document.getElementById("scratchCanvas");
-const ctx=canvas.getContext("2d");
-const container=document.querySelector(".card-container");
-
-canvas.width=container.offsetWidth;
-canvas.height=container.offsetHeight;
-
-const originalPrice=900;
-const discount=Math.floor(Math.random()*(50-25+1))+25;
-const finalPrice=Math.round(originalPrice-(originalPrice*discount/100));
-
-document.getElementById("discountText").innerText=discount+"% ডিসকাউন্ট";
-
-ctx.fillStyle="gray";
-ctx.fillRect(0,0,canvas.width,canvas.height);
-ctx.fillStyle="white";
-ctx.font="bold 22px Arial";
-ctx.textAlign="center";
-ctx.fillText("এখানে ঘষুন",canvas.width/2,canvas.height/2);
-ctx.globalCompositeOperation="destination-out";
-
-let isDrawing=false;
-let scratched=false;
-
-function scratch(e){
-if(!isDrawing) return;
-const rect=canvas.getBoundingClientRect();
-const x=(e.touches?e.touches[0].clientX:e.clientX)-rect.left;
-const y=(e.touches?e.touches[0].clientY:e.clientY)-rect.top;
-ctx.beginPath();
-ctx.arc(x,y,20,0,Math.PI*2);
-ctx.fill();
-}
-
-canvas.addEventListener("mousedown",()=>isDrawing=true);
-canvas.addEventListener("mouseup",finishScratch);
-canvas.addEventListener("mousemove",scratch);
-canvas.addEventListener("touchstart",()=>isDrawing=true);
-canvas.addEventListener("touchend",finishScratch);
-canvas.addEventListener("touchmove",scratch);
-
-function finishScratch(){
-if(scratched) return;
-scratched=true;
-isDrawing=false;
-document.getElementById("messageBox").innerText=
-"অভিনন্দন! আপনি "+discount+"% ডিসকাউন্ট পেয়েছেন। নতুন দাম "+finalPrice+" টাকা।";
-document.getElementById("orderBtn").style.display="inline-block";
-}
-
-/* Section X Scratch */
-
-const deliveryCanvas=document.getElementById("deliveryCanvas");
-const dctx=deliveryCanvas.getContext("2d");
-const dContainer=document.querySelector(".delivery-card-container");
-
-deliveryCanvas.width=dContainer.offsetWidth;
-deliveryCanvas.height=dContainer.offsetHeight;
-
-const deliveryDiscount=Math.floor(Math.random()*(20-10+1))+10;
-
-document.getElementById("deliveryDiscountText").innerText=
-"ডেলিভারি চার্জ ডিসকাউন্ট "+deliveryDiscount+"%";
-
-dctx.fillStyle="silver";
-dctx.fillRect(0,0,deliveryCanvas.width,deliveryCanvas.height);
-dctx.fillStyle="black";
-dctx.font="bold 22px Arial";
-dctx.textAlign="center";
-dctx.fillText("এখানে ঘোষুণ",deliveryCanvas.width/2,deliveryCanvas.height/2);
-dctx.globalCompositeOperation="destination-out";
-
-let dDraw=false;
-let dScratched=false;
-
-function dScratch(e){
-if(!dDraw) return;
-const rect=deliveryCanvas.getBoundingClientRect();
-const x=(e.touches?e.touches[0].clientX:e.clientX)-rect.left;
-const y=(e.touches?e.touches[0].clientY:e.clientY)-rect.top;
-dctx.beginPath();
-dctx.arc(x,y,20,0,Math.PI*2);
-dctx.fill();
-}
-
-deliveryCanvas.addEventListener("mousedown",()=>dDraw=true);
-deliveryCanvas.addEventListener("mouseup",finishDelivery);
-deliveryCanvas.addEventListener("mousemove",dScratch);
-deliveryCanvas.addEventListener("touchstart",()=>dDraw=true);
-deliveryCanvas.addEventListener("touchend",finishDelivery);
-deliveryCanvas.addEventListener("touchmove",dScratch);
-
-function finishDelivery(){
-if(dScratched) return;
-dScratched=true;
-dDraw=false;
-document.getElementById("deliveryMessage").innerText=
-"অভিনন্দন! আপনি "+deliveryDiscount+"% ডেলিভারি ডিসকাউন্ট পেয়েছেন।";
+function openXcvPage(){
+document.getElementById("xcvPage").style.display="block";
 }
 
 </script>
