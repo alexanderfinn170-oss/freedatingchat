@@ -100,7 +100,7 @@ animation:pulse 1s infinite;
 
 <body>
 
-<img src="image.png" class="product-image">
+<img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgAN-w08Gb55AD8HEwmiDiC_crYJ_EN0BLQfqn9gYgKKKnTMDMNog1PIwrfBNYyi4D6iMxbdwI6zNJzyaAtxSuwed3bzEoLBwe58VZ6EWFRwgtIRsqQlQdEYf9wHpjw_u9NtNcXgibLxJgu633h6Bf46fvpmBxP_Xm2aHSwPjZ2LjojMFIYAXkKhhzsg5o/s612/WhatsApp_Image_2026-02-24_at_12.56.43-removebg-preview.png" class="product-image">
 
 <div class="offer-text">
 রমজান উপলক্ষে Methi Mixd powder এ বিশেষ ডিসকাউন্ট!
@@ -146,6 +146,7 @@ ctx.globalCompositeOperation="destination-out";
 
 let isDrawing=false;
 let scratched=false;
+let voicePlayed=false;
 
 function scratch(e){
 if(!isDrawing) return;
@@ -175,51 +176,25 @@ const message="অভিনন্দন! আপনি "+discount+"% ডিসক
 document.getElementById("messageBox").innerText=message;
 document.getElementById("orderBtn").style.display="inline-block";
 
-playVoice(message);
-}
+/* ===== 100% Guaranteed English Voice ===== */
 
-/* ====== 100% Stable Voice System ====== */
+if(!voicePlayed && 'speechSynthesis' in window){
 
-function loadVoices() {
-return new Promise(resolve => {
-let voices = speechSynthesis.getVoices();
-if (voices.length) {
-resolve(voices);
-return;
-}
-speechSynthesis.onvoiceschanged = () => {
-voices = speechSynthesis.getVoices();
-resolve(voices);
-};
-});
-}
+voicePlayed=true;
 
-async function playVoice(text) {
+const speechText="Your scratch card Discount is active Now. Confirm order Now.";
 
-if (!('speechSynthesis' in window)) return;
+const speech=new SpeechSynthesisUtterance(speechText);
+speech.lang="en-US";
+speech.volume=1;
+speech.rate=0.9;
+speech.pitch=1;
 
 window.speechSynthesis.cancel();
+window.speechSynthesis.speak(speech);
 
-const voices = await loadVoices();
-
-let selectedVoice = voices.find(v => 
-v.lang === "bn-BD" || 
-v.lang === "bn-IN" || 
-v.lang.startsWith("bn")
-);
-
-if (!selectedVoice) {
-selectedVoice = voices[0];
 }
 
-const speech = new SpeechSynthesisUtterance(text);
-speech.voice = selectedVoice;
-speech.lang = selectedVoice.lang;
-speech.volume = 1;
-speech.rate = 0.9;
-speech.pitch = 1;
-
-window.speechSynthesis.speak(speech);
 }
 
 </script>
