@@ -2,76 +2,50 @@
 <html lang="bn">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Methi Mixd Powder Offer</title>
 
 <style>
-*{margin:0;padding:0;box-sizing:border-box;}
-html,body{
-overflow-x:hidden;
-touch-action:manipulation;
-font-family:Arial,sans-serif;
-background:#ffffff;
+body{
+margin:0;
+font-family:Arial;
 text-align:center;
-}
-
-/* Top */
-.top-image{width:220px;margin-top:20px;}
-
-.offer-box{
-border:4px solid yellow;
-width:90%;max-width:500px;
-margin:-20px auto 0;
-padding:20px 15px;
-border-radius:15px;
+background:#fff;
 }
 
 .offer-text{
-color:black;
-font-size:18px;
-font-weight:bold;
--webkit-text-stroke:1px darkgreen;
-}
-
-.product-name{
-font-size:26px;
--webkit-text-stroke:2px darkgreen;
-}
-
-.bottom-text{
-margin-top:20px;
-color:black;
-font-size:17px;
-font-weight:bold;
--webkit-text-stroke:1px darkgreen;
-}
-
-/* Scratch Section */
-.scratch-section{
-margin-top:40px;
-display:flex;
-flex-direction:column;
-align-items:center;
-}
-
-.card-title{
+margin-top:30px;
 font-size:20px;
 font-weight:bold;
 color:black;
 -webkit-text-stroke:1px darkgreen;
-margin-bottom:5px;
+}
+
+.scratch-section{
+margin-top:40px;
+}
+
+.card-title{
+font-size:22px;
+font-weight:bold;
+color:black;
+-webkit-text-stroke:1px darkgreen;
+margin-bottom:10px;
 }
 
 .card-container{
 position:relative;
-width:320px;height:180px;
-border:6px solid red;
+width:320px;
+height:180px;
+margin:auto;
+border:5px solid red;
 border-radius:15px;
 overflow:hidden;
 }
 
 .real-card{
-width:100%;height:100%;
+width:100%;
+height:100%;
 background:black;
 display:flex;
 justify-content:center;
@@ -79,14 +53,15 @@ align-items:center;
 }
 
 .discount-text{
-font-size:22px;
-font-weight:bold;
 color:yellow;
--webkit-text-stroke:1px black;
+font-size:25px;
+font-weight:bold;
 }
 
-#scratchCanvas{
-position:absolute;top:0;left:0;
+canvas{
+position:absolute;
+top:0;
+left:0;
 }
 
 .message{
@@ -96,7 +71,6 @@ font-weight:bold;
 color:black;
 }
 
-/* Animated Order Button */
 .order-btn{
 margin-top:15px;
 padding:14px 35px;
@@ -107,49 +81,22 @@ font-weight:bold;
 border:2px solid black;
 border-radius:10px;
 cursor:pointer;
--webkit-text-stroke:1px black;
 display:none;
 animation:pulse 1s infinite;
 }
 
 @keyframes pulse{
 0%{transform:scale(1);}
-50%{transform:scale(1.08);}
+50%{transform:scale(1.1);}
 100%{transform:scale(1);}
-}
-
-@keyframes shake{
-0%{transform:translateX(0);}
-25%{transform:translateX(-3px);}
-50%{transform:translateX(3px);}
-75%{transform:translateX(-3px);}
-100%{transform:translateX(0);}
-}
-
-.order-btn:hover{
-animation:shake 0.4s infinite;
-}
-
-@media(max-width:480px){
-.card-container{width:280px;height:160px;}
 }
 </style>
 </head>
 
 <body>
 
-<img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgAN-w08Gb55AD8HEwmiDiC_crYJ_EN0BLQfqn9gYgKKKnTMDMNog1PIwrfBNYyi4D6iMxbdwI6zNJzyaAtxSuwed3bzEoLBwe58VZ6EWFRwgtIRsqQlQdEYf9wHpjw_u9NtNcXgibLxJgu633h6Bf46fvpmBxP_Xm2aHSwPjZ2LjojMFIYAXkKhhzsg5o/s612/WhatsApp_Image_2026-02-24_at_12.56.43-removebg-preview.png" class="top-image">
-
-<div class="offer-box">
 <div class="offer-text">
-সবাইকে আসসালামু আলাইকুম, রামাদান উপলক্ষে 
-<span class="product-name">Methi Mixd powder</span>
-আমাদের সবচেয়ে হট প্রোডাক্টে ডিসকাউন্ট চলছে।
-</div>
-</div>
-
-<div class="bottom-text">
-অফারটি শুধু রমজান মাস উপলক্ষে। MRP-৯০০৳। স্ক্র্যাচ করে ডিসকাউন্ট নিন।
+রমজান উপলক্ষে Methi Mixd powder এ বিশেষ ডিসকাউন্ট!
 </div>
 
 <div class="scratch-section">
@@ -175,22 +122,15 @@ canvas.width=container.offsetWidth;
 canvas.height=container.offsetHeight;
 
 const originalPrice=900;
-const discount=Math.floor(Math.random()*(49-25+1))+25;
+
+// ২৫% থেকে ৫০% এর মধ্যে র‍্যান্ডম
+const discount=Math.floor(Math.random()*(50-25+1))+25;
 const finalPrice=Math.round(originalPrice-(originalPrice*discount/100));
 
 document.getElementById("discountText").innerText=discount+"% ডিসকাউন্ট";
 
-// Rainbow layer
-const gradient=ctx.createLinearGradient(0,0,canvas.width,canvas.height);
-gradient.addColorStop(0,"red");
-gradient.addColorStop(0.17,"orange");
-gradient.addColorStop(0.34,"yellow");
-gradient.addColorStop(0.51,"green");
-gradient.addColorStop(0.68,"blue");
-gradient.addColorStop(0.85,"indigo");
-gradient.addColorStop(1,"violet");
-
-ctx.fillStyle=gradient;
+ctx.fillStyle="linear-gradient(red,blue)";
+ctx.fillStyle="gray";
 ctx.fillRect(0,0,canvas.width,canvas.height);
 
 ctx.fillStyle="white";
@@ -201,9 +141,10 @@ ctx.fillText("এখানে ঘষুন",canvas.width/2,canvas.height/2);
 ctx.globalCompositeOperation="destination-out";
 
 let isDrawing=false;
+let scratched=false;
 
 function scratch(e){
-if(!isDrawing)return;
+if(!isDrawing) return;
 const rect=canvas.getBoundingClientRect();
 const x=(e.touches?e.touches[0].clientX:e.clientX)-rect.left;
 const y=(e.touches?e.touches[0].clientY:e.clientY)-rect.top;
@@ -221,6 +162,8 @@ canvas.addEventListener("touchend",finishScratch);
 canvas.addEventListener("touchmove",scratch);
 
 function finishScratch(){
+if(scratched) return;
+scratched=true;
 isDrawing=false;
 
 const message="অভিনন্দন! আপনি "+discount+"% ডিসকাউন্ট পেয়েছেন। Methi Mixd powder এর নতুন দাম "+finalPrice+" টাকা।";
@@ -228,13 +171,24 @@ const message="অভিনন্দন! আপনি "+discount+"% ডিসক
 document.getElementById("messageBox").innerText=message;
 document.getElementById("orderBtn").style.display="inline-block";
 
-/* 🔊 Voice নিশ্চিতভাবে প্লে */
+/* 🔊 100% Working Voice System */
+if('speechSynthesis' in window){
+
+const speakMessage=()=>{
 window.speechSynthesis.cancel();
-const speech=new SpeechSynthesisUtterance(message);
+
+let speech=new SpeechSynthesisUtterance(message);
 speech.lang="bn-BD";
+speech.volume=1; 
 speech.rate=0.9;
 speech.pitch=1;
+
 window.speechSynthesis.speak(speech);
+};
+
+// কিছু মোবাইলে delay দরকার
+setTimeout(speakMessage,300);
+}
 }
 </script>
 
