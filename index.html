@@ -100,7 +100,7 @@ animation:pulse 1s infinite;
 
 <body>
 
-<img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgAN-w08Gb55AD8HEwmiDiC_crYJ_EN0BLQfqn9gYgKKKnTMDMNog1PIwrfBNYyi4D6iMxbdwI6zNJzyaAtxSuwed3bzEoLBwe58VZ6EWFRwgtIRsqQlQdEYf9wHpjw_u9NtNcXgibLxJgu633h6Bf46fvpmBxP_Xm2aHSwPjZ2LjojMFIYAXkKhhzsg5o/s612/WhatsApp_Image_2026-02-24_at_12.56.43-removebg-preview.png" class="product-image">
+<img src="image.png" class="product-image">
 
 <div class="offer-text">
 রমজান উপলক্ষে Methi Mixd powder এ বিশেষ ডিসকাউন্ট!
@@ -119,6 +119,11 @@ animation:pulse 1s infinite;
 <div class="message" id="messageBox"></div>
 <button class="order-btn" id="orderBtn">অর্ডার করতে চাই</button>
 </div>
+
+<!-- 🔊 MP3 Voice System -->
+<audio id="scratchVoice" preload="auto">
+  <source src="voice.mp3" type="audio/mpeg">
+</audio>
 
 <script>
 const canvas=document.getElementById("scratchCanvas");
@@ -176,27 +181,25 @@ const message="অভিনন্দন! আপনি "+discount+"% ডিসক
 document.getElementById("messageBox").innerText=message;
 document.getElementById("orderBtn").style.display="inline-block";
 
-/* ===== 100% Guaranteed English Voice ===== */
+/* 🔥 Guaranteed MP3 Play */
 
-if(!voicePlayed && 'speechSynthesis' in window){
-
+if(!voicePlayed){
 voicePlayed=true;
 
-const speechText="Your scratch card Discount is active Now. Confirm order Now.";
+const audio=document.getElementById("scratchVoice");
+audio.currentTime=0;
 
-const speech=new SpeechSynthesisUtterance(speechText);
-speech.lang="en-US";
-speech.volume=1;
-speech.rate=0.9;
-speech.pitch=1;
+const playPromise=audio.play();
 
-window.speechSynthesis.cancel();
-window.speechSynthesis.speak(speech);
-
+if(playPromise!==undefined){
+playPromise.catch(error=>{
+console.log("Autoplay blocked:",error);
+});
 }
 
 }
 
+}
 </script>
 
 </body>
