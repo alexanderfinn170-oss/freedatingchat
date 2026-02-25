@@ -11,6 +11,7 @@ margin:0;
 font-family:Arial;
 text-align:center;
 background:#fff;
+overflow-x:hidden;
 }
 
 .product-image{
@@ -18,7 +19,6 @@ width:140px;
 margin-top:20px;
 }
 
-/* 🔥 নতুন যোগ করা MRP স্টাইল */
 .mrp-text{
 margin-top:5px;
 font-size:18px;
@@ -33,6 +33,33 @@ font-size:20px;
 font-weight:bold;
 color:black;
 -webkit-text-stroke:1px darkgreen;
+}
+
+/* 🔔 Notification Bar */
+.notification{
+position:fixed;
+top:10px;
+right:10px;
+background:#fff;
+padding:8px 15px;
+border-radius:20px;
+box-shadow:0 0 10px rgba(0,0,0,0.2);
+font-size:14px;
+white-space:nowrap;
+z-index:9999;
+transform:translateX(-120%);
+animation:slideMove 3s linear forwards;
+}
+
+.notification .name{
+color:green;
+font-weight:bold;
+}
+
+@keyframes slideMove{
+0%{transform:translateX(-120%);}
+50%{transform:translateX(0);}
+100%{transform:translateX(120%);}
 }
 
 .scratch-section{
@@ -110,8 +137,6 @@ animation:pulse 1s infinite;
 <body>
 
 <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgAN-w08Gb55AD8HEwmiDiC_crYJ_EN0BLQfqn9gYgKKKnTMDMNog1PIwrfBNYyi4D6iMxbdwI6zNJzyaAtxSuwed3bzEoLBwe58VZ6EWFRwgtIRsqQlQdEYf9wHpjw_u9NtNcXgibLxJgu633h6Bf46fvpmBxP_Xm2aHSwPjZ2LjojMFIYAXkKhhzsg5o/s612/WhatsApp_Image_2026-02-24_at_12.56.43-removebg-preview.png" class="product-image">
-
-<!-- 🔥 MRP লেখা যুক্ত করা হয়েছে -->
 <div class="mrp-text">MRP-900TK</div>
 
 <div class="offer-text">
@@ -133,6 +158,37 @@ animation:pulse 1s infinite;
 </div>
 
 <script>
+/* 🔔 Notification System */
+const names=[
+"আমিনুল ইসলাম","সোহেল রানা","মোস্তাফিজুর রহমান","রাশেদুল ইসলাম",
+"নাঈম হোসেন","তানভীর হাসান","ইমরান হোসেন","মেহেদী হাসান",
+"রুবেল মিয়া","জাহিদুল ইসলাম","নাসরিন আক্তার","সুমাইয়া আক্তার",
+"তানজিলা ইসলাম","মৌসুমি আক্তার","ফারহানা রহমান","রোকসানা বেগম",
+"শাহীন আক্তার","নাজমা খাতুন","সাবিনা ইয়াসমিন","আফরোজা পারভীন",
+"রিয়াজ উদ্দিন","হাবিবুর রহমান","শাহরিয়ার কবির","আরিফুল ইসলাম",
+"নাহিদ হাসান","লিপি আক্তার","শিউলি আক্তার","জেসমিন আক্তার",
+"মাহমুদুল হাসান","সাকিব আল হাসান"
+];
+
+function showNotification(){
+const randomName=names[Math.floor(Math.random()*names.length)];
+const randomDiscount=Math.floor(Math.random()*(30-15+1))+15;
+
+const notification=document.createElement("div");
+notification.className="notification";
+notification.innerHTML=
+`<span class="name">${randomName}</span> 🎉 ${randomDiscount}% ডিসকাউন্ট পেয়ে অর্ডার করেছে`;
+
+document.body.appendChild(notification);
+
+setTimeout(()=>{
+notification.remove();
+},3000);
+}
+
+setInterval(showNotification,3000);
+
+/* Scratch System (Unchanged) */
 const canvas=document.getElementById("scratchCanvas");
 const ctx=canvas.getContext("2d");
 const container=document.querySelector(".card-container");
