@@ -14,6 +14,8 @@ background:#fff;
 overflow-x:hidden;
 }
 
+/* ---------- Product ---------- */
+
 .product-image{
 width:140px;
 margin-top:20px;
@@ -35,7 +37,8 @@ color:black;
 -webkit-text-stroke:1px darkgreen;
 }
 
-/* 🔔 Notification */
+/* ---------- Notification ---------- */
+
 .notification{
 position:fixed;
 top:10px;
@@ -63,7 +66,8 @@ font-weight:bold;
 100%{transform:translateX(120%);}
 }
 
-/* Second Page */
+/* ---------- Second Page ---------- */
+
 .second-page{
 display:none;
 background:#fff;
@@ -74,28 +78,42 @@ width:100%;
 height:100%;
 overflow-y:auto;
 z-index:10000;
-padding:20px;
+padding:15px;
+box-sizing:border-box;
 }
 
-/* YouTube Frame */
+/* ✅ Fixed YouTube Responsive Frame */
+
 .video-frame{
 width:100%;
-max-width:560px;
+max-width:100%;
 margin:0 auto;
 border:4px solid blue;
-border-radius:10px;
+border-radius:8px;
 overflow:hidden;
+box-sizing:border-box;
 }
 
-.video-frame iframe{
+.video-wrapper{
+position:relative;
 width:100%;
-height:315px;
+padding-top:56.25%; /* 16:9 ratio */
 }
 
-/* Benefit Section */
+.video-wrapper iframe{
+position:absolute;
+top:0;
+left:0;
+width:100%;
+height:100%;
+border:0;
+}
+
+/* ---------- Benefits ---------- */
+
 .benefit-title{
 margin-top:25px;
-font-size:24px;
+font-size:22px;
 font-weight:bold;
 color:black;
 background:yellow;
@@ -110,7 +128,7 @@ text-align:left;
 max-width:600px;
 margin-left:auto;
 margin-right:auto;
-font-size:18px;
+font-size:17px;
 line-height:1.8;
 font-weight:500;
 }
@@ -119,7 +137,8 @@ font-weight:500;
 margin-bottom:10px;
 }
 
-/* Scratch Section */
+/* ---------- Scratch ---------- */
+
 .scratch-section{
 margin-top:40px;
 }
@@ -219,8 +238,9 @@ animation:pulse 1s infinite;
 <div class="second-page" id="secondPage">
 
 <div class="video-frame">
-<iframe src="https://www.youtube.com/embed/pJrfhCo_dgw" 
-frameborder="0" allowfullscreen></iframe>
+<div class="video-wrapper">
+<iframe src="https://www.youtube.com/embed/pJrfhCo_dgw" allowfullscreen></iframe>
+</div>
 </div>
 
 <div class="benefit-title">৭ দিন সেবনের উপকারিতা</div>
@@ -228,7 +248,7 @@ frameborder="0" allowfullscreen></iframe>
 <ul class="benefit-list">
 <li>✔ ৭ দিন সেবনে কোষ্ঠকাঠিন্যের সম্পূর্ণ উপশম</li>
 <li>✔ ৭ দিন সেবনে গ্যাস্ট্রিক সমস্যার কার্যকর সমাধান</li>
-<li>✔ বুক জ্বালাপোড়া ও অ্যাসিডিটির নিয়ন্ত্রণ</li>
+<li>✔ বুক জ্বালাপোড়া ও অ্যাসিডিটি নিয়ন্ত্রণ</li>
 <li>✔ মুখের টক স্বাদ ও অস্বস্তি দূরীকরণ</li>
 <li>✔ পেট ফাঁপা ও অস্বস্তি থেকে মুক্তি</li>
 <li>✔ অরুচি ও খাবারে অনীহা দূরীকরণ</li>
@@ -241,7 +261,7 @@ frameborder="0" allowfullscreen></iframe>
 </div>
 
 <script>
-/* Notification System */
+/* Notification */
 const names=["আমিনুল ইসলাম","সোহেল রানা","মোস্তাফিজুর রহমান","রাশেদুল ইসলাম",
 "নাঈম হোসেন","তানভীর হাসান","ইমরান হোসেন","মেহেদী হাসান",
 "রুবেল মিয়া","জাহিদুল ইসলাম","নাসরিন আক্তার","সুমাইয়া আক্তার",
