@@ -9,9 +9,7 @@
 body{
 margin:0;
 font-family:Arial, sans-serif;
-background:#fff;
 text-align:center;
-overflow-x:hidden;
 }
 
 .section{
@@ -63,13 +61,6 @@ border-radius:50%;
 width:100px;
 height:100px;
 font-size:16px;
-animation:pulse 1s infinite;
-}
-
-@keyframes pulse{
-0%{transform:translate(-50%,-50%) scale(1);}
-50%{transform:translate(-50%,-50%) scale(1.1);}
-100%{transform:translate(-50%,-50%) scale(1);}
 }
 
 .result-box{
@@ -77,6 +68,12 @@ margin-top:20px;
 font-size:18px;
 font-weight:bold;
 color:green;
+}
+
+.warning{
+color:red;
+font-weight:bold;
+margin-top:10px;
 }
 </style>
 </head>
@@ -86,37 +83,29 @@ color:green;
 <!-- STEP 1 -->
 <div id="step1" class="section active">
 <h2>Methi Mixd Powder</h2>
-<p>পুরুষদের গোপন শক্তি বৃদ্ধি ও স্ট্যামিনা বৃদ্ধির হারবাল সমাধান</p>
-<p>✔️ সম্পূর্ণ হারবাল</p>
-<p>✔️ দ্রুত কার্যকরী</p>
-<p>✔️ পার্শ্বপ্রতিক্রিয়া মুক্ত</p>
 <h3>মূল্য: ৯০০ টাকা</h3>
 <button class="primary-btn" onclick="nextStep(1)">অর্ডার করতে চাই</button>
 </div>
 
 <!-- STEP 2 -->
 <div id="step2" class="section">
-<h2>ভাগ্য যাচাই করে নিন এবং জিতে নিন আকর্ষণীয় ডিসকাউন্ট</h2>
+<h2>ভাগ্য যাচাই করে নিন</h2>
 
 <div class="wheel-container">
 <canvas id="wheel" width="320" height="320"></canvas>
-<button class="spin-btn" onclick="spinWheel()">ট্রাই লাক</button>
+<button id="spinBtn" class="spin-btn" onclick="spinWheel()">ট্রাই লাক</button>
 </div>
 
 <div id="result" class="result-box"></div>
 <div id="afterWin"></div>
+<div id="warning" class="warning"></div>
 </div>
 
 <!-- STEP 3 -->
 <div id="step3" class="section">
 <h2>পেমেন্ট ডিটেলস</h2>
-<p>বিকাশ / নগদ: 01XXXXXXXXX</p>
-<p>পেমেন্ট করে স্ক্রিনশট পাঠান</p>
+<p>বিকাশ: 01XXXXXXXXX</p>
 </div>
-
-<!-- AUDIO -->
-<audio id="spinSound" src="spin.mp3" preload="auto"></audio>
-<audio id="winSound" src="win.mp3" preload="auto"></audio>
 
 <script>
 
@@ -153,17 +142,34 @@ ctx.restore();
 }
 drawWheel();
 
-/* ===== Bengali Voice ===== */
+/* ===== Check Previous Spin ===== */
 
-function speak(winPercent){
-let text = "অভিনন্দন! আপনি " + winPercent + " শতাংশ ডিসকাউন্ট পেয়েছেন, ডিসকাউন্টসহ পণ্যটি কিনতে অর্ডার নাও বাটনে ক্লিক করুন।";
+function checkPreviousSpin(){
+let savedDate = localStorage.getItem("spinDate");
+let savedDiscount = localStorage.getItem("discount");
+let today = new Date().toDateString();
 
-const speech = new SpeechSynthesisUtterance(text);
-speech.lang = "bn-BD";
-speech.rate = 0.9;
-speech.pitch = 1;
+if(savedDate === today){
+showPreviousOffer(savedDiscount);
+disableWheel();
+}
+}
 
-window.speechSynthesis.speak(speech);
+function showPreviousOffer(discount){
+let finalPrice = originalPrice - (originalPrice * discount / 100);
+
+document.getElementById("result").innerHTML =
+"আপনার আগের প্রাপ্ত লাকি ডিসকাউন্ট: "+discount+"%<br>আপনার মূল্য: "+finalPrice+" টাকা";
+
+document.getElementById("afterWin").innerHTML =
+'<br><button class="primary-btn" onclick="nextStep(2)">অর্ডার নাও</button>';
+}
+
+function disableWheel(){
+document.getElementById("spinBtn").onclick = function(){
+document.getElementById("warning").innerText =
+"You already Used Today's Lucky draw";
+};
 }
 
 /* ===== Spin Logic ===== */
@@ -174,13 +180,6 @@ function spinWheel(){
 
 if(spinning) return;
 spinning = true;
-
-const spinSound = document.getElementById("spinSound");
-const winSound = document.getElementById("winSound");
-
-spinSound.loop = true;
-spinSound.currentTime = 0;
-spinSound.play();
 
 const allowedWins = [30,40,50,60];
 let winPercent = allowedWins[Math.floor(Math.random()*allowedWins.length)];
@@ -193,12 +192,6 @@ canvas.style.transform = "rotate("+rotateTo+"deg)";
 
 setTimeout(function(){
 
-spinSound.pause();
-spinSound.loop = false;
-spinSound.currentTime = 0;
-
-winSound.play();
-
 let discountAmount = (originalPrice * winPercent)/100;
 let finalPrice = originalPrice - discountAmount;
 
@@ -208,13 +201,19 @@ document.getElementById("result").innerHTML =
 document.getElementById("afterWin").innerHTML =
 '<br><button class="primary-btn" onclick="nextStep(2)">অর্ডার নাও</button>';
 
-speak(winPercent);
+// Save in localStorage
+localStorage.setItem("discount", winPercent);
+localStorage.setItem("spinDate", new Date().toDateString());
+
+disableWheel();
 
 spinning = false;
 
 },4000);
 
 }
+
+checkPreviousSpin();
 
 </script>
 
