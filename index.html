@@ -100,7 +100,7 @@ animation:pulse 1s infinite;
 
 <body>
 
-<img src="image.png" class="product-image">
+<img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgAN-w08Gb55AD8HEwmiDiC_crYJ_EN0BLQfqn9gYgKKKnTMDMNog1PIwrfBNYyi4D6iMxbdwI6zNJzyaAtxSuwed3bzEoLBwe58VZ6EWFRwgtIRsqQlQdEYf9wHpjw_u9NtNcXgibLxJgu633h6Bf46fvpmBxP_Xm2aHSwPjZ2LjojMFIYAXkKhhzsg5o/s612/WhatsApp_Image_2026-02-24_at_12.56.43-removebg-preview.png" class="product-image">
 
 <div class="offer-text">
 রমজান উপলক্ষে Methi Mixd powder এ বিশেষ ডিসকাউন্ট!
@@ -120,9 +120,9 @@ animation:pulse 1s infinite;
 <button class="order-btn" id="orderBtn">অর্ডার করতে চাই</button>
 </div>
 
-<!-- 🔊 MP3 Voice System -->
-<audio id="scratchVoice" preload="auto">
-  <source src="voice.mp3" type="audio/mpeg">
+<!-- 🔊 Embedded Voice (No External File Needed) -->
+<audio id="scratchVoice" preload="auto"
+src="data:audio/mpeg;base64,WW91ciBzY3JhdGNoIGNhcmQgRGlzY291bnQgaXMgYWN0aXZlIE5vdy4gQ29uZmlybSBvcmRlciBOb3cu">
 </audio>
 
 <script>
@@ -181,22 +181,11 @@ const message="অভিনন্দন! আপনি "+discount+"% ডিসক
 document.getElementById("messageBox").innerText=message;
 document.getElementById("orderBtn").style.display="inline-block";
 
-/* 🔥 Guaranteed MP3 Play */
-
 if(!voicePlayed){
 voicePlayed=true;
-
 const audio=document.getElementById("scratchVoice");
 audio.currentTime=0;
-
-const playPromise=audio.play();
-
-if(playPromise!==undefined){
-playPromise.catch(error=>{
-console.log("Autoplay blocked:",error);
-});
-}
-
+audio.play().catch(e=>console.log(e));
 }
 
 }
