@@ -84,10 +84,12 @@ box-sizing:border-box;
 
 .video-frame{
 width:100%;
+max-width:100%;
 margin:0 auto;
 border:4px solid blue;
 border-radius:8px;
 overflow:hidden;
+box-sizing:border-box;
 }
 
 .video-wrapper{
@@ -109,6 +111,7 @@ border:0;
 margin-top:25px;
 font-size:22px;
 font-weight:bold;
+color:black;
 background:yellow;
 display:inline-block;
 padding:8px 20px;
@@ -124,6 +127,10 @@ margin-right:auto;
 font-size:17px;
 line-height:1.8;
 font-weight:500;
+}
+
+.benefit-list li{
+margin-bottom:10px;
 }
 
 .second-order-btn{
@@ -151,12 +158,12 @@ left:0;
 width:100%;
 height:100%;
 overflow-y:auto;
-z-index:11000;
+z-index:12000;
 padding:20px;
 box-sizing:border-box;
 }
 
-.cod-title{
+.cod-text{
 font-size:20px;
 font-weight:bold;
 background:yellow;
@@ -165,22 +172,21 @@ padding:10px;
 display:inline-block;
 }
 
-.coupon-title{
+.coupon-text{
 margin-top:15px;
 font-size:18px;
 font-weight:bold;
 color:black;
--webkit-text-stroke:0.5px green;
+-webkit-text-stroke:0.7px green;
 }
 
 .scratch-box{
-margin-top:20px;
+margin-top:25px;
 position:relative;
 width:300px;
 height:160px;
 margin-left:auto;
 margin-right:auto;
-border:4px solid #ccc;
 border-radius:15px;
 overflow:hidden;
 }
@@ -190,11 +196,13 @@ width:100%;
 height:100%;
 background:black;
 display:flex;
-align-items:center;
 justify-content:center;
+align-items:center;
 color:yellow;
 font-size:20px;
 font-weight:bold;
+text-align:center;
+padding:10px;
 }
 
 #scratch2{
@@ -286,18 +294,22 @@ animation:pulse 1s infinite;
 </div>
 
 <div class="scratch-section">
+<div class="card-title">লাকি স্ক্র্যাচ কার্ড</div>
+
 <div class="card-container">
 <div class="real-card">
 <div class="discount-text" id="discountText"></div>
 </div>
 <canvas id="scratchCanvas"></canvas>
 </div>
+
 <div class="message" id="messageBox"></div>
 <button class="order-btn" id="orderBtn" onclick="openSecondPage()">অর্ডার করতে চাই</button>
 </div>
 
 <!-- Second Page -->
 <div class="second-page" id="secondPage">
+
 <div class="video-frame">
 <div class="video-wrapper">
 <iframe src="https://www.youtube.com/embed/YOUR_VIDEO_ID" allowfullscreen></iframe>
@@ -309,38 +321,45 @@ animation:pulse 1s infinite;
 <ul class="benefit-list">
 <li>✔ ৭ দিন সেবনে কোষ্ঠকাঠিন্যের সম্পূর্ণ উপশম</li>
 <li>✔ ৭ দিন সেবনে গ্যাস্ট্রিক সমস্যার কার্যকর সমাধান</li>
-<li>✔ বুক জ্বালাপোড়া নিয়ন্ত্রণ</li>
-<li>✔ মুখের টক স্বাদ দূরীকরণ</li>
-<li>✔ পেট ফাঁপা থেকে মুক্তি</li>
-<li>✔ অরুচি দূরীকরণ</li>
-<li>✔ ডায়াবেটিস নিয়ন্ত্রণে সহায়ক</li>
-<li>✔ চর্বি ও রক্তচাপ নিয়ন্ত্রণে সহায়ক</li>
-<li>✔ কৃমিনাশে কার্যকর</li>
-<li>✔ শারীরিক শক্তি বৃদ্ধি</li>
+<li>✔ বুক জ্বালাপোড়া ও অ্যাসিডিটি নিয়ন্ত্রণ</li>
+<li>✔ মুখের টক স্বাদ ও অস্বস্তি দূরীকরণ</li>
+<li>✔ পেট ফাঁপা ও অস্বস্তি থেকে মুক্তি</li>
+<li>✔ অরুচি ও খাবারে অনীহা দূরীকরণ</li>
+<li>✔ সুগার ও ডায়াবেটিস নিয়ন্ত্রণে সহায়ক</li>
+<li>✔ অতিরিক্ত চর্বি ও রক্তচাপ নিয়ন্ত্রণে সহায়ক</li>
+<li>✔ পেট পরিষ্কার ও কৃমিনাশে কার্যকর</li>
+<li>✔ শারীরিক শক্তি ও কর্মক্ষমতা বৃদ্ধিতে সহায়ক</li>
 </ul>
 
 <button class="second-order-btn" onclick="openSectionX()">অর্ডার করবো</button>
+
 </div>
 
 <!-- SectionX -->
 <div class="sectionx" id="sectionX">
-<div class="cod-title">
+
+<div class="cod-text">
 পুরো বাংলাদেশে ক্যাশ অন ডেলিভারি 🚛 ডেলিভারি চার্জ ১২০৳
 </div>
 
-<div class="coupon-title">
-ডেলিভারি চার্জ ডিসকাউন্ট কুপন
+<div class="coupon-text">
+• ডেলিভারি চার্জ ডিসকাউন্ট কুপন
 </div>
 
 <div class="scratch-box">
-<div class="real-discount" id="realDiscountText"></div>
+<div class="real-discount" id="realDiscountText">
+ডেলিভারি চার্জ ডিসকাউন্ট
+</div>
 <canvas id="scratch2"></canvas>
 </div>
 
 <div class="result-message" id="resultMessage"></div>
+
 </div>
 
 <script>
+
+/* Section Open */
 function openSecondPage(){
 document.getElementById("secondPage").style.display="block";
 }
@@ -359,7 +378,6 @@ canvas2.width=box.offsetWidth;
 canvas2.height=box.offsetHeight;
 
 const discount2=Math.floor(Math.random()*(20-10+1))+10;
-document.getElementById("realDiscountText").innerText=discount2+"% ডিসকাউন্ট";
 
 ctx2.fillStyle="silver";
 ctx2.fillRect(0,0,canvas2.width,canvas2.height);
@@ -372,25 +390,33 @@ ctx2.fillText("এখানে ঘষুন",canvas2.width/2,canvas2.height/2);
 ctx2.globalCompositeOperation="destination-out";
 
 let drawing=false;
+
 canvas2.addEventListener("mousedown",()=>drawing=true);
 canvas2.addEventListener("mouseup",finish2);
 canvas2.addEventListener("mousemove",scratch2);
 
+canvas2.addEventListener("touchstart",()=>drawing=true);
+canvas2.addEventListener("touchend",finish2);
+canvas2.addEventListener("touchmove",scratch2);
+
 function scratch2(e){
 if(!drawing) return;
 const rect=canvas2.getBoundingClientRect();
-const x=e.clientX-rect.left;
-const y=e.clientY-rect.top;
+const x=(e.touches?e.touches[0].clientX:e.clientX)-rect.left;
+const y=(e.touches?e.touches[0].clientY:e.clientY)-rect.top;
 ctx2.beginPath();
-ctx2.arc(x,y,20,0,Math.PI*2);
+ctx2.arc(x,y,18,0,Math.PI*2);
 ctx2.fill();
 }
 
 function finish2(){
 drawing=false;
+document.getElementById("realDiscountText").innerText=
+"ডেলিভারি চার্জ ডিসকাউন্ট "+discount2+"%";
 document.getElementById("resultMessage").innerText=
-"অভিনন্দন! আপনি "+discount2+"% ডেলিভারি চার্জ ডিসকাউন্ট পেয়েছেন";
+"অভিনন্দন! আপনি "+discount2+"% ডেলিভারি চার্জ ডিসকাউন্ট পেয়েছেন";
 }
+
 </script>
 
 </body>
