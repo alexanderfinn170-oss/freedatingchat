@@ -6,167 +6,190 @@
 <title>Methi Mixd powder Offer</title>
 
 <style>
+
 body{
-margin:0;
-font-family: 'Hind Siliguri', sans-serif;
-background:purple;
-overflow-x:hidden;
-color:white;
-text-align:center;
+    margin:0;
+    font-family: 'SolaimanLipi', sans-serif;
+    background:#6a0dad;
+    overflow-x:hidden;
 }
 
-/* Global Bangla style */
-.bangla{
-color:white;
--webkit-text-stroke:0.5px black;
+/* ---------- TEXT STYLES ---------- */
+
+.bangla-text{
+    color:white;
+    -webkit-text-stroke:0.5px #000;
 }
 
-/* Product Name Style */
 .product-name{
-color:red;
--webkit-text-stroke:0.5px black;
-font-weight:bold;
+    color:red;
+    -webkit-text-stroke:0.5px black;
 }
 
-/* Box Style */
-.box{
-background:purple;
-border:2px solid yellow;
-padding:15px;
-margin:15px;
-border-radius:10px;
+/* ---------- BOX STYLE ---------- */
+
+.purple-box{
+    background:#6a0dad;
+    border:2px solid yellow;
+    padding:15px;
+    margin:20px;
+    border-radius:10px;
 }
 
-/* Moving Product */
-#movingProduct{
-position:relative;
-width:120px;
-animation: moveProduct 8s linear infinite;
+/* ---------- PRODUCT IMAGE ---------- */
+
+#mainProduct{
+    width:130px;
+    position:absolute;
+    top:160px;
+    left:0;
+    animation: moveProduct 12s linear infinite;
 }
 
 @keyframes moveProduct{
-0%{left:0%;}
-50%{left:80%;}
-100%{left:0%;}
+    0%{ left:0;}
+    50%{ left:85%;}
+    100%{ left:0;}
 }
 
-/* Scratch Card */
-#scratchCard{
-position:relative;
-width:300px;
-height:200px;
-margin:20px auto;
-border-radius:15px;
-overflow:hidden;
+/* ---------- SCRATCH CARD ---------- */
+
+.card{
+    width:320px;
+    height:220px;
+    margin:auto;
+    position:relative;
+    border-radius:15px;
+    background:linear-gradient(45deg,red,orange,yellow,green,blue,indigo,violet);
+    overflow:hidden;
 }
 
-#scratchCanvas{
-position:absolute;
-top:0;
-left:0;
+.card canvas{
+    position:absolute;
+    top:0;
+    left:0;
 }
 
-#scratchContent{
-position:absolute;
-width:100%;
-height:100%;
-display:flex;
-flex-direction:column;
-align-items:center;
-justify-content:center;
+.hidden-text{
+    position:absolute;
+    width:100%;
+    top:90px;
+    text-align:center;
+    color:white;
+    font-weight:bold;
+    -webkit-text-stroke:0.5px black;
 }
 
-/* Rainbow Button */
+/* ---------- BUTTON ---------- */
+
 .rainbow-btn{
-padding:15px 40px;
-border:none;
-border-radius:30px;
-font-size:18px;
-cursor:pointer;
-background: linear-gradient(45deg, red,orange,yellow,green,blue,indigo,violet);
-background-size:400%;
-color:white;
--webkit-text-stroke:0.5px black;
-animation: glow 5s linear infinite;
+    display:block;
+    margin:40px auto;
+    padding:15px 30px;
+    font-size:18px;
+    border:none;
+    border-radius:50px;
+    cursor:pointer;
+    background:linear-gradient(45deg,red,orange,yellow,green,blue,violet);
+    animation:pulse 1.5s infinite;
 }
 
-@keyframes glow{
-0%{background-position:0%;}
-100%{background-position:400%;}
+@keyframes pulse{
+    0%{transform:scale(1);}
+    50%{transform:scale(1.1);}
+    100%{transform:scale(1);}
 }
 
-/* Notification */
+/* ---------- NOTIFICATION ---------- */
+
 #notification{
-position:fixed;
-top:20px;
-left:-400px;
-background:black;
-padding:10px 20px;
-border-radius:5px;
-color:white;
-transition:0.5s;
+    position:fixed;
+    top:20px;
+    left:-400px;
+    background:#000;
+    color:#fff;
+    padding:10px 20px;
+    border-radius:20px;
+    transition:1s;
+    z-index:999;
 }
 
-/* Hide Sections */
-.hidden{display:none;}
+/* ---------- ORDER PAGE ---------- */
+
+#orderPage{
+    display:none;
+    padding:20px;
+}
 
 input{
-padding:10px;
-margin:5px;
-width:90%;
-border-radius:5px;
+    display:block;
+    width:90%;
+    padding:10px;
+    margin:10px auto;
+    border-radius:8px;
 }
 
-.green-outline{border:2px solid green;}
-.red-outline{border:2px solid red;}
+.green-outline{ border:2px solid green; }
+.red-outline{ border:2px solid red; }
+
+.confirm-btn{
+    background:green;
+    color:white;
+    border:2px solid red;
+    padding:15px;
+    width:90%;
+    display:block;
+    margin:auto;
+    border-radius:30px;
+    font-size:18px;
+}
+
+.success-page{
+    display:none;
+    background:#fff8c6;
+    height:100vh;
+    text-align:center;
+    padding-top:150px;
+    color:white;
+    -webkit-text-stroke:0.5px black;
+}
 
 </style>
 </head>
 
 <body>
 
+<!-- Notification -->
 <div id="notification"></div>
 
-<!-- MAIN PAGE -->
-<div id="mainPage">
+<!-- MAIN PRODUCT IMAGE -->
+<img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgAN-w08Gb55AD8HEwmiDiC_crYJ_EN0BLQfqn9gYgKKKnTMDMNog1PIwrfBNYyi4D6iMxbdwI6zNJzyaAtxSuwed3bzEoLBwe58VZ6EWFRwgtIRsqQlQdEYf9wHpjw_u9NtNcXgibLxJgu633h6Bf46fvpmBxP_Xm2aHSwPjZ2LjojMFIYAXkKhhzsg5o/s612/WhatsApp_Image_2026-02-24_at_12.56.43-removebg-preview.png" id="mainProduct">
 
-<img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgAN-w08Gb55AD8HEwmiDiC_crYJ_EN0BLQfqn9gYgKKKnTMDMNog1PIwrfBNYyi4D6iMxbdwI6zNJzyaAtxSuwed3bzEoLBwe58VZ6EWFRwgtIRsqQlQdEYf9wHpjw_u9NtNcXgibLxJgu633h6Bf46fvpmBxP_Xm2aHSwPjZ2LjojMFIYAXkKhhzsg5o/s612/WhatsApp_Image_2026-02-24_at_12.56.43-removebg-preview.png" width="120">
-
-<div class="box bangla">
+<!-- FIRST BOX -->
+<div class="purple-box bangla-text">
 আমাদের <span class="product-name">Methi Mixd powder</span> 999tk আমরা রমজান মাস উপলক্ষে একটি লাকি কুপন দিচ্ছি সেই কুপন স্ক্র্যাচ করে আপনি ১০% থেকে ৫০% পর্যন্ত ডিসকাউন্ট পেতে পারেন
 </div>
 
-<div class="box bangla">
+<div class="purple-box bangla-text">
 এই স্ক্রেচ কার্ড ঘোষণ এবং <span class="product-name">Methi Mixd powder</span> এর উপরে ডিসকাউন্ট নিন!!
 </div>
 
-<!-- Scratch Card -->
-<div id="scratchCard">
-<div id="scratchContent">
-<img src="YOUR_IMAGE.png" width="60">
-<h3>আপনি পেয়েছেন <span id="discountPercent"></span>%</h3>
-<p id="priceAfter"></p>
-</div>
-<canvas id="scratchCanvas" width="300" height="200"></canvas>
+<!-- SCRATCH CARD -->
+<div class="card">
+<div class="hidden-text" id="discountText"></div>
+<canvas id="scratchCanvas"></canvas>
 </div>
 
-<button class="rainbow-btn" onclick="openDetails()">ডিসকাউন্ট অর্ডার করতে চাই</button>
+<button class="rainbow-btn bangla-text" onclick="openOrder()">ডিসকাউন্ট অর্ডার করতে চাই</button>
 
-<br><br>
-<img src="YOUR_IMAGE.png" id="movingProduct">
+<!-- ORDER PAGE -->
+<div id="orderPage">
 
-</div>
-
-
-<!-- DETAILS PAGE -->
-<div id="detailsPage" class="hidden">
-
-<h2 style="background:yellow;color:red;-webkit-text-stroke:0.5px black;text-align:left;padding:10px;">
+<h2 style="background:yellow;padding:10px;">
 <span class="product-name">Methi Mixd powder</span> সাত দিন সেবনের উপকারিতা:
 </h2>
 
-<div style="text-align:left;padding:15px;" class="bangla">
-<ul>
+<ul class="bangla-text">
 <li>৭ দিন সেবনে কোষ্ঠকাঠিন্যের একদম নিরাময়</li>
 <li>৭ দিন সেবনে গ্যাস্ট্রিক প্রবলেমের সমাধান</li>
 <li>৭ দিন সেবনে বুক জ্বালাপোড়া</li>
@@ -178,137 +201,89 @@ border-radius:5px;
 <li>৭ দিন সেবনে পেট পরিষ্কার এবং কৃমির সমাধান</li>
 <li>৭ দিন সেবনে শারীরিক শক্তি এবং যৌন শক্তি বৃদ্ধি</li>
 </ul>
-</div>
 
-<button style="padding:15px 40px;background:red;color:white;-webkit-text-stroke:0.5px black;border:2px solid black;border-radius:10px;"
-onclick="openOrder()">অর্ডার করতে চাই</button>
-
-</div>
-
-
-<!-- ORDER PAGE -->
-<div id="orderPage" class="hidden">
-
-<h3 style="background:green;color:white;-webkit-text-stroke:0.5px black;padding:10px;">
-আপনার প্রাপ্ত কুপন ডিসকাউন্ট স্ক্রাচ কার্ড👇
+<h3 style="background:yellow;padding:10px;color:red;-webkit-text-stroke:0.5px black;">
+হাদিসে বর্ণিত আছে
 </h3>
 
-<div id="finalCard"></div>
-
-<div class="box">
-অর্ডার কনফার্ম করতে <span class="product-name">Methi Mixd powder</span> কয়টি নিবেন এবং আপনার ডিটেলস দিন
-</div>
-
-<p><span class="product-name">Methi Mixd powder</span> কয়টি কিনতে চান</p>
-
-<img src="YOUR_IMAGE.png" width="60">
-<br>
-<button onclick="changeQty(-1)">-</button>
-<span id="qty">1</span>
-<button onclick="changeQty(1)">+</button>
-
-<p>= <span id="totalPrice"></span> টাকা</p>
+<p class="bangla-text">
+রাসূলুল্লাহ (সা.) বলেছেন, "আমার উম্মতরা যদি জানত মেথিতে কি উপকার আছে তবে তারা সোনার বদলে হলেও এটা কিনে খেত"
+</p>
 
 <input type="text" id="name" placeholder="আপনার নাম *" class="red-outline">
 <input type="text" id="address" placeholder="আপনার ঠিকানা *" class="red-outline">
 <input type="text" id="phone" placeholder="আপনার মোবাইল নাম্বার *" class="red-outline">
 
-<button style="background:green;color:white;padding:15px;border:2px solid red;border-radius:10px;"
-onclick="submitOrder()">কনফার্ম করুন</button>
+<button class="confirm-btn" onclick="submitOrder()">কনফার্ম করুন</button>
 
 </div>
 
-
-<!-- THANK YOU -->
-<div id="thankYou" class="hidden" style="background:lightyellow;height:100vh;display:flex;align-items:center;justify-content:center;">
-<h2 style="color:white;-webkit-text-stroke:0.5px black;">
-আপনাকে ধন্যবাদ আপনার অর্ডারটি সফলতার সাথে সাবমিট হয়েছে, আমাদের প্রতিনিধি টিম আপনার সাথে অতি দ্রুত যোগাযোগ করবে ইনশাল্লাহ
-</h2>
+<!-- SUCCESS PAGE -->
+<div class="success-page" id="successPage">
+<h1>আপনাকে ধন্যবাদ আপনার অর্ডারটি সফলতার সাথে সাবমিট হয়েছে</h1>
 </div>
-
 
 <script>
-// Random Discount 30-40
-let discount = Math.floor(Math.random()*11)+30;
-document.getElementById("discountPercent").innerText = discount;
 
-let basePrice=999;
-let priceAfter = basePrice - (basePrice*discount/100);
-document.getElementById("priceAfter").innerText = discount+"% ডিসকাউন্টের পর বর্তমান Methi Mixd powder এর দাম আপনার জন্য "+priceAfter+" টাকা";
+/* RANDOM DISCOUNT 30-40 */
+let discount = Math.floor(Math.random() * 11) + 30;
+document.getElementById("discountText").innerHTML =
+"আপনি পেয়েছেন "+discount+"%";
 
-document.getElementById("totalPrice").innerText = priceAfter;
-
-// Scratch Effect
-let canvas=document.getElementById("scratchCanvas");
-let ctx=canvas.getContext("2d");
-ctx.fillStyle="rainbow";
-ctx.fillRect(0,0,300,200);
-
-canvas.addEventListener("mousemove",function(e){
-if(e.buttons==1){
-ctx.clearRect(e.offsetX-15,e.offsetY-15,30,30);
-}
+/* SCRATCH EFFECT */
+let canvas = document.getElementById("scratchCanvas");
+let ctx = canvas.getContext("2d");
+canvas.width = 320;
+canvas.height = 220;
+ctx.fillStyle = "#ccc";
+ctx.fillRect(0,0,320,220);
+canvas.addEventListener("mousemove", function(e){
+    ctx.globalCompositeOperation="destination-out";
+    ctx.beginPath();
+    ctx.arc(e.offsetX,e.offsetY,20,0,Math.PI*2);
+    ctx.fill();
 });
 
-// Page Switch
-function openDetails(){
-document.getElementById("mainPage").classList.add("hidden");
-document.getElementById("detailsPage").classList.remove("hidden");
-}
+/* NOTIFICATION SYSTEM */
+let names=[
+"আরিফুল হক","সুমাইয়া আক্তার","মোস্তাফিজুর রহমান","নুসরাত জাহান",
+"রাকিব হাসান","তানজিলা","সাব্বির","মেহজাবিন","রাশেদ","ফারহানা"
+];
 
+setInterval(()=>{
+let randomName = names[Math.floor(Math.random()*names.length)];
+let randomDiscount = Math.floor(Math.random()*20)+20;
+let note=document.getElementById("notification");
+note.innerHTML=randomName+" "+randomDiscount+"% ডিসকাউন্ট পেয়েছে🎉";
+note.style.left="20px";
+setTimeout(()=>{note.style.left="-400px"},2000);
+},3000);
+
+/* OPEN ORDER PAGE */
 function openOrder(){
-document.getElementById("detailsPage").classList.add("hidden");
-document.getElementById("orderPage").classList.remove("hidden");
-document.getElementById("finalCard").innerHTML=document.getElementById("scratchCard").innerHTML;
+document.getElementById("orderPage").style.display="block";
+window.scrollTo(0,document.body.scrollHeight);
 }
 
-// Quantity
-let qty=1;
-function changeQty(val){
-qty+=val;
-if(qty<1) qty=1;
-document.getElementById("qty").innerText=qty;
-let total = priceAfter*qty;
-document.getElementById("totalPrice").innerText=total;
-}
-
-// Submit
+/* SUBMIT TO GOOGLE SHEETS */
 function submitOrder(){
+
 let name=document.getElementById("name").value;
 let address=document.getElementById("address").value;
 let phone=document.getElementById("phone").value;
 
-if(!name || !address || !phone){
-alert("সব তথ্য পূরণ করুন");
-return;
-}
-
-// GOOGLE SHEETS WEB APP URL এখানে বসাও
-fetch("YOUR_GOOGLE_SCRIPT_URL",{
+fetch("YOUR_GOOGLE_SCRIPT_WEB_APP_URL",{
 method:"POST",
 body:JSON.stringify({
 name:name,
 address:address,
 phone:phone,
-qty:qty,
 discount:discount
 })
 });
 
-document.getElementById("orderPage").classList.add("hidden");
-document.getElementById("thankYou").classList.remove("hidden");
+document.getElementById("successPage").style.display="block";
 }
-
-// Notifications
-let names=["আরিফুল","সুমাইয়া","রাকিব","তানিয়া","নাসির","মেহেদী","জাহিদ","সালমা","রুবেল","মৌ"];
-setInterval(()=>{
-let randName=names[Math.floor(Math.random()*names.length)];
-let randDis=Math.floor(Math.random()*20)+20;
-let box=document.getElementById("notification");
-box.innerText=randName+" "+randDis+"% ডিসকাউন্ট পেয়েছে🎉 এবং অর্ডার করেছে";
-box.style.left="20px";
-setTimeout(()=>{box.style.left="-400px";},2000);
-},3000);
 
 </script>
 
