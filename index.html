@@ -3,75 +3,68 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Methi Mixd Powder Offer</title>
+<title>Landing Page</title>
 
 <style>
-body{
+*{
     margin:0;
     padding:0;
-    background:#6a0dad; /* Purple Background */
+    box-sizing:border-box;
+}
+
+body{
     font-family: Arial, sans-serif;
+    height:100vh;
+    background-image: url("https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgAN-w08Gb55AD8HEwmiDiC_crYJ_EN0BLQfqn9gYgKKKnTMDMNog1PIwrfBNYyi4D6iMxbdwI6zNJzyaAtxSuwed3bzEoLBwe58VZ6EWFRwgtIRsqQlQdEYf9wHpjw_u9NtNcXgibLxJgu633h6Bf46fvpmBxP_Xm2aHSwPjZ2LjojMFIYAXkKhhzsg5o/s612/WhatsApp_Image_2026-02-24_at_12.56.43-removebg-preview.png"); /* ← প্রোডাক্টের মেইন ছবি */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+/* Overlay for better text visibility */
+body::before{
+    content:"";
+    position:absolute;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background: rgba(0,0,0,0.5);
+}
+
+/* Content Box */
+.content-box{
+    position:relative;
+    max-width:600px;
+    width:90%;
+    padding:40px;
     text-align:center;
+    background: rgba(0,0,0,0.5); /* বক্স ও ব্যাকগ্রাউন্ড একই টোন */
+    border:2px solid yellow;
+    color:#fff;
+    z-index:1;
 }
 
-/* Common big white text style */
-.big-white{
-    color:#ffffff;
-    font-size:40px;
-    font-weight:bold;
-    -webkit-text-stroke: 2px black;
-    margin:20px;
+.content-box h1{
+    font-size:32px;
+    margin-bottom:15px;
 }
 
-/* Special Product Name Style (Always Same Everywhere) */
-.product-name{
-    color:#FFD700; /* Deep Yellow */
-    font-weight:bold;
-    -webkit-text-stroke: 2px black;
-}
-
-/* Price Full Line */
-.price-line{
-    font-size:45px;
-    font-weight:bold;
-    margin-top:30px;
-}
-
-/* MRP Special Pink Style */
-.mrp{
-    color:#ff1493; /* Deep Pink */
-    display:inline-block;
-    -webkit-text-stroke: 2px black;
-    animation: rotateMRP 2s linear infinite;
-}
-
-/* Rotate Animation */
-@keyframes rotateMRP{
-    0%{ transform: rotate(0deg); }
-    100%{ transform: rotate(360deg); }
+.content-box p{
+    font-size:18px;
+    margin-bottom:20px;
 }
 </style>
-</head>
 
+</head>
 <body>
 
-<div class="big-white">
-সবাইকে আসসালামু আলাইকুম
-</div>
-
-<div class="big-white">
-রামাদান উপলক্ষে 
-<span class="product-name">Methi Mixd powder</span> 
-আমাদের সবচেয়ে হট প্রোডাক্টে ২০% থেকে ৬০% ডিসকাউন্ট দেওয়া হচ্ছে
-</div>
-
-<div class="big-white">
-আর ডিসকাউন্ট টি পাচ্ছেন লাকি স্পিনের মাধ্যমে
-</div>
-
-<div class="price-line">
-<span class="product-name">Methi Mixd powder</span> 
-<span class="mrp">MRP 900Tk</span>
+<div class="content-box">
+    <h1>আপনার প্রোডাক্টের আকর্ষণীয় হেডলাইন</h1>
+    <p>এখানে আপনার প্রোডাক্টের ছোট কিন্তু শক্তিশালী বিবরণ লিখুন যা কাস্টমারকে কিনতে আগ্রহী করবে।</p>
 </div>
 
 </body>
