@@ -37,33 +37,33 @@ html,body{
 }
 
 .offer-text{
-    color:white;
+    color:black;
     font-size:18px;
     font-weight:bold;
     line-height:1.5;
-    -webkit-text-stroke:1px black;
+    -webkit-text-stroke:1px darkgreen;
 }
 
 .product-name{
-    color:red;
+    color:black;
     font-size:26px;
     font-weight:bold;
-    -webkit-text-stroke:2px yellow;
+    -webkit-text-stroke:2px darkgreen;
 }
 
 .bottom-text{
     margin-top:20px;
     padding:0 15px;
-    color:white;
+    color:black;
     font-size:17px;
     font-weight:bold;
     line-height:1.6;
-    -webkit-text-stroke:1px black;
+    -webkit-text-stroke:1px darkgreen;
 }
 
 .mrp{
-    color:red;
-    -webkit-text-stroke:1px black;
+    color:black;
+    -webkit-text-stroke:1px darkgreen;
 }
 
 /* ================= SCRATCH CARD ================= */
@@ -73,6 +73,14 @@ html,body{
     display:flex;
     flex-direction:column;
     align-items:center;
+}
+
+.card-title{
+    font-size:20px;
+    font-weight:bold;
+    margin-bottom:5px;
+    color:black;
+    -webkit-text-stroke:1px darkgreen;
 }
 
 .card-container{
@@ -88,7 +96,7 @@ html,body{
 .real-card{
     width:100%;
     height:100%;
-    background:green;
+    background:black;
     display:flex;
     justify-content:center;
     align-items:center;
@@ -134,8 +142,7 @@ html,body{
     <div class="offer-text">
         সবাইকে আসসালামু আলাইকুম, রামাদান উপলক্ষে 
         <span class="product-name">Methi Mixd powder</span>
-        আমাদের সবচেয়ে হট প্রোডাক্টে ২০% থেকে ৬০% ডিসকাউন্ট দেওয়া হচ্ছে, 
-        আর ডিসকাউন্ট টি পাচ্ছেন লাকি স্পিনের মাধ্যমে.
+        আমাদের সবচেয়ে হট প্রোডাক্টে ২০% থেকে ৬০% ডিসকাউন্ট দেওয়া হচ্ছে।
     </div>
 </div>
 
@@ -149,12 +156,15 @@ html,body{
 <!-- ===== Scratch Card ===== -->
 
 <div class="scratch-section">
+    <div class="card-title">লাকি স্ক্র্যাচ কার্ড</div>
+
     <div class="card-container">
         <div class="real-card">
             <div class="discount-text" id="discountText"></div>
         </div>
         <canvas id="scratchCanvas"></canvas>
     </div>
+
     <div class="message" id="messageBox"></div>
 </div>
 
@@ -166,10 +176,14 @@ const container = document.querySelector(".card-container");
 canvas.width = container.offsetWidth;
 canvas.height = container.offsetHeight;
 
+const originalPrice = 900;
+
 // Random discount 25-49
 const discount = Math.floor(Math.random() * (49 - 25 + 1)) + 25;
+const finalPrice = originalPrice - (originalPrice * discount / 100);
+
 document.getElementById("discountText").innerText =
-"অভিনন্দন আপনি " + discount + "% ডিসকাউন্ট পেয়েছেন";
+discount + "% ডিসকাউন্ট";
 
 // Rainbow Gradient
 const gradient = ctx.createLinearGradient(0,0,canvas.width,canvas.height);
@@ -184,37 +198,41 @@ gradient.addColorStop(1,"violet");
 ctx.fillStyle = gradient;
 ctx.fillRect(0,0,canvas.width,canvas.height);
 
+// "এখানে ঘষুন" লেখা
+ctx.globalCompositeOperation = "source-over";
+ctx.fillStyle = "white";
+ctx.font = "bold 22px Arial";
+ctx.textAlign = "center";
+ctx.fillText("এখানে ঘষুন", canvas.width/2, canvas.height/2);
+
 ctx.globalCompositeOperation = "destination-out";
 
 let isDrawing = false;
 
 function scratch(e){
     if(!isDrawing) return;
-
     const rect = canvas.getBoundingClientRect();
     const x = (e.touches ? e.touches[0].clientX : e.clientX) - rect.left;
     const y = (e.touches ? e.touches[0].clientY : e.clientY) - rect.top;
-
     ctx.beginPath();
     ctx.arc(x,y,20,0,Math.PI*2);
     ctx.fill();
 }
 
 canvas.addEventListener("mousedown",()=> isDrawing=true);
-canvas.addEventListener("mouseup",()=>{
-    isDrawing=false;
-    document.getElementById("messageBox").innerText =
-    "অভিনন্দন! আপনার ডিসকাউন্টটি ব্যবহার করুন এখনই!";
-});
+canvas.addEventListener("mouseup",finishScratch);
 canvas.addEventListener("mousemove",scratch);
 
 canvas.addEventListener("touchstart",()=> isDrawing=true);
-canvas.addEventListener("touchend",()=>{
+canvas.addEventListener("touchend",finishScratch);
+canvas.addEventListener("touchmove",scratch);
+
+function finishScratch(){
     isDrawing=false;
     document.getElementById("messageBox").innerText =
-    "অভিনন্দন! আপনার ডিসকাউন্টটি ব্যবহার করুন এখনই!";
-});
-canvas.addEventListener("touchmove",scratch);
+    "অভিনন্দন! আপনি "+discount+"% ডিসকাউন্ট পেয়েছেন। "+
+    "Methi Mixd powder এর নতুন দাম "+finalPrice.toFixed(0)+"৳";
+}
 </script>
 
 </body>
