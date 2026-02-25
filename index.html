@@ -18,6 +18,15 @@ width:140px;
 margin-top:20px;
 }
 
+/* 🔥 নতুন যোগ করা MRP স্টাইল */
+.mrp-text{
+margin-top:5px;
+font-size:18px;
+font-weight:bold;
+color:red;
+-webkit-text-stroke:1px black;
+}
+
 .offer-text{
 margin-top:20px;
 font-size:20px;
@@ -102,6 +111,9 @@ animation:pulse 1s infinite;
 
 <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgAN-w08Gb55AD8HEwmiDiC_crYJ_EN0BLQfqn9gYgKKKnTMDMNog1PIwrfBNYyi4D6iMxbdwI6zNJzyaAtxSuwed3bzEoLBwe58VZ6EWFRwgtIRsqQlQdEYf9wHpjw_u9NtNcXgibLxJgu633h6Bf46fvpmBxP_Xm2aHSwPjZ2LjojMFIYAXkKhhzsg5o/s612/WhatsApp_Image_2026-02-24_at_12.56.43-removebg-preview.png" class="product-image">
 
+<!-- 🔥 MRP লেখা যুক্ত করা হয়েছে -->
+<div class="mrp-text">MRP-900TK</div>
+
 <div class="offer-text">
 রমজান উপলক্ষে Methi Mixd powder এ বিশেষ ডিসকাউন্ট!
 </div>
@@ -146,20 +158,6 @@ ctx.globalCompositeOperation="destination-out";
 
 let isDrawing=false;
 let scratched=false;
-let voiceActivated=false;
-
-/* 🔥 Voice Engine Pre-Activation (Very Important) */
-document.addEventListener("touchstart",activateVoice,{once:true});
-document.addEventListener("click",activateVoice,{once:true});
-
-function activateVoice(){
-if('speechSynthesis' in window){
-let temp=new SpeechSynthesisUtterance(" ");
-temp.volume=0;
-speechSynthesis.speak(temp);
-voiceActivated=true;
-}
-}
 
 function scratch(e){
 if(!isDrawing) return;
@@ -188,24 +186,6 @@ const message="অভিনন্দন! আপনি "+discount+"% ডিসক
 
 document.getElementById("messageBox").innerText=message;
 document.getElementById("orderBtn").style.display="inline-block";
-
-/* 🔥 Auto Voice Play */
-if(voiceActivated && 'speechSynthesis' in window){
-
-speechSynthesis.cancel();
-
-const speech=new SpeechSynthesisUtterance(
-"Congratulations your Discount scratch card active Now confirm order"
-);
-
-speech.lang="en-US";
-speech.rate=0.9;
-speech.pitch=1;
-speech.volume=1;
-
-speechSynthesis.speak(speech);
-}
-
 }
 </script>
 
