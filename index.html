@@ -3,155 +3,79 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Methi Mixd powder Offer</title>
+<title>Methi Mixd Powder</title>
 
 <style>
-
 body{
-    margin:0;
-    font-family: 'SolaimanLipi', sans-serif;
-    background:#6a0dad;
-    overflow-x:hidden;
+margin:0;
+font-family:Arial, sans-serif;
+background:#fff;
+text-align:center;
+overflow-x:hidden;
 }
 
-/* ---------- TEXT STYLES ---------- */
-
-.bangla-text{
-    color:white;
-    -webkit-text-stroke:0.5px #000;
+.section{
+display:none;
+padding:20px;
 }
 
-.product-name{
-    color:red;
-    -webkit-text-stroke:0.5px black;
+.active{
+display:block;
 }
 
-/* ---------- BOX STYLE ---------- */
-
-.purple-box{
-    background:#6a0dad;
-    border:2px solid yellow;
-    padding:15px;
-    margin:20px;
-    border-radius:10px;
+button{
+padding:12px 25px;
+border:none;
+border-radius:6px;
+font-size:16px;
+cursor:pointer;
 }
 
-/* ---------- PRODUCT IMAGE ---------- */
-
-#mainProduct{
-    width:130px;
-    position:absolute;
-    top:160px;
-    left:0;
-    animation: moveProduct 12s linear infinite;
+.primary-btn{
+background:#e60000;
+color:#fff;
 }
 
-@keyframes moveProduct{
-    0%{ left:0;}
-    50%{ left:85%;}
-    100%{ left:0;}
+.wheel-container{
+position:relative;
+width:300px;
+height:300px;
+margin:20px auto;
 }
 
-/* ---------- SCRATCH CARD ---------- */
-
-.card{
-    width:320px;
-    height:220px;
-    margin:auto;
-    position:relative;
-    border-radius:15px;
-    background:linear-gradient(45deg,red,orange,yellow,green,blue,indigo,violet);
-    overflow:hidden;
+#wheel{
+width:100%;
+height:100%;
+border-radius:50%;
+border:8px solid #222;
+transition:transform 4s ease-out;
 }
 
-.card canvas{
-    position:absolute;
-    top:0;
-    left:0;
-}
-
-.hidden-text{
-    position:absolute;
-    width:100%;
-    top:90px;
-    text-align:center;
-    color:white;
-    font-weight:bold;
-    -webkit-text-stroke:0.5px black;
-}
-
-/* ---------- BUTTON ---------- */
-
-.rainbow-btn{
-    display:block;
-    margin:40px auto;
-    padding:15px 30px;
-    font-size:18px;
-    border:none;
-    border-radius:50px;
-    cursor:pointer;
-    background:linear-gradient(45deg,red,orange,yellow,green,blue,violet);
-    animation:pulse 1.5s infinite;
+.spin-btn{
+position:absolute;
+top:50%;
+left:50%;
+transform:translate(-50%,-50%);
+background:#ffcc00;
+color:#000;
+font-weight:bold;
+border-radius:50%;
+width:80px;
+height:80px;
+animation:pulse 1s infinite;
 }
 
 @keyframes pulse{
-    0%{transform:scale(1);}
-    50%{transform:scale(1.1);}
-    100%{transform:scale(1);}
+0%{transform:translate(-50%,-50%) scale(1);}
+50%{transform:translate(-50%,-50%) scale(1.1);}
+100%{transform:translate(-50%,-50%) scale(1);}
 }
 
-/* ---------- NOTIFICATION ---------- */
-
-#notification{
-    position:fixed;
-    top:20px;
-    left:-400px;
-    background:#000;
-    color:#fff;
-    padding:10px 20px;
-    border-radius:20px;
-    transition:1s;
-    z-index:999;
-}
-
-/* ---------- ORDER PAGE ---------- */
-
-#orderPage{
-    display:none;
-    padding:20px;
-}
-
-input{
-    display:block;
-    width:90%;
-    padding:10px;
-    margin:10px auto;
-    border-radius:8px;
-}
-
-.green-outline{ border:2px solid green; }
-.red-outline{ border:2px solid red; }
-
-.confirm-btn{
-    background:green;
-    color:white;
-    border:2px solid red;
-    padding:15px;
-    width:90%;
-    display:block;
-    margin:auto;
-    border-radius:30px;
-    font-size:18px;
-}
-
-.success-page{
-    display:none;
-    background:#fff8c6;
-    height:100vh;
-    text-align:center;
-    padding-top:150px;
-    color:white;
-    -webkit-text-stroke:0.5px black;
+.result-box{
+margin-top:20px;
+font-size:18px;
+font-weight:bold;
+color:green;
 }
 
 </style>
@@ -159,130 +83,109 @@ input{
 
 <body>
 
-<!-- Notification -->
-<div id="notification"></div>
-
-<!-- MAIN PRODUCT IMAGE -->
-<img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgAN-w08Gb55AD8HEwmiDiC_crYJ_EN0BLQfqn9gYgKKKnTMDMNog1PIwrfBNYyi4D6iMxbdwI6zNJzyaAtxSuwed3bzEoLBwe58VZ6EWFRwgtIRsqQlQdEYf9wHpjw_u9NtNcXgibLxJgu633h6Bf46fvpmBxP_Xm2aHSwPjZ2LjojMFIYAXkKhhzsg5o/s612/WhatsApp_Image_2026-02-24_at_12.56.43-removebg-preview.png" id="mainProduct">
-
-<!-- FIRST BOX -->
-<div class="purple-box bangla-text">
-আমাদের <span class="product-name">Methi Mixd powder</span> 999tk আমরা রমজান মাস উপলক্ষে একটি লাকি কুপন দিচ্ছি সেই কুপন স্ক্র্যাচ করে আপনি ১০% থেকে ৫০% পর্যন্ত ডিসকাউন্ট পেতে পারেন
+<!-- STEP 1 -->
+<div id="step1" class="section active">
+<h2>Methi Mixd Powder</h2>
+<p>পুরুষদের সকল গোপন সমস্যার হারবাল সমাধান।</p>
+<p>✔️ দ্রুত কার্যকরী</p>
+<p>✔️ সম্পূর্ণ হারবাল</p>
+<p>✔️ শক্তি ও স্ট্যামিনা বৃদ্ধি করে</p>
+<h3>মূল্য: ৯০০ টাকা</h3>
+<button class="primary-btn" onclick="nextStep(1)">অর্ডার করতে চাই</button>
 </div>
 
-<div class="purple-box bangla-text">
-এই স্ক্রেচ কার্ড ঘোষণ এবং <span class="product-name">Methi Mixd powder</span> এর উপরে ডিসকাউন্ট নিন!!
+<!-- STEP 2 -->
+<div id="step2" class="section">
+<h2>ভাগ্য যাচাই করে নিন এবং জিতে নিন আকর্ষণীয় ডিসকাউন্ট</h2>
+
+<div class="wheel-container">
+<canvas id="wheel" width="300" height="300"></canvas>
+<button class="spin-btn" onclick="spinWheel()">ট্রাই লাক</button>
 </div>
 
-<!-- SCRATCH CARD -->
-<div class="card">
-<div class="hidden-text" id="discountText"></div>
-<canvas id="scratchCanvas"></canvas>
-</div>
-
-<button class="rainbow-btn bangla-text" onclick="openOrder()">ডিসকাউন্ট অর্ডার করতে চাই</button>
-
-<!-- ORDER PAGE -->
-<div id="orderPage">
-
-<h2 style="background:yellow;padding:10px;">
-<span class="product-name">Methi Mixd powder</span> সাত দিন সেবনের উপকারিতা:
-</h2>
-
-<ul class="bangla-text">
-<li>৭ দিন সেবনে কোষ্ঠকাঠিন্যের একদম নিরাময়</li>
-<li>৭ দিন সেবনে গ্যাস্ট্রিক প্রবলেমের সমাধান</li>
-<li>৭ দিন সেবনে বুক জ্বালাপোড়া</li>
-<li>৭ দিন সেবনে মুখের টক স্বাদ নিরাময়</li>
-<li>৭ দিন সেবনে পেট ফাঁপা একদম সমাধান</li>
-<li>৭ দিন মুখে অরুচি ভাব সমাধান</li>
-<li>৭ দিন সেবনে সুগার ডায়াবেটিসের সমাধান</li>
-<li>৭ দিন সেবনে অতিরিক্ত চর্বি এবং রক্তচাপের সমাধান</li>
-<li>৭ দিন সেবনে পেট পরিষ্কার এবং কৃমির সমাধান</li>
-<li>৭ দিন সেবনে শারীরিক শক্তি এবং যৌন শক্তি বৃদ্ধি</li>
-</ul>
-
-<h3 style="background:yellow;padding:10px;color:red;-webkit-text-stroke:0.5px black;">
-হাদিসে বর্ণিত আছে
-</h3>
-
-<p class="bangla-text">
-রাসূলুল্লাহ (সা.) বলেছেন, "আমার উম্মতরা যদি জানত মেথিতে কি উপকার আছে তবে তারা সোনার বদলে হলেও এটা কিনে খেত"
-</p>
-
-<input type="text" id="name" placeholder="আপনার নাম *" class="red-outline">
-<input type="text" id="address" placeholder="আপনার ঠিকানা *" class="red-outline">
-<input type="text" id="phone" placeholder="আপনার মোবাইল নাম্বার *" class="red-outline">
-
-<button class="confirm-btn" onclick="submitOrder()">কনফার্ম করুন</button>
+<div id="result" class="result-box"></div>
+<div id="afterWin"></div>
 
 </div>
 
-<!-- SUCCESS PAGE -->
-<div class="success-page" id="successPage">
-<h1>আপনাকে ধন্যবাদ আপনার অর্ডারটি সফলতার সাথে সাবমিট হয়েছে</h1>
+<!-- STEP 3 -->
+<div id="step3" class="section">
+<h2>পেমেন্ট ডিটেলস</h2>
+<p>আপনার ডিসকাউন্ট প্রযোজ্য হয়েছে।</p>
+<p>বিকাশ / নগদ / রকেট নাম্বার: 01XXXXXXXXX</p>
+<p>পেমেন্ট করার পর আপনার নাম, ঠিকানা ও মোবাইল পাঠান।</p>
 </div>
 
 <script>
 
-/* RANDOM DISCOUNT 30-40 */
-let discount = Math.floor(Math.random() * 11) + 30;
-document.getElementById("discountText").innerHTML =
-"আপনি পেয়েছেন "+discount+"%";
-
-/* SCRATCH EFFECT */
-let canvas = document.getElementById("scratchCanvas");
-let ctx = canvas.getContext("2d");
-canvas.width = 320;
-canvas.height = 220;
-ctx.fillStyle = "#ccc";
-ctx.fillRect(0,0,320,220);
-canvas.addEventListener("mousemove", function(e){
-    ctx.globalCompositeOperation="destination-out";
-    ctx.beginPath();
-    ctx.arc(e.offsetX,e.offsetY,20,0,Math.PI*2);
-    ctx.fill();
-});
-
-/* NOTIFICATION SYSTEM */
-let names=[
-"আরিফুল হক","সুমাইয়া আক্তার","মোস্তাফিজুর রহমান","নুসরাত জাহান",
-"রাকিব হাসান","তানজিলা","সাব্বির","মেহজাবিন","রাশেদ","ফারহানা"
-];
-
-setInterval(()=>{
-let randomName = names[Math.floor(Math.random()*names.length)];
-let randomDiscount = Math.floor(Math.random()*20)+20;
-let note=document.getElementById("notification");
-note.innerHTML=randomName+" "+randomDiscount+"% ডিসকাউন্ট পেয়েছে🎉";
-note.style.left="20px";
-setTimeout(()=>{note.style.left="-400px"},2000);
-},3000);
-
-/* OPEN ORDER PAGE */
-function openOrder(){
-document.getElementById("orderPage").style.display="block";
-window.scrollTo(0,document.body.scrollHeight);
+function nextStep(current){
+document.getElementById("step"+current).classList.remove("active");
+document.getElementById("step"+(current+1)).classList.add("active");
 }
 
-/* SUBMIT TO GOOGLE SHEETS */
-function submitOrder(){
+/* ---------------- Wheel Drawing ---------------- */
 
-let name=document.getElementById("name").value;
-let address=document.getElementById("address").value;
-let phone=document.getElementById("phone").value;
+const canvas = document.getElementById("wheel");
+const ctx = canvas.getContext("2d");
 
-fetch("YOUR_GOOGLE_SCRIPT_WEB_APP_URL",{
-method:"POST",
-body:JSON.stringify({
-name:name,
-address:address,
-phone:phone,
-discount:discount
-})
-});
+const segments = ["10%","20%","30%","40%","50%","60%","70%","80%","FREE"];
+const colors = ["#f44336","#9c27b0","#3f51b5","#03a9f4","#4caf50","#ff9800","#795548","#607d8b","#000"];
 
-document.getElementById("successPage").style.display="block";
+const originalPrice = 900;
+
+function drawWheel(){
+let angle = 2 * Math.PI / segments.length;
+for(let i=0;i<segments.length;i++){
+ctx.beginPath();
+ctx.moveTo(150,150);
+ctx.arc(150,150,150,i*angle,(i+1)*angle);
+ctx.fillStyle = colors[i];
+ctx.fill();
+ctx.save();
+ctx.translate(150,150);
+ctx.rotate(i*angle + angle/2);
+ctx.fillStyle="#fff";
+ctx.font="bold 14px Arial";
+ctx.fillText(segments[i],50,5);
+ctx.restore();
+}
+}
+
+drawWheel();
+
+/* ------------- Spin Logic ------------- */
+
+let spinning = false;
+
+function spinWheel(){
+
+if(spinning) return;
+spinning = true;
+
+const allowedWins = [30,40,50,60];
+let winPercent = allowedWins[Math.floor(Math.random()*allowedWins.length)];
+
+let index = segments.indexOf(winPercent+"%");
+let anglePerSegment = 360 / segments.length;
+let rotateTo = (360*5) + (360 - index * anglePerSegment - anglePerSegment/2);
+
+canvas.style.transform = "rotate("+rotateTo+"deg)";
+
+setTimeout(function(){
+
+let discountAmount = (originalPrice * winPercent)/100;
+let finalPrice = originalPrice - discountAmount;
+
+document.getElementById("result").innerHTML =
+"অভিনন্দন! আপনি "+winPercent+"% ডিসকাউন্ট জিতেছেন<br>আপনার জন্য মূল্য: "+finalPrice+" টাকা";
+
+document.getElementById("afterWin").innerHTML =
+'<br><button class="primary-btn" onclick="nextStep(2)">অর্ডার করতে চাই</button>';
+
+spinning = false;
+
+},4000);
+
 }
 
 </script>
