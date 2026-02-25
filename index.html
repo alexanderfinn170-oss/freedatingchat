@@ -35,7 +35,7 @@ color:black;
 -webkit-text-stroke:1px darkgreen;
 }
 
-/* 🔔 Notification Bar */
+/* 🔔 Notification (Right Corner Style) */
 .notification{
 position:fixed;
 top:10px;
@@ -47,8 +47,8 @@ box-shadow:0 0 10px rgba(0,0,0,0.2);
 font-size:14px;
 white-space:nowrap;
 z-index:9999;
-transform:translateX(-120%);
-animation:slideMove 3s linear forwards;
+transform:translateX(120%);
+animation:slideCorner 3s ease forwards;
 }
 
 .notification .name{
@@ -56,12 +56,26 @@ color:green;
 font-weight:bold;
 }
 
-@keyframes slideMove{
-0%{transform:translateX(-120%);}
-50%{transform:translateX(0);}
+@keyframes slideCorner{
+0%{transform:translateX(120%);}
+20%{transform:translateX(0);}
+80%{transform:translateX(0);}
 100%{transform:translateX(120%);}
 }
 
+/* Second Page Section */
+.second-page{
+display:none;
+background:#fff;
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+z-index:10000;
+}
+
+/* Scratch Section */
 .scratch-section{
 margin-top:40px;
 }
@@ -154,11 +168,15 @@ animation:pulse 1s infinite;
 </div>
 
 <div class="message" id="messageBox"></div>
-<button class="order-btn" id="orderBtn">অর্ডার করতে চাই</button>
+<button class="order-btn" id="orderBtn" onclick="openSecondPage()">অর্ডার করতে চাই</button>
+</div>
+
+<!-- Second Page -->
+<div class="second-page" id="secondPage">
 </div>
 
 <script>
-/* 🔔 Notification System */
+/* 🔔 Notification System (Corner Animation) */
 const names=[
 "আমিনুল ইসলাম","সোহেল রানা","মোস্তাফিজুর রহমান","রাশেদুল ইসলাম",
 "নাঈম হোসেন","তানভীর হাসান","ইমরান হোসেন","মেহেদী হাসান",
@@ -187,6 +205,11 @@ notification.remove();
 }
 
 setInterval(showNotification,3000);
+
+/* Open Second Section */
+function openSecondPage(){
+document.getElementById("secondPage").style.display="block";
+}
 
 /* Scratch System (Unchanged) */
 const canvas=document.getElementById("scratchCanvas");
