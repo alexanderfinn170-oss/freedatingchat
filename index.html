@@ -82,7 +82,7 @@ padding:15px;
 box-sizing:border-box;
 }
 
-/* Video */
+/* YouTube */
 
 .video-frame{
 width:100%;
@@ -137,64 +137,23 @@ font-weight:500;
 margin-bottom:10px;
 }
 
-/* ----------- NEW DELIVERY SECTION ----------- */
+/* New Order Button (Second Page Bottom) */
 
-.delivery-highlight{
-margin-top:30px;
-font-size:18px;
-font-weight:bold;
-background:yellow;
-display:inline-block;
-padding:8px 18px;
-border-top:2px solid green;
-}
-
-.coupon-title{
-margin-top:15px;
-font-size:18px;
-font-weight:bold;
-color:black;
--webkit-text-stroke:0.6px yellow;
-}
-
-.delivery-card{
-position:relative;
-width:300px;
-height:150px;
-margin:20px auto;
-border:2px solid yellow;
-border-radius:12px;
-overflow:hidden;
-}
-
-.delivery-real{
-width:100%;
-height:100%;
-background:black;
-display:flex;
-justify-content:center;
-align-items:center;
-}
-
-.delivery-discount{
+.second-order-btn{
+margin-top:40px;
+margin-bottom:40px;
+padding:15px 40px;
+background:green;
 color:white;
-font-size:22px;
+font-size:20px;
 font-weight:bold;
+border:3px solid black;
+border-radius:10px;
+cursor:pointer;
+animation:pulse 1s infinite;
 }
 
-#deliveryCanvas{
-position:absolute;
-top:0;
-left:0;
-}
-
-.delivery-message{
-margin-top:15px;
-font-weight:bold;
-font-size:16px;
-}
-
-/* ---------- Main Scratch ---------- */
+/* ---------- Scratch ---------- */
 
 .scratch-section{
 margin-top:40px;
@@ -315,79 +274,92 @@ animation:pulse 1s infinite;
 <li>✔ শারীরিক শক্তি ও কর্মক্ষমতা বৃদ্ধিতে সহায়ক</li>
 </ul>
 
-<!-- ✅ Added Delivery Section -->
-
-<div class="delivery-highlight">
-পুরো বাংলাদেশে ক্যাশ অন ডেলিভারি 🚛 ডেলিভারি চার্জ ১২০৳
-</div>
-
-<div class="coupon-title">
-ডেলিভারি চার্জ ডিসকাউন্ট কুপন
-</div>
-
-<div class="delivery-card">
-<div class="delivery-real">
-<div class="delivery-discount" id="deliveryDiscount"></div>
-</div>
-<canvas id="deliveryCanvas"></canvas>
-</div>
-
-<div class="delivery-message" id="deliveryMessage"></div>
+<!-- ✅ NEW BUTTON ADDED ONLY -->
+<button class="second-order-btn">অর্ডার করবো</button>
 
 </div>
 
 <script>
+/* Notification */
+const names=["আমিনুল ইসলাম","সোহেল রানা","মোস্তাফিজুর রহমান","রাশেদুল ইসলাম",
+"নাঈম হোসেন","তানভীর হাসান","ইমরান হোসেন","মেহেদী হাসান",
+"রুবেল মিয়া","জাহিদুল ইসলাম","নাসরিন আক্তার","সুমাইয়া আক্তার",
+"তানজিলা ইসলাম","মৌসুমি আক্তার","ফারহানা রহমান","রোকসানা বেগম",
+"শাহীন আক্তার","নাজমা খাতুন","সাবিনা ইয়াসমিন","আফরোজা পারভীন",
+"রিয়াজ উদ্দিন","হাবিবুর রহমান","শাহরিয়ার কবির","আরিফুল ইসলাম",
+"নাহিদ হাসান","লিপি আক্তার","শিউলি আক্তার","জেসমিন আক্তার",
+"মাহমুদুল হাসান","সাকিব আল হাসান"];
 
-/* Delivery Scratch */
-const deliveryCanvas=document.getElementById("deliveryCanvas");
-const dctx=deliveryCanvas.getContext("2d");
-const dContainer=document.querySelector(".delivery-card");
+function showNotification(){
+const randomName=names[Math.floor(Math.random()*names.length)];
+const randomDiscount=Math.floor(Math.random()*(30-15+1))+15;
+const notification=document.createElement("div");
+notification.className="notification";
+notification.innerHTML=`<span class="name">${randomName}</span> 🎉 ${randomDiscount}% ডিসকাউন্ট পেয়ে অর্ডার করেছে`;
+document.body.appendChild(notification);
+setTimeout(()=>{notification.remove();},3000);
+}
+setInterval(showNotification,3000);
 
-deliveryCanvas.width=dContainer.offsetWidth;
-deliveryCanvas.height=dContainer.offsetHeight;
+function openSecondPage(){
+document.getElementById("secondPage").style.display="block";
+}
 
-const deliveryDiscount=Math.floor(Math.random()*(25-10+1))+10;
-document.getElementById("deliveryDiscount").innerText=deliveryDiscount+"%";
+/* Scratch System */
+const canvas=document.getElementById("scratchCanvas");
+const ctx=canvas.getContext("2d");
+const container=document.querySelector(".card-container");
 
-dctx.fillStyle="skyblue";
-dctx.fillRect(0,0,deliveryCanvas.width,deliveryCanvas.height);
+canvas.width=container.offsetWidth;
+canvas.height=container.offsetHeight;
 
-dctx.fillStyle="black";
-dctx.font="bold 20px Arial";
-dctx.textAlign="center";
-dctx.fillText("এখানে ঘোষণ",deliveryCanvas.width/2,deliveryCanvas.height/2);
+const originalPrice=900;
+const discount=Math.floor(Math.random()*(50-25+1))+25;
+const finalPrice=Math.round(originalPrice-(originalPrice*discount/100));
 
-dctx.globalCompositeOperation="destination-out";
+document.getElementById("discountText").innerText=discount+"% ডিসকাউন্ট";
 
-let dDraw=false;
-let dDone=false;
+ctx.fillStyle="gray";
+ctx.fillRect(0,0,canvas.width,canvas.height);
 
-function dScratch(e){
-if(!dDraw) return;
-const rect=deliveryCanvas.getBoundingClientRect();
+ctx.fillStyle="white";
+ctx.font="bold 22px Arial";
+ctx.textAlign="center";
+ctx.fillText("এখানে ঘষুন",canvas.width/2,canvas.height/2);
+
+ctx.globalCompositeOperation="destination-out";
+
+let isDrawing=false;
+let scratched=false;
+
+function scratch(e){
+if(!isDrawing) return;
+const rect=canvas.getBoundingClientRect();
 const x=(e.touches?e.touches[0].clientX:e.clientX)-rect.left;
 const y=(e.touches?e.touches[0].clientY:e.clientY)-rect.top;
-dctx.beginPath();
-dctx.arc(x,y,18,0,Math.PI*2);
-dctx.fill();
+ctx.beginPath();
+ctx.arc(x,y,20,0,Math.PI*2);
+ctx.fill();
 }
 
-deliveryCanvas.addEventListener("mousedown",()=>dDraw=true);
-deliveryCanvas.addEventListener("mouseup",finishD);
-deliveryCanvas.addEventListener("mousemove",dScratch);
+canvas.addEventListener("mousedown",()=>isDrawing=true);
+canvas.addEventListener("mouseup",finishScratch);
+canvas.addEventListener("mousemove",scratch);
 
-deliveryCanvas.addEventListener("touchstart",()=>dDraw=true);
-deliveryCanvas.addEventListener("touchend",finishD);
-deliveryCanvas.addEventListener("touchmove",dScratch);
+canvas.addEventListener("touchstart",()=>isDrawing=true);
+canvas.addEventListener("touchend",finishScratch);
+canvas.addEventListener("touchmove",scratch);
 
-function finishD(){
-if(dDone) return;
-dDone=true;
-dDraw=false;
-document.getElementById("deliveryMessage").innerText=
-"ডেলিভারি চার্জ ডিস্কাউন্ট: "+deliveryDiscount+"%";
+function finishScratch(){
+if(scratched) return;
+scratched=true;
+isDrawing=false;
+
+const message="অভিনন্দন! আপনি "+discount+"% ডিসকাউন্ট পেয়েছেন। Methi Mixd powder এর নতুন দাম "+finalPrice+" টাকা।";
+
+document.getElementById("messageBox").innerText=message;
+document.getElementById("orderBtn").style.display="inline-block";
 }
-
 </script>
 
 </body>
