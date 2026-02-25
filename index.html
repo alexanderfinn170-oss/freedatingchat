@@ -13,14 +13,8 @@ text-align:center;
 background:#fff;
 }
 
-/* ✅ নতুন যোগ করা ছোট প্রোডাক্ট ছবি */
-.product-image{
-width:140px;
-margin-top:20px;
-}
-
 .offer-text{
-margin-top:20px;
+margin-top:30px;
 font-size:20px;
 font-weight:bold;
 color:black;
@@ -69,40 +63,10 @@ position:absolute;
 top:0;
 left:0;
 }
-
-.message{
-margin-top:20px;
-font-size:18px;
-font-weight:bold;
-color:black;
-}
-
-.order-btn{
-margin-top:15px;
-padding:14px 35px;
-background:red;
-color:white;
-font-size:18px;
-font-weight:bold;
-border:2px solid black;
-border-radius:10px;
-cursor:pointer;
-display:none;
-animation:pulse 1s infinite;
-}
-
-@keyframes pulse{
-0%{transform:scale(1);}
-50%{transform:scale(1.1);}
-100%{transform:scale(1);}
-}
 </style>
 </head>
 
 <body>
-
-<!-- ✅ নতুন যোগ করা প্রোডাক্ট মেইন ছবি -->
-<img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgAN-w08Gb55AD8HEwmiDiC_crYJ_EN0BLQfqn9gYgKKKnTMDMNog1PIwrfBNYyi4D6iMxbdwI6zNJzyaAtxSuwed3bzEoLBwe58VZ6EWFRwgtIRsqQlQdEYf9wHpjw_u9NtNcXgibLxJgu633h6Bf46fvpmBxP_Xm2aHSwPjZ2LjojMFIYAXkKhhzsg5o/s612/WhatsApp_Image_2026-02-24_at_12.56.43-removebg-preview.png" class="product-image">
 
 <div class="offer-text">
 রমজান উপলক্ষে Methi Mixd powder এ বিশেষ ডিসকাউন্ট!
@@ -117,9 +81,6 @@ animation:pulse 1s infinite;
 </div>
 <canvas id="scratchCanvas"></canvas>
 </div>
-
-<div class="message" id="messageBox"></div>
-<button class="order-btn" id="orderBtn">অর্ডার করতে চাই</button>
 </div>
 
 <script>
@@ -130,10 +91,7 @@ const container=document.querySelector(".card-container");
 canvas.width=container.offsetWidth;
 canvas.height=container.offsetHeight;
 
-const originalPrice=900;
 const discount=Math.floor(Math.random()*(50-25+1))+25;
-const finalPrice=Math.round(originalPrice-(originalPrice*discount/100));
-
 document.getElementById("discountText").innerText=discount+"% ডিসকাউন্ট";
 
 ctx.fillStyle="gray";
@@ -147,7 +105,7 @@ ctx.fillText("এখানে ঘষুন",canvas.width/2,canvas.height/2);
 ctx.globalCompositeOperation="destination-out";
 
 let isDrawing=false;
-let scratched=false;
+let voicePlayed=false;
 
 function scratch(e){
 if(!isDrawing) return;
@@ -168,40 +126,34 @@ canvas.addEventListener("touchend",finishScratch);
 canvas.addEventListener("touchmove",scratch);
 
 function finishScratch(){
-if(scratched) return;
-scratched=true;
 isDrawing=false;
 
-const message="অভিনন্দন! আপনি "+discount+"% ডিসকাউন্ট পেয়েছেন। Methi Mixd powder এর নতুন দাম "+finalPrice+" টাকা।";
+if(voicePlayed) return; // একবারই প্লে হবে
+voicePlayed=true;
 
-document.getElementById("messageBox").innerText=message;
-document.getElementById("orderBtn").style.display="inline-block";
-
-/* ✅ নিশ্চিত অটো ভয়েস সিস্টেম */
+/* 🔊 অটো ভয়েস যোগ করা হয়েছে */
 if ('speechSynthesis' in window) {
 
 function playVoice(){
 window.speechSynthesis.cancel();
 
-const speech = new SpeechSynthesisUtterance(message);
-speech.lang = "bn-BD";
-speech.volume = 1;
-speech.rate = 0.85;
-speech.pitch = 1;
+const speech=new SpeechSynthesisUtterance("অভিনন্দন আপনার ডিসকাউন্ট টি একটিভ হয়ে গেছে");
+speech.lang="bn-BD";
+speech.volume=1;   // Full volume
+speech.rate=0.9;
+speech.pitch=1;
 
 window.speechSynthesis.speak(speech);
 }
 
-/* কিছু ব্রাউজারে voice load হতে সময় লাগে */
-if (speechSynthesis.getVoices().length === 0) {
-speechSynthesis.onvoiceschanged = function() {
-playVoice();
-};
-} else {
+if(speechSynthesis.getVoices().length===0){
+speechSynthesis.onvoiceschanged=playVoice;
+}else{
 playVoice();
 }
 
 }
+
 }
 </script>
 
