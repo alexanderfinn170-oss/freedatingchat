@@ -1,108 +1,150 @@
-<!DOCTYPE html>
-<html lang="bn">
-<head>
-<meta charset="UTF-8">
-
-<!-- Disable Zoom -->
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-
-<title>Methi Mixd Powder Offer</title>
+<!-- ================= LUCKY WHEEL SECTION ================= -->
 
 <style>
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
+.wheel-container{
+    margin-top:40px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    flex-direction:column;
+    position:relative;
 }
 
-html, body{
-    overflow-x:hidden;
-    touch-action:manipulation;
-    font-family: Arial, sans-serif;
-    background:#ffffff; /* White Background */
-    text-align:center;
+#wheel{
+    width:320px;
+    height:320px;
+    border-radius:50%;
+    border:12px solid gold;
+    box-shadow:0 0 20px rgba(0,0,0,0.4);
+    position:relative;
+    overflow:hidden;
+    transition: transform 5s cubic-bezier(0.33, 1, 0.68, 1);
+    background:#111;
 }
 
-/* Top Product Image */
-.top-image{
-    width:220px;
+.bolt{
+    width:14px;
+    height:14px;
+    background:silver;
+    border-radius:50%;
+    position:absolute;
+    box-shadow: inset 0 0 3px #000;
+}
+
+.pointer{
+    width:0;
+    height:0;
+    border-left:15px solid transparent;
+    border-right:15px solid transparent;
+    border-bottom:30px solid red;
+    position:absolute;
+    top:-28px;
+    left:50%;
+    transform:translateX(-50%);
+}
+
+.spin-btn{
     margin-top:20px;
-    position:relative;
-    z-index:2;
-}
-
-/* Offer Box */
-.offer-box{
-    border:4px solid yellow;
-    width:90%;
-    max-width:500px;
-    margin:-20px auto 0;
-    padding:20px 15px;
-    border-radius:15px;
-    position:relative;
-    z-index:1;
-}
-
-/* Main Text */
-.offer-text{
-    color:white;
+    width:120px;
+    height:120px;
+    border-radius:50%;
+    background:radial-gradient(circle at 30% 30%, #fff, #ccc);
+    border:6px solid gold;
+    font-weight:bold;
     font-size:18px;
-    font-weight:bold;
-    line-height:1.5;
-    -webkit-text-stroke:1px black;
+    cursor:pointer;
+    box-shadow:0 5px 15px rgba(0,0,0,0.5);
 }
 
-/* Product Name */
-.product-name{
-    color:red;
-    font-size:26px;
-    font-weight:bold;
-    -webkit-text-stroke:2px yellow;
-}
-
-/* Bottom Text */
-.bottom-text{
-    margin-top:20px;
-    padding:0 15px;
-    color:white;
-    font-size:17px;
-    font-weight:bold;
-    line-height:1.6;
-    -webkit-text-stroke:1px black;
-}
-
-/* MRP Highlight */
-.mrp{
-    color:red;
-    -webkit-text-stroke:1px black;
+@media(max-width:480px){
+    #wheel{
+        width:280px;
+        height:280px;
+    }
 }
 </style>
 
-</head>
-<body>
-
-<!-- Main Top Image -->
-<img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgAN-w08Gb55AD8HEwmiDiC_crYJ_EN0BLQfqn9gYgKKKnTMDMNog1PIwrfBNYyi4D6iMxbdwI6zNJzyaAtxSuwed3bzEoLBwe58VZ6EWFRwgtIRsqQlQdEYf9wHpjw_u9NtNcXgibLxJgu633h6Bf46fvpmBxP_Xm2aHSwPjZ2LjojMFIYAXkKhhzsg5o/s612/WhatsApp_Image_2026-02-24_at_12.56.43-removebg-preview.png" alt="Product" class="top-image">
-
-<!-- Offer Box -->
-<div class="offer-box">
-    <div class="offer-text">
-        সবাইকে আসসালামু আলাইকুম, রামাদান উপলক্ষে 
-        <span class="product-name">
-            Methi Mixd powder
-        </span>
-        আমাদের সবচেয়ে হট প্রোডাক্টে ২০% থেকে ৬০% ডিসকাউন্ট দেওয়া হচ্ছে, 
-        আর ডিসকাউন্ট টি পাচ্ছেন লাকি স্পিনের মাধ্যমে.
-    </div>
+<div class="wheel-container">
+    <div class="pointer"></div>
+    <canvas id="wheel"></canvas>
+    <button class="spin-btn" onclick="spinWheel()">SPIN</button>
 </div>
 
-<!-- Bottom Text -->
-<div class="bottom-text">
-    অফারটি শুধু রমজান মাস উপলক্ষে. 
-    প্রোডাক্টটির আসল প্রাইস 
-    <span class="mrp">MRP-৯০০৳</span>. 
-    লাকি স্পিন ক্লিক করে আপনার ডিসকাউন্ট নিন.
-</div>
+<script>
+const canvas = document.getElementById("wheel");
+const ctx = canvas.getContext("2d");
 
-</body>
-</html>
+const size = 320;
+canvas.width = size;
+canvas.height = size;
+
+const segments = [];
+for(let i=20;i<=60;i++){
+    segments.push(i + "% OFF🔥");
+}
+
+const totalSegments = segments.length;
+const arc = (2 * Math.PI) / totalSegments;
+let rotation = 0;
+let spinning = false;
+
+function drawWheel(){
+    for(let i=0;i<totalSegments;i++){
+        const angle = i * arc;
+        ctx.beginPath();
+        ctx.fillStyle = i % 2 === 0 ? "#222" : "#444";
+        ctx.moveTo(size/2, size/2);
+        ctx.arc(size/2, size/2, size/2, angle, angle+arc);
+        ctx.fill();
+        ctx.save();
+        ctx.translate(size/2, size/2);
+        ctx.rotate(angle + arc/2);
+        ctx.fillStyle = "white";
+        ctx.font = "bold 12px Arial";
+        ctx.fillText(segments[i], size/4, 5);
+        ctx.restore();
+    }
+
+    // Golden center circle
+    ctx.beginPath();
+    ctx.arc(size/2, size/2, 40, 0, 2*Math.PI);
+    ctx.fillStyle="gold";
+    ctx.fill();
+}
+
+drawWheel();
+
+function spinWheel(){
+    if(spinning) return;
+    spinning = true;
+
+    // Only stop between 25% - 49%
+    const stopValue = Math.floor(Math.random() * (49 - 25 + 1)) + 25;
+    const index = stopValue - 20;
+
+    const stopAngle = (totalSegments - index) * arc;
+    const extraSpins = 10 * 2 * Math.PI;
+    rotation = extraSpins + stopAngle;
+
+    canvas.style.transition = "transform 5s cubic-bezier(0.33, 1, 0.68, 1)";
+    canvas.style.transform = "rotate(" + rotation + "rad)";
+
+    setTimeout(()=>{
+        spinning = false;
+        alert("🎉 Congratulations! You got " + stopValue + "% OFF🔥");
+    },5000);
+}
+
+// Metallic bolts
+const wheelContainer = document.querySelector(".wheel-container");
+for(let i=0;i<8;i++){
+    const bolt = document.createElement("div");
+    bolt.className="bolt";
+    const angle = (i/8)*2*Math.PI;
+    bolt.style.left = 160 + 150*Math.cos(angle) + "px";
+    bolt.style.top = 160 + 150*Math.sin(angle) + "px";
+    wheelContainer.appendChild(bolt);
+}
+</script>
+
+<!-- ================= END LUCKY WHEEL ================= -->
