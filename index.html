@@ -60,8 +60,8 @@ background:#ffcc00;
 color:#000;
 font-weight:bold;
 border-radius:50%;
-width:80px;
-height:80px;
+width:90px;
+height:90px;
 animation:pulse 1s infinite;
 }
 
@@ -77,7 +77,6 @@ font-size:18px;
 font-weight:bold;
 color:green;
 }
-
 </style>
 </head>
 
@@ -86,10 +85,10 @@ color:green;
 <!-- STEP 1 -->
 <div id="step1" class="section active">
 <h2>Methi Mixd Powder</h2>
-<p>পুরুষদের সকল গোপন সমস্যার হারবাল সমাধান।</p>
-<p>✔️ দ্রুত কার্যকরী</p>
-<p>✔️ সম্পূর্ণ হারবাল</p>
-<p>✔️ শক্তি ও স্ট্যামিনা বৃদ্ধি করে</p>
+<p>পুরুষদের সকল গোপন সমস্যার হারবাল সমাধান</p>
+<p>✔️ শক্তি বৃদ্ধি</p>
+<p>✔️ স্ট্যামিনা বৃদ্ধি</p>
+<p>✔️ দ্রুত ফলাফল</p>
 <h3>মূল্য: ৯০০ টাকা</h3>
 <button class="primary-btn" onclick="nextStep(1)">অর্ডার করতে চাই</button>
 </div>
@@ -105,16 +104,18 @@ color:green;
 
 <div id="result" class="result-box"></div>
 <div id="afterWin"></div>
-
 </div>
 
 <!-- STEP 3 -->
 <div id="step3" class="section">
 <h2>পেমেন্ট ডিটেলস</h2>
-<p>আপনার ডিসকাউন্ট প্রযোজ্য হয়েছে।</p>
-<p>বিকাশ / নগদ / রকেট নাম্বার: 01XXXXXXXXX</p>
-<p>পেমেন্ট করার পর আপনার নাম, ঠিকানা ও মোবাইল পাঠান।</p>
+<p>বিকাশ / নগদ: 01XXXXXXXXX</p>
+<p>পেমেন্ট করে স্ক্রিনশট পাঠান</p>
 </div>
+
+<!-- AUDIO FILES -->
+<audio id="spinSound" src="spin.mp3"></audio>
+<audio id="winSound" src="win.mp3"></audio>
 
 <script>
 
@@ -123,7 +124,7 @@ document.getElementById("step"+current).classList.remove("active");
 document.getElementById("step"+(current+1)).classList.add("active");
 }
 
-/* ---------------- Wheel Drawing ---------------- */
+/* ---------- Wheel Drawing ---------- */
 
 const canvas = document.getElementById("wheel");
 const ctx = canvas.getContext("2d");
@@ -150,17 +151,30 @@ ctx.fillText(segments[i],50,5);
 ctx.restore();
 }
 }
-
 drawWheel();
 
-/* ------------- Spin Logic ------------- */
+/* ---------- Spin Logic ---------- */
 
 let spinning = false;
+
+function speak(text){
+const speech = new SpeechSynthesisUtterance(text);
+speech.lang = "en-US";
+speech.rate = 1;
+speech.pitch = 1;
+window.speechSynthesis.speak(speech);
+}
 
 function spinWheel(){
 
 if(spinning) return;
 spinning = true;
+
+const spinSound = document.getElementById("spinSound");
+const winSound = document.getElementById("winSound");
+
+spinSound.currentTime = 0;
+spinSound.play();
 
 const allowedWins = [30,40,50,60];
 let winPercent = allowedWins[Math.floor(Math.random()*allowedWins.length)];
@@ -173,6 +187,11 @@ canvas.style.transform = "rotate("+rotateTo+"deg)";
 
 setTimeout(function(){
 
+spinSound.pause();
+spinSound.currentTime = 0;
+
+winSound.play();
+
 let discountAmount = (originalPrice * winPercent)/100;
 let finalPrice = originalPrice - discountAmount;
 
@@ -181,6 +200,9 @@ document.getElementById("result").innerHTML =
 
 document.getElementById("afterWin").innerHTML =
 '<br><button class="primary-btn" onclick="nextStep(2)">অর্ডার করতে চাই</button>';
+
+// Voice Announcement
+speak("Congratulations! You win "+winPercent+" percent discount");
 
 spinning = false;
 
