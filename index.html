@@ -3,219 +3,76 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Methi Mixd Powder</title>
+<title>Methi Mixd Powder Offer</title>
 
 <style>
 body{
-margin:0;
-font-family:Arial, sans-serif;
-text-align:center;
+    margin:0;
+    padding:0;
+    background:#6a0dad; /* Purple Background */
+    font-family: Arial, sans-serif;
+    text-align:center;
 }
 
-.section{
-display:none;
-padding:20px;
+/* Common big white text style */
+.big-white{
+    color:#ffffff;
+    font-size:40px;
+    font-weight:bold;
+    -webkit-text-stroke: 2px black;
+    margin:20px;
 }
 
-.active{
-display:block;
+/* Special Product Name Style (Always Same Everywhere) */
+.product-name{
+    color:#FFD700; /* Deep Yellow */
+    font-weight:bold;
+    -webkit-text-stroke: 2px black;
 }
 
-button{
-padding:12px 25px;
-border:none;
-border-radius:6px;
-font-size:16px;
-cursor:pointer;
+/* Price Full Line */
+.price-line{
+    font-size:45px;
+    font-weight:bold;
+    margin-top:30px;
 }
 
-.primary-btn{
-background:#e60000;
-color:#fff;
+/* MRP Special Pink Style */
+.mrp{
+    color:#ff1493; /* Deep Pink */
+    display:inline-block;
+    -webkit-text-stroke: 2px black;
+    animation: rotateMRP 2s linear infinite;
 }
 
-.wheel-container{
-position:relative;
-width:320px;
-height:320px;
-margin:20px auto;
-}
-
-#wheel{
-width:100%;
-height:100%;
-border-radius:50%;
-border:10px solid #222;
-transition:transform 4s cubic-bezier(.17,.67,.83,.67);
-}
-
-.spin-btn{
-position:absolute;
-top:50%;
-left:50%;
-transform:translate(-50%,-50%);
-background:#ffcc00;
-color:#000;
-font-weight:bold;
-border-radius:50%;
-width:100px;
-height:100px;
-font-size:16px;
-}
-
-.result-box{
-margin-top:20px;
-font-size:18px;
-font-weight:bold;
-color:green;
-}
-
-.warning{
-color:red;
-font-weight:bold;
-margin-top:10px;
+/* Rotate Animation */
+@keyframes rotateMRP{
+    0%{ transform: rotate(0deg); }
+    100%{ transform: rotate(360deg); }
 }
 </style>
 </head>
 
 <body>
 
-<!-- STEP 1 -->
-<div id="step1" class="section active">
-<h2>Methi Mixd Powder</h2>
-<h3>মূল্য: ৯০০ টাকা</h3>
-<button class="primary-btn" onclick="nextStep(1)">অর্ডার করতে চাই</button>
+<div class="big-white">
+সবাইকে আসসালামু আলাইকুম
 </div>
 
-<!-- STEP 2 -->
-<div id="step2" class="section">
-<h2>ভাগ্য যাচাই করে নিন</h2>
-
-<div class="wheel-container">
-<canvas id="wheel" width="320" height="320"></canvas>
-<button id="spinBtn" class="spin-btn" onclick="spinWheel()">ট্রাই লাক</button>
+<div class="big-white">
+রামাদান উপলক্ষে 
+<span class="product-name">Methi Mixd powder</span> 
+আমাদের সবচেয়ে হট প্রোডাক্টে ২০% থেকে ৬০% ডিসকাউন্ট দেওয়া হচ্ছে
 </div>
 
-<div id="result" class="result-box"></div>
-<div id="afterWin"></div>
-<div id="warning" class="warning"></div>
+<div class="big-white">
+আর ডিসকাউন্ট টি পাচ্ছেন লাকি স্পিনের মাধ্যমে
 </div>
 
-<!-- STEP 3 -->
-<div id="step3" class="section">
-<h2>পেমেন্ট ডিটেলস</h2>
-<p>বিকাশ: 01XXXXXXXXX</p>
+<div class="price-line">
+<span class="product-name">Methi Mixd powder</span> 
+<span class="mrp">MRP 900Tk</span>
 </div>
-
-<script>
-
-function nextStep(current){
-document.getElementById("step"+current).classList.remove("active");
-document.getElementById("step"+(current+1)).classList.add("active");
-}
-
-/* ===== Wheel Draw ===== */
-
-const canvas = document.getElementById("wheel");
-const ctx = canvas.getContext("2d");
-
-const segments = ["10%","20%","30%","40%","50%","60%","70%","80%","FREE"];
-const colors = ["#f44336","#9c27b0","#3f51b5","#03a9f4","#4caf50","#ff9800","#795548","#607d8b","#000"];
-const originalPrice = 900;
-
-function drawWheel(){
-let angle = 2 * Math.PI / segments.length;
-for(let i=0;i<segments.length;i++){
-ctx.beginPath();
-ctx.moveTo(160,160);
-ctx.arc(160,160,160,i*angle,(i+1)*angle);
-ctx.fillStyle = colors[i];
-ctx.fill();
-ctx.save();
-ctx.translate(160,160);
-ctx.rotate(i*angle + angle/2);
-ctx.fillStyle="#fff";
-ctx.font="bold 14px Arial";
-ctx.fillText(segments[i],60,5);
-ctx.restore();
-}
-}
-drawWheel();
-
-/* ===== Check Previous Spin ===== */
-
-function checkPreviousSpin(){
-let savedDate = localStorage.getItem("spinDate");
-let savedDiscount = localStorage.getItem("discount");
-let today = new Date().toDateString();
-
-if(savedDate === today){
-showPreviousOffer(savedDiscount);
-disableWheel();
-}
-}
-
-function showPreviousOffer(discount){
-let finalPrice = originalPrice - (originalPrice * discount / 100);
-
-document.getElementById("result").innerHTML =
-"আপনার আগের প্রাপ্ত লাকি ডিসকাউন্ট: "+discount+"%<br>আপনার মূল্য: "+finalPrice+" টাকা";
-
-document.getElementById("afterWin").innerHTML =
-'<br><button class="primary-btn" onclick="nextStep(2)">অর্ডার নাও</button>';
-}
-
-function disableWheel(){
-document.getElementById("spinBtn").onclick = function(){
-document.getElementById("warning").innerText =
-"You already Used Today's Lucky draw";
-};
-}
-
-/* ===== Spin Logic ===== */
-
-let spinning = false;
-
-function spinWheel(){
-
-if(spinning) return;
-spinning = true;
-
-const allowedWins = [30,40,50,60];
-let winPercent = allowedWins[Math.floor(Math.random()*allowedWins.length)];
-
-let index = segments.indexOf(winPercent+"%");
-let anglePerSegment = 360 / segments.length;
-let rotateTo = (360*5) + (360 - index * anglePerSegment - anglePerSegment/2);
-
-canvas.style.transform = "rotate("+rotateTo+"deg)";
-
-setTimeout(function(){
-
-let discountAmount = (originalPrice * winPercent)/100;
-let finalPrice = originalPrice - discountAmount;
-
-document.getElementById("result").innerHTML =
-"অভিনন্দন! আপনি "+winPercent+"% ডিসকাউন্ট পেয়েছেন<br>আপনার জন্য মূল্য: "+finalPrice+" টাকা";
-
-document.getElementById("afterWin").innerHTML =
-'<br><button class="primary-btn" onclick="nextStep(2)">অর্ডার নাও</button>';
-
-// Save in localStorage
-localStorage.setItem("discount", winPercent);
-localStorage.setItem("spinDate", new Date().toDateString());
-
-disableWheel();
-
-spinning = false;
-
-},4000);
-
-}
-
-checkPreviousSpin();
-
-</script>
 
 </body>
 </html>
