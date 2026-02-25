@@ -154,29 +154,6 @@ padding:15px;
 box-sizing:border-box;
 }
 
-/* ---------- XCV PAGE ---------- */
-
-.xcv-page{
-display:none;
-background:#f5f5f5;
-position:fixed;
-top:0;
-left:0;
-width:100%;
-height:100%;
-overflow-y:auto;
-z-index:11000;
-padding:20px;
-box-sizing:border-box;
-}
-
-.xcv-title{
-font-size:24px;
-font-weight:bold;
-margin-top:40px;
-color:darkgreen;
-}
-
 /* YouTube */
 
 .video-frame{
@@ -203,6 +180,8 @@ width:100%;
 height:100%;
 border:0;
 }
+
+/* Benefits */
 
 .benefit-title{
 margin-top:25px;
@@ -243,6 +222,29 @@ border-radius:10px;
 cursor:pointer;
 animation:pulse 1s infinite;
 }
+
+/* ---------- XCV PAGE ---------- */
+
+.xcv-page{
+display:none;
+background:#f5f5f5;
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+overflow-y:auto;
+z-index:11000;
+padding:20px;
+box-sizing:border-box;
+}
+
+.xcv-title{
+font-size:24px;
+font-weight:bold;
+margin-top:40px;
+color:darkgreen;
+}
 </style>
 </head>
 
@@ -255,7 +257,7 @@ animation:pulse 1s infinite;
 রমজান উপলক্ষে Methi Mixd powder এ বিশেষ ডিসকাউন্ট!
 </div>
 
-<!-- Scratch Section (ORIGINAL RESTORED) -->
+<!-- Scratch Section -->
 
 <div class="scratch-section">
 <div class="card-title">লাকি স্ক্র্যাচ কার্ড</div>
@@ -285,7 +287,14 @@ animation:pulse 1s infinite;
 <ul class="benefit-list">
 <li>✔ ৭ দিন সেবনে কোষ্ঠকাঠিন্যের সম্পূর্ণ উপশম</li>
 <li>✔ ৭ দিন সেবনে গ্যাস্ট্রিক সমস্যার কার্যকর সমাধান</li>
-<li>✔ বুক জ্বালাপোড়া নিয়ন্ত্রণ</li>
+<li>✔ বুক জ্বালাপোড়া ও অ্যাসিডিটি নিয়ন্ত্রণ</li>
+<li>✔ মুখের টক স্বাদ ও অস্বস্তি দূরীকরণ</li>
+<li>✔ পেট ফাঁপা ও অস্বস্তি থেকে মুক্তি</li>
+<li>✔ অরুচি ও খাবারে অনীহা দূরীকরণ</li>
+<li>✔ সুগার ও ডায়াবেটিস নিয়ন্ত্রণে সহায়ক</li>
+<li>✔ অতিরিক্ত চর্বি ও রক্তচাপ নিয়ন্ত্রণে সহায়ক</li>
+<li>✔ পেট পরিষ্কার ও কৃমিনাশে কার্যকর</li>
+<li>✔ শারীরিক শক্তি ও কর্মক্ষমতা বৃদ্ধিতে সহায়ক</li>
 </ul>
 
 <button class="second-order-btn" onclick="openXcvPage()">অর্ডার করবো</button>
@@ -295,22 +304,41 @@ animation:pulse 1s infinite;
 <!-- XCV Section -->
 <div class="xcv-page" id="xcvPage">
 <div class="xcv-title">xcv</div>
-<p>এটি আপনার নতুন সেকশন</p>
+<p>এখানে আপনার অর্ডার ফর্ম বা পরবর্তী কনটেন্ট থাকবে।</p>
 </div>
 
 <script>
 
-/* XCV OPEN */
-function openXcvPage(){
-document.getElementById("xcvPage").style.display="block";
-}
+/* Notification */
+const names=["আমিনুল ইসলাম","সোহেল রানা","মোস্তাফিজুর রহমান","রাশেদুল ইসলাম",
+"নাঈম হোসেন","তানভীর হাসান","ইমরান হোসেন","মেহেদী হাসান",
+"রুবেল মিয়া","জাহিদুল ইসলাম","নাসরিন আক্তার","সুমাইয়া আক্তার",
+"তানজিলা ইসলাম","মৌসুমি আক্তার","ফারহানা রহমান","রোকসানা বেগম",
+"শাহীন আক্তার","নাজমা খাতুন","সাবিনা ইয়াসমিন","আফরোজা পারভীন",
+"রিয়াজ উদ্দিন","হাবিবুর রহমান","শাহরিয়ার কবির","আরিফুল ইসলাম",
+"নাহিদ হাসান","লিপি আক্তার","শিউলি আক্তার","জেসমিন আক্তার",
+"মাহমুদুল হাসান","সাকিব আল হাসান"];
 
-/* Second Page */
+function showNotification(){
+const randomName=names[Math.floor(Math.random()*names.length)];
+const randomDiscount=Math.floor(Math.random()*(30-15+1))+15;
+const notification=document.createElement("div");
+notification.className="notification";
+notification.innerHTML=`<span class="name">${randomName}</span> 🎉 ${randomDiscount}% ডিসকাউন্ট পেয়ে অর্ডার করেছে`;
+document.body.appendChild(notification);
+setTimeout(()=>{notification.remove();},3000);
+}
+setInterval(showNotification,3000);
+
 function openSecondPage(){
 document.getElementById("secondPage").style.display="block";
 }
 
-/* Scratch System ORIGINAL */
+function openXcvPage(){
+document.getElementById("xcvPage").style.display="block";
+}
+
+/* Scratch */
 
 const canvas=document.getElementById("scratchCanvas");
 const ctx=canvas.getContext("2d");
@@ -361,7 +389,7 @@ if(scratched) return;
 scratched=true;
 isDrawing=false;
 
-const message="অভিনন্দন! আপনি "+discount+"% ডিসকাউন্ট পেয়েছেন। নতুন দাম "+finalPrice+" টাকা।";
+const message="অভিনন্দন! আপনি "+discount+"% ডিসকাউন্ট পেয়েছেন। Methi Mixd powder এর নতুন দাম "+finalPrice+" টাকা।";
 
 document.getElementById("messageBox").innerText=message;
 document.getElementById("orderBtn").style.display="inline-block";
