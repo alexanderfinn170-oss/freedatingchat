@@ -86,9 +86,12 @@ box-sizing:border-box;
 
 .video-frame{
 width:100%;
+max-width:100%;
+margin:0 auto;
 border:4px solid blue;
 border-radius:8px;
 overflow:hidden;
+box-sizing:border-box;
 }
 
 .video-wrapper{
@@ -112,10 +115,11 @@ border:0;
 margin-top:25px;
 font-size:22px;
 font-weight:bold;
+color:black;
 background:yellow;
 display:inline-block;
 padding:8px 20px;
-border:2px solid red;
+border:3px solid red;
 }
 
 .benefit-list{
@@ -126,9 +130,14 @@ margin-left:auto;
 margin-right:auto;
 font-size:17px;
 line-height:1.8;
+font-weight:500;
 }
 
-/* ---------- Delivery Section ---------- */
+.benefit-list li{
+margin-bottom:10px;
+}
+
+/* ----------- NEW DELIVERY SECTION ----------- */
 
 .delivery-highlight{
 margin-top:30px;
@@ -136,7 +145,7 @@ font-size:18px;
 font-weight:bold;
 background:yellow;
 display:inline-block;
-padding:6px 15px;
+padding:8px 18px;
 border-top:2px solid green;
 }
 
@@ -145,10 +154,8 @@ margin-top:15px;
 font-size:18px;
 font-weight:bold;
 color:black;
--webkit-text-stroke:0.5px yellow;
+-webkit-text-stroke:0.6px yellow;
 }
-
-/* Delivery Scratch Card */
 
 .delivery-card{
 position:relative;
@@ -184,12 +191,21 @@ left:0;
 .delivery-message{
 margin-top:15px;
 font-weight:bold;
+font-size:16px;
 }
 
 /* ---------- Main Scratch ---------- */
 
 .scratch-section{
 margin-top:40px;
+}
+
+.card-title{
+font-size:22px;
+font-weight:bold;
+color:black;
+-webkit-text-stroke:1px darkgreen;
+margin-bottom:10px;
 }
 
 .card-container{
@@ -227,6 +243,7 @@ left:0;
 margin-top:20px;
 font-size:18px;
 font-weight:bold;
+color:black;
 }
 
 .order-btn{
@@ -261,6 +278,8 @@ animation:pulse 1s infinite;
 </div>
 
 <div class="scratch-section">
+<div class="card-title">লাকি স্ক্র্যাচ কার্ড</div>
+
 <div class="card-container">
 <div class="real-card">
 <div class="discount-text" id="discountText"></div>
@@ -273,7 +292,6 @@ animation:pulse 1s infinite;
 </div>
 
 <!-- Second Page -->
-
 <div class="second-page" id="secondPage">
 
 <div class="video-frame">
@@ -285,17 +303,19 @@ animation:pulse 1s infinite;
 <div class="benefit-title">৭ দিন সেবনের উপকারিতা</div>
 
 <ul class="benefit-list">
-<li>✔ কোষ্ঠকাঠিন্য নিরাময়</li>
-<li>✔ গ্যাস্ট্রিক সমাধান</li>
-<li>✔ বুক জ্বালাপোড়া কমানো</li>
-<li>✔ মুখের টক স্বাদ দূর</li>
-<li>✔ পেট ফাঁপা সমাধান</li>
-<li>✔ অরুচি দূরীকরণ</li>
-<li>✔ সুগার নিয়ন্ত্রণে সহায়ক</li>
-<li>✔ চর্বি ও রক্তচাপ নিয়ন্ত্রণ</li>
-<li>✔ পেট পরিষ্কার</li>
-<li>✔ শক্তি বৃদ্ধি</li>
+<li>✔ ৭ দিন সেবনে কোষ্ঠকাঠিন্যের সম্পূর্ণ উপশম</li>
+<li>✔ ৭ দিন সেবনে গ্যাস্ট্রিক সমস্যার কার্যকর সমাধান</li>
+<li>✔ বুক জ্বালাপোড়া ও অ্যাসিডিটি নিয়ন্ত্রণ</li>
+<li>✔ মুখের টক স্বাদ ও অস্বস্তি দূরীকরণ</li>
+<li>✔ পেট ফাঁপা ও অস্বস্তি থেকে মুক্তি</li>
+<li>✔ অরুচি ও খাবারে অনীহা দূরীকরণ</li>
+<li>✔ সুগার ও ডায়াবেটিস নিয়ন্ত্রণে সহায়ক</li>
+<li>✔ অতিরিক্ত চর্বি ও রক্তচাপ নিয়ন্ত্রণে সহায়ক</li>
+<li>✔ পেট পরিষ্কার ও কৃমিনাশে কার্যকর</li>
+<li>✔ শারীরিক শক্তি ও কর্মক্ষমতা বৃদ্ধিতে সহায়ক</li>
 </ul>
+
+<!-- ✅ Added Delivery Section -->
 
 <div class="delivery-highlight">
 পুরো বাংলাদেশে ক্যাশ অন ডেলিভারি 🚛 ডেলিভারি চার্জ ১২০৳
@@ -318,17 +338,16 @@ animation:pulse 1s infinite;
 
 <script>
 
-/* ---------- Delivery Scratch ---------- */
-
+/* Delivery Scratch */
 const deliveryCanvas=document.getElementById("deliveryCanvas");
 const dctx=deliveryCanvas.getContext("2d");
-const deliveryCard=document.querySelector(".delivery-card");
+const dContainer=document.querySelector(".delivery-card");
 
-deliveryCanvas.width=deliveryCard.offsetWidth;
-deliveryCanvas.height=deliveryCard.offsetHeight;
+deliveryCanvas.width=dContainer.offsetWidth;
+deliveryCanvas.height=dContainer.offsetHeight;
 
 const deliveryDiscount=Math.floor(Math.random()*(25-10+1))+10;
-document.getElementById("deliveryDiscount").innerText=deliveryDiscount+"% OFF";
+document.getElementById("deliveryDiscount").innerText=deliveryDiscount+"%";
 
 dctx.fillStyle="skyblue";
 dctx.fillRect(0,0,deliveryCanvas.width,deliveryCanvas.height);
@@ -341,9 +360,9 @@ dctx.fillText("এখানে ঘোষণ",deliveryCanvas.width/2,deliveryCanv
 dctx.globalCompositeOperation="destination-out";
 
 let dDraw=false;
-let dScratched=false;
+let dDone=false;
 
-function deliveryScratch(e){
+function dScratch(e){
 if(!dDraw) return;
 const rect=deliveryCanvas.getBoundingClientRect();
 const x=(e.touches?e.touches[0].clientX:e.clientX)-rect.left;
@@ -354,24 +373,19 @@ dctx.fill();
 }
 
 deliveryCanvas.addEventListener("mousedown",()=>dDraw=true);
-deliveryCanvas.addEventListener("mouseup",finishDelivery);
-deliveryCanvas.addEventListener("mousemove",deliveryScratch);
+deliveryCanvas.addEventListener("mouseup",finishD);
+deliveryCanvas.addEventListener("mousemove",dScratch);
 
 deliveryCanvas.addEventListener("touchstart",()=>dDraw=true);
-deliveryCanvas.addEventListener("touchend",finishDelivery);
-deliveryCanvas.addEventListener("touchmove",deliveryScratch);
+deliveryCanvas.addEventListener("touchend",finishD);
+deliveryCanvas.addEventListener("touchmove",dScratch);
 
-function finishDelivery(){
-if(dScratched) return;
-dScratched=true;
+function finishD(){
+if(dDone) return;
+dDone=true;
 dDraw=false;
-
 document.getElementById("deliveryMessage").innerText=
-"ডেলিভারি চার্জ ডিসকাউন্ট: "+deliveryDiscount+"%";
-}
-
-function openSecondPage(){
-document.getElementById("secondPage").style.display="block";
+"ডেলিভারি চার্জ ডিস্কাউন্ট: "+deliveryDiscount+"%";
 }
 
 </script>
