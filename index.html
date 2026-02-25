@@ -3,214 +3,332 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>শুদ্ধ প্রাকৃতিক মধু</title>
-
-<!-- Facebook Pixel Code -->
-<script>
-  !function(f,b,e,v,n,t,s)
-  {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-  n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-  if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-  n.queue=[];t=b.createElement(e);t.async=!0;
-  t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)
-  }(window, document,'script','https://connect.facebook.net/en_US/fbevents.js');
-  fbq('init', 'YOUR_PIXEL_ID'); 
-  fbq('track', 'PageView');
-</script>
-<noscript>
-  <img height="1" width="1" style="display:none"
-  src="https://www.facebook.com/tr?id=YOUR_PIXEL_ID&ev=PageView&noscript=1"/>
-</noscript>
+<title>Methi Mixd Powder Offer</title>
 
 <style>
-body {margin:0;font-family:Arial,Helvetica,sans-serif;background:#fff8e1;color:#222;line-height:1.6;}
-.wrapper {max-width:900px;margin:auto;background:white;padding-bottom:50px;}
-.header {background:#ff9800;color:white;text-align:center;padding:40px 20px; position: relative;}
-.header img.logo {width:100px; height:100px; border-radius:50%; object-fit:cover; display:block; margin:0 auto 20px;}
-.header h1 {font-size:36px;font-weight:bold;margin:0;}
-.section {padding:40px 20px;}
-.slider {position:relative;width:100%;height:400px;overflow:hidden;margin-bottom:30px;}
-.slide {position:absolute;width:100%;height:100%;opacity:0;transition:opacity 1s ease-in-out;}
-.slide img {width:100%;height:100%;object-fit:cover;border-radius:10px;}
-.active {opacity:1;}
-.price-box {background:#fff3e0;border:2px dashed #ff9800;padding:25px;text-align:center;margin:20px 0;border-radius:10px;}
-.old-price {text-decoration:line-through;color:gray;font-size:20px;}
-.new-price {color:#e65100;font-size:28px;font-weight:bold;margin-top:10px;}
-.btn {display:block;width:60%;margin:20px auto;background:#ff9800;color:white;text-align:center;padding:20px;font-size:22px;text-decoration:none;border-radius:10px;transition:0.3s;}
-.btn:hover {background:#ffb74d;transform:scale(1.05);}
-.features li {margin:12px 0;font-size:18px;}
-.product-section {margin-bottom:50px;}
-.product-section img {width:100%;border-radius:10px;margin-bottom:15px;}
-.product-section h3 {font-size:24px;margin-bottom:10px;}
-.product-section p {font-size:16px;}
-.video-section iframe {width:100%;height:450px;border:none;border-radius:10px;margin-bottom:40px;}
-.order-box {background:#fff3e0;padding:40px 20px;border:1px solid #ffb74d;border-radius:10px;margin-top:50px;}
-input, select, textarea {width:100%;padding:15px;margin:10px 0;border:1px solid #ccc;border-radius:8px;font-size:16px;}
-button {width:100%;padding:18px;background:#f57c00;color:white;border:none;font-size:20px;border-radius:10px;cursor:pointer;transition:0.3s;}
-button:hover {background:#ff9800;}
-.footer {background:#ff6f00;color:white;text-align:center;padding:25px;font-size:14px;}
-.success-message {display:none;background:#d4edda;color:#155724;padding:15px;margin-top:10px;border-radius:5px;font-size:16px;}
+html,body{
+margin:0;
+padding:0;
+background:#4b0082;
+font-family:Arial,sans-serif;
+text-align:center;
+overflow-x:hidden;
+}
 
-/* FLOATING WHATSAPP & MESSENGER BUTTONS */
-.float-buttons{
+/* Notification */
+.live-notification{
 position:fixed;
-bottom:25px;
-right:25px;
+top:15px;
+right:-350px;
+background:rgba(0,0,0,0.8);
+color:#fff;
+padding:8px 14px;
+border-radius:8px;
+font-size:12px;
+font-weight:600;
+z-index:9999;
+max-width:220px;
+transition:right 0.6s ease, opacity 0.4s ease;
+opacity:0;
+}
+.live-notification.show{ right:15px; opacity:1; }
+
+.outline-text{ color:#fff; font-weight:bold; -webkit-text-stroke:0.6px black; }
+.product-name{ color:#ff2d2d; -webkit-text-stroke:0.6px black; font-weight:bold; }
+
+.product-wrapper{ width:100%; position:relative; height:200px; overflow:hidden; }
+.product-img{ width:230px; position:absolute; bottom:0; animation: moveLeftRight 6s ease-in-out infinite alternate; }
+@keyframes moveLeftRight{ 0%{left:10%;} 100%{left:55%;} }
+
+.offer-box{
+margin:0 auto 15px auto;
+width:90%;
+max-width:500px;
+padding:15px;
+background:#4b0082;
+border:2px solid yellow;
+border-radius:10px;
+}
+
+.big-text{ font-size:22px; margin:10px 0; }
+
+.scratch-container{ position:relative; width:340px; height:240px; margin:10px auto; }
+#scratchCanvas{
+position:absolute;
+top:0;
+left:0;
+cursor:pointer;
+border-radius:15px;
+border:2px solid yellow;
+}
+.scratch-content{
+position:absolute;
+width:100%;
+height:100%;
+background:white;
+border-radius:15px;
 display:flex;
 flex-direction:column;
-gap:15px;
-z-index:999;
-}
-.float-buttons a{
-width:50px;
-height:50px;
-border-radius:50%;
-display:flex;
 align-items:center;
 justify-content:center;
-background:#25d366; /* default green for WhatsApp */
-box-shadow:0 5px 15px rgba(0,0,0,0.2);
-transition:transform 0.3s ease;
+padding:10px;
+box-sizing:border-box;
 }
-.float-buttons a.messenger{
-background:#0084ff; /* Messenger blue */
+.scratch-content img{ width:120px; margin-bottom:10px; }
+
+.result-text{ margin-top:15px; font-size:20px; }
+
+.order-btn{
+display:none;
+margin:20px auto;
+padding:15px 35px;
+background:red;
+color:white;
+font-size:20px;
+font-weight:bold;
+border:none;
+border-radius:40px;
+cursor:pointer;
+animation:pulseMove 1.5s infinite;
 }
-.float-buttons a img{
-width:24px;
-height:24px;
+@keyframes pulseMove{
+0%{transform:scale(1);}
+50%{transform:scale(1.1);}
+100%{transform:scale(1);}
 }
-.float-buttons a:hover{
-transform:scale(1.2) rotate(-10deg);
-box-shadow:0 10px 25px rgba(0,0,0,0.3);
+
+/* ORDER PAGE */
+#orderPage{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:#4b0082;
+display:none;
+z-index:99999;
+overflow-y:auto;
+padding:20px;
+box-sizing:border-box;
+text-align:left;
+}
+
+.order-heading{
+background:yellow;
+padding:8px;
+display:inline-block;
+font-size:22px;
+font-weight:bold;
+}
+
+.red-black{ color:red; -webkit-text-stroke:0.6px black; }
+.green-black{ color:#00ff00; -webkit-text-stroke:0.6px black; }
+.white-black{ color:white; -webkit-text-stroke:0.6px black; }
+
+.benefits div{ margin:6px 0; }
+
+.hadis{
+background:yellow;
+color:red;
+-webkit-text-stroke:0.6px black;
+padding:8px;
+display:inline-block;
+margin-top:15px;
+font-weight:bold;
+}
+
+.hadis-text{
+color:white;
+-webkit-text-stroke:0.5px black;
+margin-top:8px;
+font-size:16px;
+max-width:500px;
+}
+
+.start-order-btn{
+display:block;
+margin:25px auto;
+padding:15px 35px;
+background:red;
+color:white;
+font-size:20px;
+font-weight:bold;
+border:none;
+border-radius:40px;
+cursor:pointer;
+animation:pulseMove 1.5s infinite;
+}
+
+#afterClick{ display:none; margin-top:25px; }
+
+.billing-box{
+margin-top:15px;
+background:#e6ccff;
+border:2px solid darkred;
+padding:15px;
+}
+
+.qty-section{ display:flex; align-items:center; gap:10px; margin-top:10px; }
+
+.qty-btn{ padding:5px 10px; font-weight:bold; cursor:pointer; }
+
+.total-text{ margin-top:10px; font-size:18px; }
+
+.input-red{
+width:100%;
+padding:8px;
+margin-top:8px;
+border:1px solid red;
+}
+
+.confirm-btn{
+margin-top:12px;
+width:100%;
+padding:14px;
+background:green;
+color:white;
+border:2px solid red;
+font-size:18px;
+cursor:pointer;
+animation:pulseMove 1.5s infinite;
+transition:0.2s;
+}
+.confirm-btn:active{ transform:scale(0.85); }
+
+#thankYou{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:#fff9c4;
+display:none;
+align-items:center;
+justify-content:center;
+text-align:center;
+padding:20px;
+}
+
+.thank-text{
+color:white;
+-webkit-text-stroke:0.6px black;
+font-size:22px;
 }
 </style>
 </head>
+
 <body>
 
-<div class="wrapper">
+<div id="liveNotification" class="live-notification"></div>
 
-<!-- Header / Hero -->
-<div class="header">
-<img class="logo" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgCKGQ-_PqJ7DiBAEVvxt4cWozC0eEx3tyS6iCwErDkbLB7DCoBJVdqo7u5by2_5T_FOWQANgrPQF72FbbWClRaovOda1dKjgUQY4ExomHz5VGApg_H3ozbJZx8po1C3kT4vpeM_BJ7upGpmEiIkmVD2VPwC91OHaXnm8XczYn8ijCQSkicJ2PVrarbFG4/s225/download%20(2).jfif" alt="কোম্পানি লোগো">
-<h1>শুদ্ধ প্রাকৃতিক মধু – সরাসরি মৌচাষী থেকে</h1>
+<div class="product-wrapper">
+<img id="mainProduct" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgAN-w08Gb55AD8HEwmiDiC_crYJ_EN0BLQfqn9gYgKKKnTMDMNog1PIwrfBNYyi4D6iMxbdwI6zNJzyaAtxSuwed3bzEoLBwe58VZ6EWFRwgtIRsqQlQdEYf9wHpjw_u9NtNcXgibLxJgu633h6Bf46fvpmBxP_Xm2aHSwPjZ2LjojMFIYAXkKhhzsg5o/s612/WhatsApp_Image_2026-02-24_at_12.56.43-removebg-preview.png" class="product-img">
 </div>
 
-<!-- Hero Slider -->
-<div class="slider">
-    <div class="slide active"><img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjEexcfHyBg3SZdfUj4FBYNDCE1f9dnWJN7ra8PyF3x7P9AcTraxf-rWCQk4CQAsU5H2EvcByNxXxZAxsttY_VZWs5AMwkcdsluLwPT35k0y5IXpm4SwAwPcoORwnSD9-hcs0kBbbNGOqbDFfecd7Ocb4ueroAQcDvNGB8aXf3jc-BqRMiVRYfHrfFRRpk/s225/images%20(2).jfif" alt="Honey Image 1"></div>
-    <div class="slide"><img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjEexcfHyBg3SZdfUj4FBYNDCE1f9dnWJN7ra8PyF3x7P9AcTraxf-rWCQk4CQAsU5H2EvcByNxXxZAxsttY_VZWs5AMwkcdsluLwPT35k0y5IXpm4SwAwPcoORwnSD9-hcs0kBbbNGOqbDFfecd7Ocb4ueroAQcDvNGB8aXf3jc-BqRMiVRYfHrfFRRpk/s225/images%20(2).jfif" alt="Honey Image 2"></div>
-    <div class="slide"><img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjEexcfHyBg3SZdfUj4FBYNDCE1f9dnWJN7ra8PyF3x7P9AcTraxf-rWCQk4CQAsU5H2EvcByNxXxZAxsttY_VZWs5AMwkcdsluLwPT35k0y5IXpm4SwAwPcoORwnSD9-hcs0kBbbNGOqbDFfecd7Ocb4ueroAQcDvNGB8aXf3jc-BqRMiVRYfHrfFRRpk/s225/images%20(2).jfif" alt="Honey Image 3"></div>
+<div class="offer-box outline-text">
+আমাদের <span class="product-name">Methi Mixd powder</span> 999tk রমজান উপলক্ষে লাকি কুপন দিচ্ছি।
 </div>
 
-<!-- Price Section -->
-<div class="section price-box">
-<p class="old-price">আগের মূল্য: ৳ ১২০০ / ৫০০ গ্রাম</p>
-<p class="new-price">অফার মূল্য: ৳ ৮৯০ / ৫০০ গ্রাম</p>
-<a href="#order" class="btn">এখনই অর্ডার করুন</a>
+<div class="scratch-container">
+<div class="scratch-content outline-text">
+<img id="cardProduct">
+<div id="discountText"></div>
+</div>
+<canvas id="scratchCanvas" width="340" height="240"></canvas>
 </div>
 
-<!-- Features Section -->
-<div class="section">
-<h2 style="font-size:30px; margin-bottom:20px;">কেন আমাদের মধু কিনবেন:</h2>
-<ul class="features">
-<li>১০০% প্রাকৃতিক ও বিশুদ্ধ মধু</li>
-<li>কোন কৃত্রিম উপাদান নেই</li>
-<li>শরীরের রোগ প্রতিরোধ ক্ষমতা বৃদ্ধি করে</li>
-<li>গ্লুকোজের সঠিক মাত্রা বজায় রাখে</li>
-<li>ডেলিভারি সরাসরি বাড়ি পর্যন্ত</li>
-</ul>
-<a href="#order" class="btn">অর্ডার করুন</a>
+<div class="result-text outline-text" id="finalResult"></div>
+
+<button class="order-btn" id="orderBtn">ডিসকাউন্ট অর্ডার করতে চাই</button>
+
+<!-- ORDER PAGE -->
+<div id="orderPage">
+
+<div class="order-heading">
+<span class="red-black">Methi Mixd powder</span>
+<span class="green-black"> সাত দিন সেবনের উপকারিতা:</span>
 </div>
 
-<!-- Product Images + Details -->
-<div class="section">
-<div class="product-section">
-<img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjEexcfHyBg3SZdfUj4FBYNDCE1f9dnWJN7ra8PyF3x7P9AcTraxf-rWCQk4CQAsU5H2EvcByNxXxZAxsttY_VZWs5AMwkcdsluLwPT35k0y5IXpm4SwAwPcoORwnSD9-hcs0kBbbNGOqbDFfecd7Ocb4ueroAQcDvNGB8aXf3jc-BqRMiVRYfHrfFRRpk/s225/images%20(2).jfif" alt="Honey Product 1">
-<h3>রানী মৌচাষের মধু</h3>
-<p>বিশুদ্ধ রানী মৌচাষ থেকে সংগ্রহ করা মধু, ৫০০ গ্রাম প্যাক। স্বাস্থ্য ও শক্তি বৃদ্ধি করে।</p>
-<a href="#order" class="btn">অর্ডার করুন</a>
+<div class="benefits white-black">
+<div>*৭ দিন সেবনে কোষ্ঠকাঠিন্যের নিরাময়</div>
 </div>
 
-<div class="product-section">
-<img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjEexcfHyBg3SZdfUj4FBYNDCE1f9dnWJN7ra8PyF3x7P9AcTraxf-rWCQk4CQAsU5H2EvcByNxXxZAxsttY_VZWs5AMwkcdsluLwPT35k0y5IXpm4SwAwPcoORwnSD9-hcs0kBbbNGOqbDFfecd7Ocb4ueroAQcDvNGB8aXf3jc-BqRMiVRYfHrfFRRpk/s225/images%20(2).jfif" alt="Honey Product 2">
-<h3>ফুলের মধু</h3>
-<p>ফুলের মধু যা পুষ্টিগুণে সমৃদ্ধ এবং প্রতিদিনের খাবারের সাথে সহজে খাওয়া যায়।</p>
-<a href="#order" class="btn">অর্ডার করুন</a>
+<div class="hadis">হাদিসে বর্ণিত আছে</div>
+
+<div class="hadis-text">
+রাসূলুল্লাহ (সা.) বলেছেন, "আমার উম্মতরা যদি জানত মেথিতে কি উপকার আছে তবে তারা সোনার বদলে হলেও এটা কিনে খেত"
 </div>
 
-<div class="product-section">
-<img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjEexcfHyBg3SZdfUj4FBYNDCE1f9dnWJN7ra8PyF3x7P9AcTraxf-rWCQk4CQAsU5H2EvcByNxXxZAxsttY_VZWs5AMwkcdsluLwPT35k0y5IXpm4SwAwPcoORwnSD9-hcs0kBbbNGOqbDFfecd7Ocb4ueroAQcDvNGB8aXf3jc-BqRMiVRYfHrfFRRpk/s225/images%20(2).jfif" alt="Honey Product 3">
-<h3>অরগ্যানিক হানী</h3>
-<p>100% অরগ্যানিক, স্বাভাবিক স্বাদ ও পুষ্টিগুণ বজায় রাখে।</p>
-<a href="#order" class="btn">অর্ডার করুন</a>
-</div>
-</div>
+<button class="start-order-btn" id="startOrder">অর্ডার করতে চাই</button>
 
-<!-- Video Section (Fixed) -->
-<div class="section video-section">
-<h2 style="font-size:28px; margin-bottom:20px;">পণ্যের ভিডিও ডিটেইলস</h2>
-<iframe src="https://www.youtube.com/embed/qV-iQLGW-kY" allowfullscreen></iframe>
-<a href="#order" class="btn">এখনই অর্ডার করুন</a>
+<div id="afterClick">
+
+<div class="billing-box">
+
+<div class="qty-section">
+<span id="qty">1</span>
+<button class="qty-btn" onclick="changeQty(1)">+</button>
+<button class="qty-btn" onclick="changeQty(-1)">-</button>
 </div>
 
-<!-- Order Form -->
-<div class="section order-box" id="order">
-<h2 style="font-size:28px; margin-bottom:20px;">অর্ডার ফর্ম</h2>
+<div class="total-text" id="totalPrice"></div>
 
-<form action="https://formspree.io/f/mykddozr" method="POST">
-<input type="text" name="name" placeholder="আপনার নাম লিখুন" required>
-<input type="tel" name="phone" placeholder="মোবাইল নম্বর" required>
-<input type="text" name="address" placeholder="সম্পূর্ণ ঠিকানা" required>
+<input class="input-red" id="name" placeholder="আপনার নাম">
+<input class="input-red" id="address" placeholder="আপনার ঠিকানা">
+<input class="input-red" id="mobile" placeholder="আপনার মোবাইল নাম্বার">
 
-<select name="package" required>
-<option value="">প্যাকেজ নির্বাচন করুন</option>
-<option>১ প্যাক - ৳৮৯০ / ৫০০ গ্রাম</option>
-<option>২ প্যাক - ৳১৭০০ / ১ কেজি</option>
-</select>
+<button class="confirm-btn" id="confirmBtn">কনফার্ম করুন</button>
 
-<button type="submit">অর্ডার কনফার্ম করুন</button>
-</form>
-
-<div class="success-message" id="successMsg">
-ধন্যবাদ! আপনার অর্ডার সফলভাবে সাবমিট হয়েছে।
+</div>
 </div>
 </div>
 
-<div class="footer">
-© 2026 শুদ্ধ প্রাকৃতিক মধু | সর্বস্বত্ব সংরক্ষিত
+<div id="thankYou">
+<div class="thank-text">
+আপনাকে ধন্যবাদ আপনার অর্ডারটি সফলতার সাথে সাবমিট হয়েছে,<br>
+আমাদের প্রতিনিধি টিম আপনার সাথে অতি দ্রুত যোগাযোগ করবে ইনশাল্লাহ
 </div>
-
-</div>
-
-<!-- FLOATING WHATSAPP & MESSENGER BUTTONS -->
-<div class="float-buttons">
-<a href="YOUR_WHATSAPP_LINK_HERE" target="_blank">
-<img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp">
-</a>
-<a href="YOUR_MESSENGER_LINK_HERE" class="messenger" target="_blank">
-<img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEh8riD6IZjR24jLMYlWyin3OPOTgxKaeT8siEuSI53h84XtSC6fBImvDlBYw0H2K0sA84CH2y_1D0B6Jr1ot9o-SZsRWKdeoX0A5KDqELgdSyCOQKZdPYqkhBltAccsl789SkoS69TDe7X5JwBZa9vnid6MpMXpH9l4V1WC8uDOMQ1naBF4dfq0MJn_ukU/s960/Facebook_Messenger_logo_2020.svg.png" alt="Messenger">
-</a>
 </div>
 
 <script>
-// Hero Slider
-let slides = document.querySelectorAll(".slide");
-let index = 0;
-setInterval(() => {
-slides[index].classList.remove("active");
-index = (index + 1) % slides.length;
-slides[index].classList.add("active");
-}, 4000);
+let discount=Math.floor(Math.random()*21)+30;
+let originalPrice=999;
+let qty=1;
 
-// Form Submit Success Message + FB Pixel Lead Event
-document.querySelector("form").addEventListener("submit", function(e){
-setTimeout(function(){
-document.getElementById("successMsg").style.display = "block";
-}, 500);
+document.getElementById("discountText").innerHTML="আপনি পেয়েছেন "+discount+"% ডিসকাউন্ট";
 
-// Facebook Pixel Lead Event
-fbq('track', 'Lead');
-});
+function changeQty(v){
+qty+=v;
+if(qty<1) qty=1;
+updateTotal();
+}
+
+function updateTotal(){
+let total=originalPrice*qty;
+let final=Math.round(total-(total*discount/100));
+document.getElementById("qty").innerText=qty;
+document.getElementById("totalPrice").innerText="মোট দাম: "+final+" টাকা";
+document.getElementById("confirmBtn").innerText=final+" টাকা কনফার্ম করুন";
+}
+
+updateTotal();
+
+document.getElementById("orderBtn").onclick=function(){
+document.getElementById("orderPage").style.display="block";
+};
+
+document.getElementById("startOrder").onclick=function(){
+document.getElementById("afterClick").style.display="block";
+};
+
+document.getElementById("confirmBtn").onclick=function(){
+let btn=this;
+btn.style.transform="scale(0.85)";
+setTimeout(()=>{
+document.getElementById("orderPage").style.display="none";
+document.getElementById("thankYou").style.display="flex";
+},300);
+};
 </script>
 
 </body>
