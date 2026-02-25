@@ -66,6 +66,78 @@ font-weight:bold;
 100%{transform:translateX(120%);}
 }
 
+/* ---------- Scratch ---------- */
+
+.scratch-section{
+margin-top:40px;
+}
+
+.card-title{
+font-size:22px;
+font-weight:bold;
+color:black;
+-webkit-text-stroke:1px darkgreen;
+margin-bottom:10px;
+}
+
+.card-container{
+position:relative;
+width:320px;
+height:180px;
+margin:auto;
+border:5px solid red;
+border-radius:15px;
+overflow:hidden;
+}
+
+.real-card{
+width:100%;
+height:100%;
+background:black;
+display:flex;
+justify-content:center;
+align-items:center;
+}
+
+.discount-text{
+color:yellow;
+font-size:25px;
+font-weight:bold;
+}
+
+canvas{
+position:absolute;
+top:0;
+left:0;
+}
+
+.message{
+margin-top:20px;
+font-size:18px;
+font-weight:bold;
+color:black;
+}
+
+.order-btn{
+margin-top:15px;
+padding:14px 35px;
+background:red;
+color:white;
+font-size:18px;
+font-weight:bold;
+border:2px solid black;
+border-radius:10px;
+cursor:pointer;
+display:none;
+animation:pulse 1s infinite;
+}
+
+@keyframes pulse{
+0%{transform:scale(1);}
+50%{transform:scale(1.1);}
+100%{transform:scale(1);}
+}
+
 /* ---------- Second Page ---------- */
 
 .second-page{
@@ -82,7 +154,7 @@ padding:15px;
 box-sizing:border-box;
 }
 
-/* ---------- NEW XCV PAGE ---------- */
+/* ---------- XCV PAGE ---------- */
 
 .xcv-page{
 display:none;
@@ -103,12 +175,6 @@ font-size:24px;
 font-weight:bold;
 margin-top:40px;
 color:darkgreen;
-}
-
-.xcv-text{
-margin-top:20px;
-font-size:18px;
-line-height:1.7;
 }
 
 /* YouTube */
@@ -138,8 +204,6 @@ height:100%;
 border:0;
 }
 
-/* Benefits */
-
 .benefit-title{
 margin-top:25px;
 font-size:22px;
@@ -166,8 +230,6 @@ font-weight:500;
 margin-bottom:10px;
 }
 
-/* Buttons */
-
 .second-order-btn{
 margin-top:40px;
 margin-bottom:40px;
@@ -181,12 +243,6 @@ border-radius:10px;
 cursor:pointer;
 animation:pulse 1s infinite;
 }
-
-@keyframes pulse{
-0%{transform:scale(1);}
-50%{transform:scale(1.1);}
-100%{transform:scale(1);}
-}
 </style>
 </head>
 
@@ -199,7 +255,21 @@ animation:pulse 1s infinite;
 রমজান উপলক্ষে Methi Mixd powder এ বিশেষ ডিসকাউন্ট!
 </div>
 
-<button onclick="openSecondPage()">ডেমো ওপেন</button>
+<!-- Scratch Section (ORIGINAL RESTORED) -->
+
+<div class="scratch-section">
+<div class="card-title">লাকি স্ক্র্যাচ কার্ড</div>
+
+<div class="card-container">
+<div class="real-card">
+<div class="discount-text" id="discountText"></div>
+</div>
+<canvas id="scratchCanvas"></canvas>
+</div>
+
+<div class="message" id="messageBox"></div>
+<button class="order-btn" id="orderBtn" onclick="openSecondPage()">অর্ডার করতে চাই</button>
+</div>
 
 <!-- Second Page -->
 <div class="second-page" id="secondPage">
@@ -215,37 +285,86 @@ animation:pulse 1s infinite;
 <ul class="benefit-list">
 <li>✔ ৭ দিন সেবনে কোষ্ঠকাঠিন্যের সম্পূর্ণ উপশম</li>
 <li>✔ ৭ দিন সেবনে গ্যাস্ট্রিক সমস্যার কার্যকর সমাধান</li>
-<li>✔ বুক জ্বালাপোড়া ও অ্যাসিডিটি নিয়ন্ত্রণ</li>
-<li>✔ মুখের টক স্বাদ ও অস্বস্তি দূরীকরণ</li>
-<li>✔ পেট ফাঁপা ও অস্বস্তি থেকে মুক্তি</li>
-<li>✔ অরুচি ও খাবারে অনীহা দূরীকরণ</li>
-<li>✔ সুগার ও ডায়াবেটিস নিয়ন্ত্রণে সহায়ক</li>
-<li>✔ অতিরিক্ত চর্বি ও রক্তচাপ নিয়ন্ত্রণে সহায়ক</li>
-<li>✔ পেট পরিষ্কার ও কৃমিনাশে কার্যকর</li>
-<li>✔ শারীরিক শক্তি ও কর্মক্ষমতা বৃদ্ধিতে সহায়ক</li>
+<li>✔ বুক জ্বালাপোড়া নিয়ন্ত্রণ</li>
 </ul>
 
 <button class="second-order-btn" onclick="openXcvPage()">অর্ডার করবো</button>
 
 </div>
 
-<!-- NEW XCV SECTION -->
+<!-- XCV Section -->
 <div class="xcv-page" id="xcvPage">
 <div class="xcv-title">xcv</div>
-<div class="xcv-text">
-এটি আপনার নতুন xcv সেকশন।  
-এখানে আপনি অর্ডার ফর্ম, কনফার্মেশন বা অন্য যেকোনো কনটেন্ট রাখতে পারবেন।
-</div>
+<p>এটি আপনার নতুন সেকশন</p>
 </div>
 
 <script>
 
+/* XCV OPEN */
+function openXcvPage(){
+document.getElementById("xcvPage").style.display="block";
+}
+
+/* Second Page */
 function openSecondPage(){
 document.getElementById("secondPage").style.display="block";
 }
 
-function openXcvPage(){
-document.getElementById("xcvPage").style.display="block";
+/* Scratch System ORIGINAL */
+
+const canvas=document.getElementById("scratchCanvas");
+const ctx=canvas.getContext("2d");
+const container=document.querySelector(".card-container");
+
+canvas.width=container.offsetWidth;
+canvas.height=container.offsetHeight;
+
+const originalPrice=900;
+const discount=Math.floor(Math.random()*(50-25+1))+25;
+const finalPrice=Math.round(originalPrice-(originalPrice*discount/100));
+
+document.getElementById("discountText").innerText=discount+"% ডিসকাউন্ট";
+
+ctx.fillStyle="gray";
+ctx.fillRect(0,0,canvas.width,canvas.height);
+
+ctx.fillStyle="white";
+ctx.font="bold 22px Arial";
+ctx.textAlign="center";
+ctx.fillText("এখানে ঘষুন",canvas.width/2,canvas.height/2);
+
+ctx.globalCompositeOperation="destination-out";
+
+let isDrawing=false;
+let scratched=false;
+
+function scratch(e){
+if(!isDrawing) return;
+const rect=canvas.getBoundingClientRect();
+const x=(e.touches?e.touches[0].clientX:e.clientX)-rect.left;
+const y=(e.touches?e.touches[0].clientY:e.clientY)-rect.top;
+ctx.beginPath();
+ctx.arc(x,y,20,0,Math.PI*2);
+ctx.fill();
+}
+
+canvas.addEventListener("mousedown",()=>isDrawing=true);
+canvas.addEventListener("mouseup",finishScratch);
+canvas.addEventListener("mousemove",scratch);
+
+canvas.addEventListener("touchstart",()=>isDrawing=true);
+canvas.addEventListener("touchend",finishScratch);
+canvas.addEventListener("touchmove",scratch);
+
+function finishScratch(){
+if(scratched) return;
+scratched=true;
+isDrawing=false;
+
+const message="অভিনন্দন! আপনি "+discount+"% ডিসকাউন্ট পেয়েছেন। নতুন দাম "+finalPrice+" টাকা।";
+
+document.getElementById("messageBox").innerText=message;
+document.getElementById("orderBtn").style.display="inline-block";
 }
 
 </script>
