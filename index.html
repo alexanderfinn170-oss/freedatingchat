@@ -100,7 +100,7 @@ animation:pulse 1s infinite;
 
 <body>
 
-<img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgAN-w08Gb55AD8HEwmiDiC_crYJ_EN0BLQfqn9gYgKKKnTMDMNog1PIwrfBNYyi4D6iMxbdwI6zNJzyaAtxSuwed3bzEoLBwe58VZ6EWFRwgtIRsqQlQdEYf9wHpjw_u9NtNcXgibLxJgu633h6Bf46fvpmBxP_Xm2aHSwPjZ2LjojMFIYAXkKhhzsg5o/s612/WhatsApp_Image_2026-02-24_at_12.56.43-removebg-preview.png" class="product-image">
+<img src="image.png" class="product-image">
 
 <div class="offer-text">
 রমজান উপলক্ষে Methi Mixd powder এ বিশেষ ডিসকাউন্ট!
@@ -119,11 +119,6 @@ animation:pulse 1s infinite;
 <div class="message" id="messageBox"></div>
 <button class="order-btn" id="orderBtn">অর্ডার করতে চাই</button>
 </div>
-
-<!-- 🔊 Embedded Voice -->
-<audio id="scratchVoice" preload="auto"
-src="data:audio/mpeg;base64,WW91ciBzY3JhdGNoIGNhcmQgRGlzY291bnQgaXMgYWN0aXZlIE5vdy4gQ29uZmlybSBvcmRlciBOb3cu">
-</audio>
 
 <script>
 const canvas=document.getElementById("scratchCanvas");
@@ -151,7 +146,20 @@ ctx.globalCompositeOperation="destination-out";
 
 let isDrawing=false;
 let scratched=false;
-let voicePlayed=false;
+let voiceReady=false;
+
+/* 🔥 Pre-activate voice system on first touch */
+document.body.addEventListener("touchstart",initVoice,{once:true});
+document.body.addEventListener("click",initVoice,{once:true});
+
+function initVoice(){
+if('speechSynthesis' in window){
+const dummy=new SpeechSynthesisUtterance(" ");
+dummy.volume=0;
+speechSynthesis.speak(dummy);
+voiceReady=true;
+}
+}
 
 function scratch(e){
 if(!isDrawing) return;
@@ -181,11 +189,21 @@ const message="অভিনন্দন! আপনি "+discount+"% ডিসক
 document.getElementById("messageBox").innerText=message;
 document.getElementById("orderBtn").style.display="inline-block";
 
-if(!voicePlayed){
-voicePlayed=true;
-const audio=document.getElementById("scratchVoice");
-audio.currentTime=0;
-audio.play().catch(e=>console.log(e));
+/* 🔥 Guaranteed English Voice */
+if(voiceReady && 'speechSynthesis' in window){
+
+speechSynthesis.cancel();
+
+const speech=new SpeechSynthesisUtterance(
+"Your scratch card Discount is active Now. Confirm order Now."
+);
+
+speech.lang="en-US";
+speech.rate=0.9;
+speech.pitch=1;
+speech.volume=1;
+
+speechSynthesis.speak(speech);
 }
 
 }
