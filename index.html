@@ -1,649 +1,198 @@
-<!DOCTYPE html>
-<html lang="bn">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Methi Mixd Powder Offer</title>
-
+<!-- ================= NOTIFICATION BAR ================= -->
 <style>
-body{
-margin:0;
-font-family:Arial;
-text-align:center;
-background:#fff;
-overflow-x:hidden;
-}
-
-/* ---------- Product ---------- */
-
-.product-image{
-width:140px;
-margin-top:20px;
-}
-
-.mrp-text{
-margin-top:5px;
-font-size:18px;
-font-weight:bold;
-color:red;
--webkit-text-stroke:1px black;
-}
-
-.offer-text{
-margin-top:20px;
-font-size:20px;
-font-weight:bold;
-color:black;
--webkit-text-stroke:1px darkgreen;
-}
-
-/* ---------- Notification ---------- */
-
-.notification{
+#notificationBar{
 position:fixed;
 top:10px;
-right:10px;
-background:#fff;
-padding:8px 15px;
-border-radius:20px;
+left:-400px;
+background:white;
+padding:10px 15px;
 box-shadow:0 0 10px rgba(0,0,0,0.2);
+border-radius:6px;
 font-size:14px;
-white-space:nowrap;
-z-index:9999;
-transform:translateX(120%);
-animation:slideCorner 3s ease forwards;
+z-index:99999;
+transition:0.5s;
 }
-
-.notification .name{
+#notificationBar span{
 color:green;
 font-weight:bold;
 }
+</style>
 
-@keyframes slideCorner{
-0%{transform:translateX(120%);}
-20%{transform:translateX(0);}
-80%{transform:translateX(0);}
-100%{transform:translateX(120%);}
+<div id="notificationBar"></div>
+
+<script>
+const namesList=[
+"আমিনুল ইসলাম","রাকিব হাসান","সুমাইয়া আক্তার","নুসরাত জাহান","মাহমুদুল হাসান",
+"তানভীর আহমেদ","মোস্তাফিজুর রহমান","ইমরান হোসেন","সোহেল রানা","জাহিদুল ইসলাম",
+"মারিয়া আক্তার","ফারহানা ইসলাম","রেজাউল করিম","নাজমুল হোসেন","রিফাত হাসান",
+"শারমিন সুলতানা","তামিম ইকবাল","হাসিবুল ইসলাম","সাবিনা ইয়াসমিন","আল আমিন",
+"জেসমিন আক্তার","সাদিয়া ইসলাম","মিজানুর রহমান","সালমা খাতুন","রুবেল হোসেন",
+"আফসানা মিম","মাহির হাসান","সুমন আহমেদ","তাহমিনা আক্তার","জুবায়ের রহমান"
+];
+
+let notifyIndex=0;
+function showNotification(){
+let bar=document.getElementById("notificationBar");
+let randomDiscount=Math.floor(Math.random()*21)+10;
+bar.innerHTML=`<span>${namesList[notifyIndex]}</span> ${randomDiscount}% ডিসকাউন্টে🎉অর্ডার করেছে`;
+bar.style.left="10px";
+setTimeout(()=>{bar.style.left="-400px";},2500);
+notifyIndex++;
+if(notifyIndex>=namesList.length){notifyIndex=0;}
 }
+setInterval(showNotification,3000);
+</script>
+<!-- ================= END NOTIFICATION ================= -->
 
-/* ---------- Scratch ---------- */
 
-.scratch-section{
-margin-top:40px;
-}
-
-.card-title{
-font-size:22px;
-font-weight:bold;
-color:black;
--webkit-text-stroke:1px darkgreen;
-margin-bottom:10px;
-}
-
-.card-container{
-position:relative;
-width:320px;
-height:180px;
-margin:auto;
-border:5px solid red;
-border-radius:15px;
-overflow:hidden;
-}
-
-.real-card{
-width:100%;
-height:100%;
-background:black;
-display:flex;
-justify-content:center;
-align-items:center;
-}
-
-.discount-text{
-color:yellow;
-font-size:25px;
-font-weight:bold;
-}
-
-canvas{
-position:absolute;
-top:0;
-left:0;
-}
-
-.message{
-margin-top:20px;
-font-size:18px;
-font-weight:bold;
-color:black;
-}
-
-.order-btn{
-margin-top:15px;
-padding:14px 35px;
-background:red;
-color:white;
-font-size:18px;
-font-weight:bold;
-border:2px solid black;
-border-radius:10px;
-cursor:pointer;
-display:none;
-animation:pulse 1s infinite;
-}
-
-@keyframes pulse{
-0%{transform:scale(1);}
-50%{transform:scale(1.1);}
-100%{transform:scale(1);}
-}
-
-/* ---------- Second Page ---------- */
-
-.second-page{
-display:none;
-background:#fff;
+<!-- ================= REVIEW FLOATING BUTTON ================= -->
+<style>
+#reviewFloatBtn{
 position:fixed;
-top:0;
-left:0;
-width:100%;
-height:100%;
-overflow-y:auto;
-z-index:10000;
-padding:15px;
-box-sizing:border-box;
-}
-
-/* YouTube */
-
-.video-frame{
-width:100%;
-margin:0 auto;
-border:4px solid blue;
-border-radius:8px;
-overflow:hidden;
-}
-
-.video-wrapper{
-position:relative;
-width:100%;
-padding-top:56.25%;
-}
-
-.video-wrapper iframe{
-position:absolute;
-top:0;
-left:0;
-width:100%;
-height:100%;
-border:0;
-}
-
-/* Benefits */
-
-.benefit-title{
-margin-top:25px;
-font-size:22px;
-font-weight:bold;
-color:black;
-background:yellow;
-display:inline-block;
-padding:8px 20px;
-border:3px solid red;
-}
-
-.benefit-list{
-margin-top:20px;
-text-align:left;
-max-width:600px;
-margin-left:auto;
-margin-right:auto;
-font-size:17px;
-line-height:1.8;
-font-weight:500;
-}
-
-.benefit-list li{
-margin-bottom:10px;
-}
-
-/* COD */
-
-.cod-highlight{
-margin-top:40px;
-margin-bottom:20px;
-display:inline-block;
-background:yellow;
-padding:12px 25px;
-font-size:20px;
-font-weight:bold;
-color:black;
--webkit-text-stroke:1px green;
-}
-
-/* ================= NEW ORDER SECTION ================= */
-
-.auto-product-img{
-width:160px;
-margin-top:20px;
-}
-
-.confirm-text{
-margin-top:15px;
-font-size:18px;
-font-weight:bold;
-color:black;
--webkit-text-stroke:1px green;
-background:red;
-display:inline-block;
-padding:5px 15px;
-}
-
-.order-template{
-background:white;
-margin:25px auto;
-padding:20px;
-max-width:400px;
-border:2px solid yellow;
-outline:2px solid black;
-border-radius:10px;
-}
-
-.template-title{
-text-align:center;
-font-weight:bold;
-font-size:20px;
-color:black;
--webkit-text-stroke:1px green;
-margin-bottom:15px;
-}
-
-.label-green{
-color:black;
--webkit-text-stroke:1px green;
-font-weight:bold;
-}
-
-.qty-box{
-display:flex;
-justify-content:center;
-align-items:center;
-gap:15px;
-margin:10px 0;
-}
-
-.qty-btn{
-font-size:22px;
-font-weight:bold;
-padding:5px 15px;
-background:yellow;
-color:red;
-border:2px solid black;
-outline:1px solid green;
-cursor:pointer;
-}
-
-.total-text{
-margin-top:10px;
-font-weight:bold;
-color:black;
--webkit-text-stroke:1px green;
-}
-
-.customer-title{
-margin-top:15px;
-font-weight:bold;
-}
-
-.customer-title span{
-color:red;
-}
-
-.input-red{
-width:100%;
-padding:8px;
-margin-top:8px;
-border:1px solid red;
-}
-
-.input-black{
-width:100%;
-padding:8px;
-margin-top:8px;
-border:1px solid black;
-}
-
-.submit-btn{
-margin-top:15px;
-padding:12px;
-width:100%;
-background:blue;
-color:white;
-font-weight:bold;
-border:2px solid black;
-cursor:pointer;
-animation:btnMove 1.2s infinite;
-}
-
-@keyframes btnMove{
-0%{transform:translateY(0);}
-50%{transform:translateY(-3px);}
-100%{transform:translateY(0);}
-}
-
-.submit-btn:active{
-transform:scale(1.1);
-}
-
-.success-bar{
-position:fixed;
-bottom:20px;
-left:50%;
-transform:translateX(-50%);
-background:green;
-color:white;
-padding:10px 20px;
-border-radius:20px;
-display:none;
-}
-
-/* ===== LIVE REVIEW CSS অপরিবর্তিত ===== */
-
-.lr-tab{
-position:fixed;
-right:0;
+right:10px;
 top:50%;
 transform:translateY(-50%);
-background:red;
-color:white;
-padding:12px 8px;
+background:#ffcc00;
+padding:10px;
+border-radius:20px;
 font-weight:bold;
 cursor:pointer;
-border-radius:10px 0 0 10px;
-z-index:20000;
-animation:lrPulse 1.5s infinite;
-display:none;
+animation:pulse 1.5s infinite;
+z-index:99999;
 }
-
-@keyframes lrPulse{
+@keyframes pulse{
 0%{transform:translateY(-50%) scale(1);}
 50%{transform:translateY(-50%) scale(1.1);}
 100%{transform:translateY(-50%) scale(1);}
 }
 
-.lr-box{
+/* Review Side Panel */
+#reviewPanel{
 position:fixed;
-right:-320px;
-top:50%;
-transform:translateY(-50%);
-width:300px;
-height:450px;
-background:#fff;
-border-radius:20px;
-box-shadow:0 0 15px rgba(0,0,0,0.3);
-z-index:21000;
-display:flex;
-flex-direction:column;
-transition:0.4s;
-}
-
-.lr-box.active{ right:10px; }
-
-.lr-header{
-background:black;
-color:white;
-padding:10px;
-border-radius:20px 20px 0 0;
-font-size:14px;
-}
-
-.lr-messages{
-flex:1;
+right:-350px;
+top:0;
+width:320px;
+height:100%;
+background:white;
+box-shadow:-2px 0 10px rgba(0,0,0,0.2);
 overflow-y:auto;
+transition:0.5s;
+z-index:99998;
 padding:10px;
-font-size:13px;
-text-align:left;
 }
-
-.lr-msg{ margin-bottom:10px; }
-
-.lr-name{
-font-weight:bold;
-color:green;
+.review-item{
+border-bottom:1px solid #ddd;
+padding:8px 0;
 }
-
-.lr-input{
-display:flex;
-border-top:1px solid #ddd;
+.profile{
+width:35px;
+height:35px;
+border-radius:50%;
+background:#ccc;
+display:inline-block;
+vertical-align:middle;
+margin-right:8px;
 }
-
-.lr-input input{
-flex:1;
-padding:8px;
-border:none;
-font-size:12px;
+.active-dot{
+width:8px;
+height:8px;
+background:green;
+border-radius:50%;
+display:inline-block;
+margin-left:5px;
 }
-
-.lr-input button{
-background:red;
-color:white;
-border:none;
-padding:8px;
-cursor:pointer;
-font-size:12px;
+#reviewModal{
+display:none;
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:rgba(0,0,0,0.6);
+z-index:999999;
+justify-content:center;
+align-items:center;
 }
-
-.lr-close{
-position:absolute;
-top:5px;
-right:10px;
-color:white;
-cursor:pointer;
+#reviewContent{
+background:white;
+width:90%;
+max-width:400px;
+height:80%;
+overflow:auto;
+padding:15px;
+border-radius:10px;
 }
 </style>
-</head>
 
-<body>
+<div id="reviewFloatBtn">Customer Reviews</div>
 
-<!-- ===== FIRST SECTION (UNCHANGED) ===== -->
+<div id="reviewPanel"></div>
 
-<img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgAN-w08Gb55AD8HEwmiDiC_crYJ_EN0BLQfqn9gYgKKKnTMDMNog1PIwrfBNYyi4D6iMxbdwI6zNJzyaAtxSuwed3bzEoLBwe58VZ6EWFRwgtIRsqQlQdEYf9wHpjw_u9NtNcXgibLxJgu633h6Bf46fvpmBxP_Xm2aHSwPjZ2LjojMFIYAXkKhhzsg5o/s612/WhatsApp_Image_2026-02-24_at_12.56.43-removebg-preview.png" class="product-image">
-<div class="mrp-text">MRP-900TK</div>
-
-<div class="offer-text">
-রমজান উপলক্ষে Methi Mixd powder এ বিশেষ ডিসকাউন্ট!
+<div id="reviewModal">
+<div id="reviewContent">
+<button onclick="closeModal()">⬅ Back</button>
+<h3>Customer Reviews</h3>
+<div id="modalReviews"></div>
+<textarea id="userReview" placeholder="আপনার রিভিউ লিখুন" style="width:100%;margin-top:10px;"></textarea>
+<button onclick="addUserReview()">Submit Review</button>
 </div>
-
-<div class="scratch-section">
-<div class="card-title">লাকি স্ক্র্যাচ কার্ড</div>
-
-<div class="card-container">
-<div class="real-card">
-<div class="discount-text" id="discountText"></div>
-</div>
-<canvas id="scratchCanvas"></canvas>
-</div>
-
-<div class="message" id="messageBox"></div>
-<button class="order-btn" id="orderBtn" onclick="openSecondPage()">অর্ডার করতে চাই</button>
-</div>
-
-<!-- ===== SECOND PAGE ===== -->
-
-<div class="second-page" id="secondPage">
-
-<div class="video-frame">
-<div class="video-wrapper">
-<iframe src="https://www.youtube.com/embed/pJrfhCo_dgw" allowfullscreen></iframe>
-</div>
-</div>
-
-<div class="benefit-title">৭ দিন সেবনের উপকারিতা</div>
-
-<ul class="benefit-list">
-<li>✔ ৭ দিন সেবনে কোষ্ঠকাঠিন্যের সম্পূর্ণ উপশম</li>
-<li>✔ গ্যাস্ট্রিক সমস্যার কার্যকর সমাধান</li>
-<li>✔ বুক জ্বালাপোড়া ও অ্যাসিডিটি নিয়ন্ত্রণ</li>
-<li>✔ মুখের টক স্বাদ দূরীকরণ</li>
-<li>✔ পেট ফাঁপা থেকে মুক্তি</li>
-<li>✔ ডায়াবেটিস নিয়ন্ত্রণে সহায়ক</li>
-</ul>
-
-<div class="cod-highlight">
-পুরো বাংলাদেশ ক্যাশ অন ডেলিভারি ১২০৳ 🚛
-</div>
-
-<!-- ===== NEW ORDER SECTION ===== -->
-
-<img src="image.png" class="auto-product-img">
-
-<div class="confirm-text">
-নিচে আপনার অর্ডারটি ডিসকাউন্টসহ কনফার্ম করুন
-</div>
-
-<div class="order-template">
-
-<div class="template-title">Discount & Details</div>
-
-<div id="showDiscount" class="label-green"></div>
-<div id="showPrice" class="label-green"></div>
-
-<div class="label-green" style="margin-top:10px;">
-কয়টি নিতে চান নির্বাচন করুন:
-</div>
-
-<div class="qty-box">
-<button class="qty-btn" onclick="changeQty(-1)">-</button>
-<div id="qty">1</div>
-<button class="qty-btn" onclick="changeQty(1)">+</button>
-</div>
-
-<div class="total-text">
-মোট দাম : <span id="totalPrice"></span> টাকা
-</div>
-
-<div class="customer-title">
-Customer Details <span>*</span>
-</div>
-
-<input class="input-red" id="discField" disabled>
-<input class="input-red" id="priceField" disabled>
-
-<input class="input-black" placeholder="* নাম লিখুন" required>
-<input class="input-black" placeholder="* নাম্বার লিখুন" required>
-<input class="input-black" placeholder="* ঠিকানা লিখুন" required>
-
-<button class="submit-btn" onclick="submitOrder()">Submit Order</button>
-
-</div>
-
-</div>
-
-<div class="success-bar" id="successBar">
-আপনার অর্ডারটি সাবমিট হয়ে গেছে
 </div>
 
 <script>
+const reviewNames=[
+"রাকিব","সুমাইয়া","নুসরাত","তানভীর","মাহমুদ","ইমরান","সোহেল","মারিয়া","ফারহানা","রিফাত",
+"সাবিনা","আল আমিন","জেসমিন","মিজান","রুবেল","মাহির","সুমন","তাহমিনা","জুবায়ের","নাজমুল"
+];
 
-/* ===== SCRATCH SYSTEM ===== */
+const reviewTexts=[
+"অসাধারণ কাজ করছে পাউডারটি!",
+"গ্যাস্ট্রিক অনেক কমেছে",
+"পেট ফাঁপা একদম ঠিক হয়েছে",
+"ডায়াবেটিস নিয়ন্ত্রণে সাহায্য করছে",
+"৭ দিনে ভালো ফল পেয়েছি",
+"শক্তি বৃদ্ধি পেয়েছে",
+"খুবই উপকারী প্রোডাক্ট",
+"কোষ্ঠকাঠিন্য দূর হয়েছে",
+"বুক জ্বালা কমেছে",
+"খুব সন্তুষ্ট"
+];
 
-const canvas=document.getElementById("scratchCanvas");
-const ctx=canvas.getContext("2d");
-const container=document.querySelector(".card-container");
+let reviewPanel=document.getElementById("reviewPanel");
+let modal=document.getElementById("reviewModal");
 
-canvas.width=container.offsetWidth;
-canvas.height=container.offsetHeight;
-
-const originalPrice=900;
-const discount=Math.floor(Math.random()*(50-25+1))+25;
-const finalPrice=Math.round(originalPrice-(originalPrice*discount/100));
-
-document.getElementById("discountText").innerText=discount+"% ডিসকাউন্ট";
-
-ctx.fillStyle="gray";
-ctx.fillRect(0,0,canvas.width,canvas.height);
-ctx.fillStyle="white";
-ctx.font="bold 22px Arial";
-ctx.textAlign="center";
-ctx.fillText("এখানে ঘষুন",canvas.width/2,canvas.height/2);
-ctx.globalCompositeOperation="destination-out";
-
-let isDrawing=false;
-let scratched=false;
-
-function scratch(e){
-if(!isDrawing) return;
-const rect=canvas.getBoundingClientRect();
-const x=(e.touches?e.touches[0].clientX:e.clientX)-rect.left;
-const y=(e.touches?e.touches[0].clientY:e.clientY)-rect.top;
-ctx.beginPath();
-ctx.arc(x,y,20,0,Math.PI*2);
-ctx.fill();
+function addReview(name,text){
+let div=document.createElement("div");
+div.className="review-item";
+div.innerHTML=`<div class="profile"></div><b>${name}</b> <span class="active-dot"></span><br>${text}`;
+reviewPanel.prepend(div);
+document.getElementById("modalReviews").prepend(div.cloneNode(true));
 }
 
-canvas.addEventListener("mousedown",()=>isDrawing=true);
-canvas.addEventListener("mouseup",finishScratch);
-canvas.addEventListener("mousemove",scratch);
-canvas.addEventListener("touchstart",()=>isDrawing=true);
-canvas.addEventListener("touchend",finishScratch);
-canvas.addEventListener("touchmove",scratch);
-
-function finishScratch(){
-if(scratched) return;
-scratched=true;
-isDrawing=false;
-
-document.getElementById("messageBox").innerText=
-"অভিনন্দন! আপনি "+discount+"% ডিসকাউন্ট পেয়েছেন। নতুন দাম "+finalPrice+" টাকা।";
-
-document.getElementById("orderBtn").style.display="inline-block";
-updateDisplay();
+for(let i=0;i<5;i++){
+addReview(reviewNames[i],reviewTexts[i]);
 }
 
-/* ===== SECOND PAGE OPEN ===== */
+setInterval(()=>{
+let randName=reviewNames[Math.floor(Math.random()*reviewNames.length)];
+let randText=reviewTexts[Math.floor(Math.random()*reviewTexts.length)];
+addReview(randName,randText);
+},4000);
 
-function openSecondPage(){
-document.getElementById("secondPage").style.display="block";
+document.getElementById("reviewFloatBtn").onclick=function(){
+reviewPanel.style.right="0";
+modal.style.display="flex";
 }
 
-/* ===== ORDER SYSTEM ===== */
-
-let quantity=1;
-
-function updateDisplay(){
-let total=finalPrice*quantity;
-
-document.getElementById("qty").innerText=quantity;
-document.getElementById("totalPrice").innerText=total;
-document.getElementById("showDiscount").innerText=
-"আপনার প্রাপ্ত ডিসকাউন্ট: "+discount+"%";
-document.getElementById("showPrice").innerText=
-"ডিসকাউন্টের পর এক পণ্যের দাম: "+finalPrice+" টাকা";
-
-document.getElementById("discField").value=
-"ডিসকাউন্ট এর পরিমাণ: "+discount+"%";
-
-document.getElementById("priceField").value=
-"মোট দাম: "+total+" টাকা";
+function closeModal(){
+modal.style.display="none";
+reviewPanel.style.right="-350px";
 }
 
-function changeQty(val){
-quantity+=val;
-if(quantity<1) quantity=1;
-updateDisplay();
+function addUserReview(){
+let text=document.getElementById("userReview").value;
+if(text.trim()=="") return;
+addReview("আপনি",text);
+document.getElementById("userReview").value="";
 }
-
-function submitOrder(){
-document.getElementById("successBar").style.display="block";
-setTimeout(()=>{
-document.getElementById("successBar").style.display="none";
-},3000);
-}
-
-updateDisplay();
-
 </script>
-
-</body>
-</html>
-
+<!-- ================= END REVIEW ================= -->
