@@ -158,12 +158,10 @@ box-sizing:border-box;
 
 .video-frame{
 width:100%;
-max-width:100%;
 margin:0 auto;
 border:4px solid blue;
 border-radius:8px;
 overflow:hidden;
-box-sizing:border-box;
 }
 
 .video-wrapper{
@@ -213,7 +211,7 @@ margin-bottom:10px;
 
 .cod-highlight{
 margin-top:40px;
-margin-bottom:40px;
+margin-bottom:20px;
 display:inline-block;
 background:yellow;
 padding:12px 25px;
@@ -223,9 +221,133 @@ color:black;
 -webkit-text-stroke:1px green;
 }
 
-/* ========================= */
-/* ===== LIVE REVIEW ======= */
-/* ========================= */
+/* ================= NEW ORDER SECTION ================= */
+
+.auto-product-img{
+width:160px;
+margin-top:20px;
+}
+
+.confirm-text{
+margin-top:15px;
+font-size:18px;
+font-weight:bold;
+color:black;
+-webkit-text-stroke:1px green;
+background:red;
+display:inline-block;
+padding:5px 15px;
+}
+
+.order-template{
+background:white;
+margin:25px auto;
+padding:20px;
+max-width:400px;
+border:2px solid yellow;
+outline:2px solid black;
+border-radius:10px;
+}
+
+.template-title{
+text-align:center;
+font-weight:bold;
+font-size:20px;
+color:black;
+-webkit-text-stroke:1px green;
+margin-bottom:15px;
+}
+
+.label-green{
+color:black;
+-webkit-text-stroke:1px green;
+font-weight:bold;
+}
+
+.qty-box{
+display:flex;
+justify-content:center;
+align-items:center;
+gap:15px;
+margin:10px 0;
+}
+
+.qty-btn{
+font-size:22px;
+font-weight:bold;
+padding:5px 15px;
+background:yellow;
+color:red;
+border:2px solid black;
+outline:1px solid green;
+cursor:pointer;
+}
+
+.total-text{
+margin-top:10px;
+font-weight:bold;
+color:black;
+-webkit-text-stroke:1px green;
+}
+
+.customer-title{
+margin-top:15px;
+font-weight:bold;
+}
+
+.customer-title span{
+color:red;
+}
+
+.input-red{
+width:100%;
+padding:8px;
+margin-top:8px;
+border:1px solid red;
+}
+
+.input-black{
+width:100%;
+padding:8px;
+margin-top:8px;
+border:1px solid black;
+}
+
+.submit-btn{
+margin-top:15px;
+padding:12px;
+width:100%;
+background:blue;
+color:white;
+font-weight:bold;
+border:2px solid black;
+cursor:pointer;
+animation:btnMove 1.2s infinite;
+}
+
+@keyframes btnMove{
+0%{transform:translateY(0);}
+50%{transform:translateY(-3px);}
+100%{transform:translateY(0);}
+}
+
+.submit-btn:active{
+transform:scale(1.1);
+}
+
+.success-bar{
+position:fixed;
+bottom:20px;
+left:50%;
+transform:translateX(-50%);
+background:green;
+color:white;
+padding:10px 20px;
+border-radius:20px;
+display:none;
+}
+
+/* ===== LIVE REVIEW CSS অপরিবর্তিত ===== */
 
 .lr-tab{
 position:fixed;
@@ -265,9 +387,7 @@ flex-direction:column;
 transition:0.4s;
 }
 
-.lr-box.active{
-right:10px;
-}
+.lr-box.active{ right:10px; }
 
 .lr-header{
 background:black;
@@ -285,9 +405,7 @@ font-size:13px;
 text-align:left;
 }
 
-.lr-msg{
-margin-bottom:10px;
-}
+.lr-msg{ margin-bottom:10px; }
 
 .lr-name{
 font-weight:bold;
@@ -327,6 +445,8 @@ cursor:pointer;
 
 <body>
 
+<!-- ===== FIRST SECTION (UNCHANGED) ===== -->
+
 <img src="image.png" class="product-image">
 <div class="mrp-text">MRP-900TK</div>
 
@@ -348,7 +468,8 @@ cursor:pointer;
 <button class="order-btn" id="orderBtn" onclick="openSecondPage()">অর্ডার করতে চাই</button>
 </div>
 
-<!-- Second Page -->
+<!-- ===== SECOND PAGE ===== -->
+
 <div class="second-page" id="secondPage">
 
 <div class="video-frame">
@@ -363,115 +484,69 @@ cursor:pointer;
 <li>✔ ৭ দিন সেবনে কোষ্ঠকাঠিন্যের সম্পূর্ণ উপশম</li>
 <li>✔ গ্যাস্ট্রিক সমস্যার কার্যকর সমাধান</li>
 <li>✔ বুক জ্বালাপোড়া ও অ্যাসিডিটি নিয়ন্ত্রণ</li>
-<li>✔ মুখের টক স্বাদ ও অস্বস্তি দূরীকরণ</li>
-<li>✔ পেট ফাঁপা ও অস্বস্তি থেকে মুক্তি</li>
-<li>✔ অরুচি ও খাবারে অনীহা দূরীকরণ</li>
-<li>✔ সুগার ও ডায়াবেটিস নিয়ন্ত্রণে সহায়ক</li>
-<li>✔ অতিরিক্ত চর্বি ও রক্তচাপ নিয়ন্ত্রণে সহায়ক</li>
-<li>✔ পেট পরিষ্কার ও কৃমিনাশে কার্যকর</li>
-<li>✔ শারীরিক শক্তি ও কর্মক্ষমতা বৃদ্ধিতে সহায়ক</li>
+<li>✔ মুখের টক স্বাদ দূরীকরণ</li>
+<li>✔ পেট ফাঁপা থেকে মুক্তি</li>
+<li>✔ ডায়াবেটিস নিয়ন্ত্রণে সহায়ক</li>
 </ul>
 
 <div class="cod-highlight">
 পুরো বাংলাদেশ ক্যাশ অন ডেলিভারি ১২০৳ 🚛
 </div>
 
+<!-- ===== NEW ORDER SECTION ===== -->
+
+<img src="image.png" class="auto-product-img">
+
+<div class="confirm-text">
+নিচে আপনার অর্ডারটি ডিসকাউন্টসহ কনফার্ম করুন
 </div>
 
-<!-- Live Review Tab -->
-<div class="lr-tab" id="lrTab">Live Reviews</div>
+<div class="order-template">
 
-<!-- Live Review Box -->
-<div class="lr-box" id="lrBox">
-<div class="lr-header">
-লাইভ রিভিউ চলছে
-<span class="lr-close" onclick="closeLR()">×</span>
+<div class="template-title">Discount & Details</div>
+
+<div id="showDiscount" class="label-green"></div>
+<div id="showPrice" class="label-green"></div>
+
+<div class="label-green" style="margin-top:10px;">
+কয়টি নিতে চান নির্বাচন করুন:
 </div>
-<div class="lr-messages" id="lrMessages"></div>
-<div class="lr-input">
-<input type="text" id="lrInput" placeholder="আপনার রিভিউ লিখুন">
-<button onclick="sendLR()">Send</button>
+
+<div class="qty-box">
+<button class="qty-btn" onclick="changeQty(-1)">-</button>
+<div id="qty">1</div>
+<button class="qty-btn" onclick="changeQty(1)">+</button>
 </div>
+
+<div class="total-text">
+মোট দাম : <span id="totalPrice"></span> টাকা
+</div>
+
+<div class="customer-title">
+Customer Details <span>*</span>
+</div>
+
+<input class="input-red" id="discField" disabled>
+<input class="input-red" id="priceField" disabled>
+
+<input class="input-black" placeholder="* নাম লিখুন" required>
+<input class="input-black" placeholder="* নাম্বার লিখুন" required>
+<input class="input-black" placeholder="* ঠিকানা লিখুন" required>
+
+<button class="submit-btn" onclick="submitOrder()">Submit Order</button>
+
+</div>
+
+</div>
+
+<div class="success-bar" id="successBar">
+আপনার অর্ডারটি সাবমিট হয়ে গেছে
 </div>
 
 <script>
 
-/* Show Live Tab only on Second Page */
-function openSecondPage(){
-document.getElementById("secondPage").style.display="block";
-document.getElementById("lrTab").style.display="block";
-}
+/* ===== SCRATCH SYSTEM ===== */
 
-/* Toggle */
-const lrTab=document.getElementById("lrTab");
-const lrBox=document.getElementById("lrBox");
-
-lrTab.onclick=function(){
-lrBox.classList.add("active");
-}
-
-function closeLR(){
-lrBox.classList.remove("active");
-}
-
-/* Fake Reviews */
-
-const lrNames=["তানভীর","মাহি","সাবিনা","শিউলি","রাকিব","সুমাইয়া","নাসরিন","আরিফ","রুবেল","মেহেদী"];
-const lrTexts=[
-"৭ দিনেই গ্যাস্ট্রিক কমেছে আলহামদুলিল্লাহ",
-"কোষ্ঠকাঠিন্য অনেকটাই ভালো হয়েছে",
-"পেট পরিষ্কার হচ্ছে নিয়মিত",
-"বুক জ্বালাপোড়া কমেছে",
-"ডায়াবেটিস নিয়ন্ত্রণে সহায়তা করছে"
-];
-
-function addLR(){
-const name=lrNames[Math.floor(Math.random()*lrNames.length)];
-const text=lrTexts[Math.floor(Math.random()*lrTexts.length)];
-const msg=document.createElement("div");
-msg.className="lr-msg";
-msg.innerHTML=`<span class="lr-name">${name}</span>: ${text}`;
-document.getElementById("lrMessages").appendChild(msg);
-document.getElementById("lrMessages").scrollTop=9999;
-}
-
-setInterval(addLR,3000);
-
-function sendLR(){
-const val=document.getElementById("lrInput").value;
-if(!val) return;
-const msg=document.createElement("div");
-msg.className="lr-msg";
-msg.innerHTML=`<span class="lr-name">আপনি</span>: ${val}`;
-document.getElementById("lrMessages").appendChild(msg);
-document.getElementById("lrInput").value="";
-document.getElementById("lrMessages").scrollTop=9999;
-}
-
-/* Existing Scratch System Below (UNCHANGED) */
-
-/* Notification */
-const names=["আমিনুল ইসলাম","সোহেল রানা","মোস্তাফিজুর রহমান","রাশেদুল ইসলাম",
-"নাঈম হোসেন","তানভীর হাসান","ইমরান হোসেন","মেহেদী হাসান",
-"রুবেল মিয়া","জাহিদুল ইসলাম","নাসরিন আক্তার","সুমাইয়া আক্তার",
-"তানজিলা ইসলাম","মৌসুমি আক্তার","ফারহানা রহমান","রোকসানা বেগম",
-"শাহীন আক্তার","নাজমা খাতুন","সাবিনা ইয়াসমিন","আফরোজা পারভীন",
-"রিয়াজ উদ্দিন","হাবিবুর রহমান","শাহরিয়ার কবির","আরিফুল ইসলাম",
-"নাহিদ হাসান","লিপি আক্তার","শিউলি আক্তার","জেসমিন আক্তার",
-"মাহমুদুল হাসান","সাকিব আল হাসান"];
-
-function showNotification(){
-const randomName=names[Math.floor(Math.random()*names.length)];
-const randomDiscount=Math.floor(Math.random()*(30-15+1))+15;
-const notification=document.createElement("div");
-notification.className="notification";
-notification.innerHTML=`<span class="name">${randomName}</span> 🎉 ${randomDiscount}% ডিসকাউন্ট পেয়ে অর্ডার করেছে`;
-document.body.appendChild(notification);
-setTimeout(()=>{notification.remove();},3000);
-}
-setInterval(showNotification,3000);
-
-/* Scratch System */
 const canvas=document.getElementById("scratchCanvas");
 const ctx=canvas.getContext("2d");
 const container=document.querySelector(".card-container");
@@ -487,12 +562,10 @@ document.getElementById("discountText").innerText=discount+"% ডিসকাউ
 
 ctx.fillStyle="gray";
 ctx.fillRect(0,0,canvas.width,canvas.height);
-
 ctx.fillStyle="white";
 ctx.font="bold 22px Arial";
 ctx.textAlign="center";
 ctx.fillText("এখানে ঘষুন",canvas.width/2,canvas.height/2);
-
 ctx.globalCompositeOperation="destination-out";
 
 let isDrawing=false;
@@ -511,7 +584,6 @@ ctx.fill();
 canvas.addEventListener("mousedown",()=>isDrawing=true);
 canvas.addEventListener("mouseup",finishScratch);
 canvas.addEventListener("mousemove",scratch);
-
 canvas.addEventListener("touchstart",()=>isDrawing=true);
 canvas.addEventListener("touchend",finishScratch);
 canvas.addEventListener("touchmove",scratch);
@@ -521,14 +593,56 @@ if(scratched) return;
 scratched=true;
 isDrawing=false;
 
-const message="অভিনন্দন! আপনি "+discount+"% ডিসকাউন্ট পেয়েছেন। Methi Mixd powder এর নতুন দাম "+finalPrice+" টাকা।";
+document.getElementById("messageBox").innerText=
+"অভিনন্দন! আপনি "+discount+"% ডিসকাউন্ট পেয়েছেন। নতুন দাম "+finalPrice+" টাকা।";
 
-document.getElementById("messageBox").innerText=message;
 document.getElementById("orderBtn").style.display="inline-block";
+updateDisplay();
 }
+
+/* ===== SECOND PAGE OPEN ===== */
+
+function openSecondPage(){
+document.getElementById("secondPage").style.display="block";
+}
+
+/* ===== ORDER SYSTEM ===== */
+
+let quantity=1;
+
+function updateDisplay(){
+let total=finalPrice*quantity;
+
+document.getElementById("qty").innerText=quantity;
+document.getElementById("totalPrice").innerText=total;
+document.getElementById("showDiscount").innerText=
+"আপনার প্রাপ্ত ডিসকাউন্ট: "+discount+"%";
+document.getElementById("showPrice").innerText=
+"ডিসকাউন্টের পর এক পণ্যের দাম: "+finalPrice+" টাকা";
+
+document.getElementById("discField").value=
+"ডিসকাউন্ট এর পরিমাণ: "+discount+"%";
+
+document.getElementById("priceField").value=
+"মোট দাম: "+total+" টাকা";
+}
+
+function changeQty(val){
+quantity+=val;
+if(quantity<1) quantity=1;
+updateDisplay();
+}
+
+function submitOrder(){
+document.getElementById("successBar").style.display="block";
+setTimeout(()=>{
+document.getElementById("successBar").style.display="none";
+},3000);
+}
+
+updateDisplay();
 
 </script>
 
 </body>
 </html>
-
