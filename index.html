@@ -14,7 +14,7 @@ background:#fff;
 overflow-x:hidden;
 }
 
-/* ================== ORIGINAL LANDING (UNCHANGED) ================== */
+/* ================= ORIGINAL LANDING (UNCHANGED) ================= */
 
 .product-image{width:140px;margin-top:20px;}
 .mrp-text{margin-top:5px;font-size:18px;font-weight:bold;color:red;-webkit-text-stroke:1px black;}
@@ -27,6 +27,7 @@ font-size:14px;white-space:nowrap;z-index:9999;
 transform:translateX(120%);animation:slideCorner 3s ease forwards;
 }
 .notification .name{color:green;font-weight:bold;}
+
 @keyframes slideCorner{
 0%{transform:translateX(120%);}
 20%{transform:translateX(0);}
@@ -39,92 +40,68 @@ transform:translateX(120%);animation:slideCorner 3s ease forwards;
 .card-container{position:relative;width:320px;height:180px;margin:auto;border:5px solid red;border-radius:15px;overflow:hidden;}
 .real-card{width:100%;height:100%;background:black;display:flex;justify-content:center;align-items:center;}
 .discount-text{color:yellow;font-size:25px;font-weight:bold;}
-canvas{position:absolute;top:0;left:0;}
+
+#scratchCanvas{position:absolute;top:0;left:0;}
+
 .message{margin-top:20px;font-size:18px;font-weight:bold;color:black;}
 .order-btn{margin-top:15px;padding:14px 35px;background:red;color:white;font-size:18px;font-weight:bold;border:2px solid black;border-radius:10px;cursor:pointer;display:none;animation:pulse 1s infinite;}
+
 @keyframes pulse{0%{transform:scale(1);}50%{transform:scale(1.1);}100%{transform:scale(1);}}
+
+/* ================= SECOND PAGE (UNCHANGED) ================= */
 
 .second-page{
 display:none;background:#fff;position:fixed;top:0;left:0;width:100%;height:100%;
 overflow-y:auto;z-index:10000;padding:15px;box-sizing:border-box;
 }
+
 .video-frame{width:100%;margin:0 auto;border:4px solid blue;border-radius:8px;overflow:hidden;}
 .video-wrapper{position:relative;width:100%;padding-top:56.25%;}
 .video-wrapper iframe{position:absolute;top:0;left:0;width:100%;height:100%;border:0;}
+
 .benefit-title{margin-top:25px;font-size:22px;font-weight:bold;color:black;background:yellow;display:inline-block;padding:8px 20px;border:3px solid red;}
 .benefit-list{margin-top:20px;text-align:left;max-width:600px;margin:auto;font-size:17px;line-height:1.8;font-weight:500;}
 .benefit-list li{margin-bottom:10px;}
+
 .second-order-btn{
 margin-top:40px;margin-bottom:40px;padding:15px 40px;background:green;color:white;
 font-size:20px;font-weight:bold;border:3px solid black;border-radius:10px;
 cursor:pointer;animation:pulse 1s infinite;
 }
 
-/* ================== XCV SECTION (NEW WORK ONLY) ================== */
+/* ================= XCV SECTION (NEW ONLY) ================= */
 
 .xcv-page{
-display:none;
-background:#fff;
-position:fixed;
-top:0;left:0;
-width:100%;height:100%;
-overflow-y:auto;
-z-index:11000;
-padding:20px;
-box-sizing:border-box;
+display:none;background:#fff;position:fixed;top:0;left:0;width:100%;height:100%;
+overflow-y:auto;z-index:11000;padding:20px;box-sizing:border-box;
 }
 
-/* COD TEXT */
 .cod-text{
-margin-top:30px;
-font-size:20px;
-font-weight:bold;
-background:yellow;
-display:inline-block;
-padding:10px 15px;
-color:black;
--webkit-text-stroke:1px red;
+margin-top:30px;font-size:20px;font-weight:bold;
+background:yellow;padding:10px 15px;display:inline-block;
+color:black;-webkit-text-stroke:1px red;
 }
 
-/* Coupon Title */
 .coupon-text{
-margin-top:25px;
-font-size:18px;
-font-weight:bold;
-color:black;
--webkit-text-stroke:0.5px green;
+margin-top:25px;font-size:18px;font-weight:bold;
+color:black;-webkit-text-stroke:0.5px green;
 }
 
-/* Delivery Scratch Card */
-.delivery-container{
-position:relative;
-width:320px;
-height:170px;
-margin:25px auto;
-border-radius:15px;
-overflow:hidden;
-box-shadow:0 0 15px rgba(0,0,0,0.3);
+.delivery-card{
+position:relative;width:320px;height:170px;margin:25px auto;
+border-radius:15px;overflow:hidden;box-shadow:0 0 15px rgba(0,0,0,0.3);
 }
 
 .delivery-real{
-width:100%;
-height:100%;
-background:black;
-display:flex;
-justify-content:center;
-align-items:center;
-color:white;
-font-size:20px;
-font-weight:bold;
-text-align:center;
-padding:10px;
+width:100%;height:100%;background:black;
+display:flex;justify-content:center;align-items:center;
+color:white;font-size:20px;font-weight:bold;text-align:center;padding:10px;
 }
 
+#deliveryCanvas{position:absolute;top:0;left:0;}
+
 .delivery-message{
-margin-top:20px;
-font-size:18px;
-font-weight:bold;
-color:black;
+margin-top:20px;font-size:18px;font-weight:bold;color:black;
 }
 
 </style>
@@ -132,7 +109,7 @@ color:black;
 
 <body>
 
-<!-- ================== ORIGINAL LANDING ================== -->
+<!-- ================= ORIGINAL LANDING ================= -->
 
 <img src="image.png" class="product-image">
 <div class="mrp-text">MRP-900TK</div>
@@ -174,7 +151,7 @@ color:black;
 <button class="second-order-btn" onclick="openXcvPage()">অর্ডার করবো</button>
 </div>
 
-<!-- ================== XCV SECTION ================== -->
+<!-- ================= XCV ================= -->
 
 <div class="xcv-page" id="xcvPage">
 
@@ -186,7 +163,7 @@ color:black;
 • ডেলিভারি চার্জ ডিসকাউন্ট কুপন
 </div>
 
-<div class="delivery-container">
+<div class="delivery-card">
 <div class="delivery-real" id="deliveryText">
 ডেলিভারি চার্জ ডিসকাউন্ট
 </div>
@@ -203,55 +180,54 @@ color:black;
 function openSecondPage(){document.getElementById("secondPage").style.display="block";}
 function openXcvPage(){document.getElementById("xcvPage").style.display="block";}
 
-/* DELIVERY SCRATCH SYSTEM */
+/* DELIVERY SCRATCH (ISOLATED SAFE VERSION) */
 
-const dCanvas=document.getElementById("deliveryCanvas");
-const dCtx=dCanvas.getContext("2d");
-const dContainer=document.querySelector(".delivery-container");
+const dc=document.getElementById("deliveryCanvas");
+const dctx=dc.getContext("2d");
+const dcard=document.querySelector(".delivery-card");
 
-dCanvas.width=dContainer.offsetWidth;
-dCanvas.height=dContainer.offsetHeight;
+dc.width=dcard.offsetWidth;
+dc.height=dcard.offsetHeight;
 
-const dDiscount=Math.floor(Math.random()*(20-10+1))+10;
+const dDiscount=Math.floor(Math.random()*11)+10;
 
 document.getElementById("deliveryText").innerText=
 "ডেলিভারি চার্জ ডিসকাউন্ট "+dDiscount+"%";
 
-dCtx.fillStyle="silver";
-dCtx.fillRect(0,0,dCanvas.width,dCanvas.height);
+dctx.fillStyle="silver";
+dctx.fillRect(0,0,dc.width,dc.height);
 
-dCtx.fillStyle="black";
-dCtx.font="bold 22px Arial";
-dCtx.textAlign="center";
-dCtx.fillText("এখানে ঘষুন",dCanvas.width/2,dCanvas.height/2);
+dctx.fillStyle="black";
+dctx.font="bold 22px Arial";
+dctx.textAlign="center";
+dctx.fillText("এখানে ঘষুন",dc.width/2,dc.height/2);
 
-dCtx.globalCompositeOperation="destination-out";
+dctx.globalCompositeOperation="destination-out";
 
-let drawing=false;
-let revealed=false;
+let draw=false;
+let done=false;
 
-function scratch(e){
-if(!drawing) return;
-const rect=dCanvas.getBoundingClientRect();
+function scratchDelivery(e){
+if(!draw) return;
+const rect=dc.getBoundingClientRect();
 const x=(e.touches?e.touches[0].clientX:e.clientX)-rect.left;
 const y=(e.touches?e.touches[0].clientY:e.clientY)-rect.top;
-dCtx.beginPath();
-dCtx.arc(x,y,20,0,Math.PI*2);
-dCtx.fill();
+dctx.beginPath();
+dctx.arc(x,y,20,0,Math.PI*2);
+dctx.fill();
 }
 
-dCanvas.addEventListener("mousedown",()=>drawing=true);
-dCanvas.addEventListener("mouseup",finish);
-dCanvas.addEventListener("mousemove",scratch);
-dCanvas.addEventListener("touchstart",()=>drawing=true);
-dCanvas.addEventListener("touchend",finish);
-dCanvas.addEventListener("touchmove",scratch);
+dc.addEventListener("mousedown",()=>draw=true);
+dc.addEventListener("mouseup",finishDelivery);
+dc.addEventListener("mousemove",scratchDelivery);
+dc.addEventListener("touchstart",()=>draw=true);
+dc.addEventListener("touchend",finishDelivery);
+dc.addEventListener("touchmove",scratchDelivery);
 
-function finish(){
-if(revealed) return;
-revealed=true;
-drawing=false;
-
+function finishDelivery(){
+if(done) return;
+done=true;
+draw=false;
 document.getElementById("deliveryMsg").innerText=
 "অভিনন্দন! আপনি "+dDiscount+"% ডেলিভারি চার্জ ডিসকাউন্ট পেয়েছেন।";
 }
