@@ -209,7 +209,7 @@ font-weight:500;
 margin-bottom:10px;
 }
 
-/* ✅ NEW COD TEXT STYLE */
+/* COD */
 
 .cod-highlight{
 margin-top:40px;
@@ -221,6 +221,106 @@ font-size:20px;
 font-weight:bold;
 color:black;
 -webkit-text-stroke:1px green;
+}
+
+/* ========================= */
+/* ===== LIVE REVIEW ======= */
+/* ========================= */
+
+.lr-tab{
+position:fixed;
+right:0;
+top:50%;
+transform:translateY(-50%);
+background:red;
+color:white;
+padding:12px 8px;
+font-weight:bold;
+cursor:pointer;
+border-radius:10px 0 0 10px;
+z-index:20000;
+animation:lrPulse 1.5s infinite;
+display:none;
+}
+
+@keyframes lrPulse{
+0%{transform:translateY(-50%) scale(1);}
+50%{transform:translateY(-50%) scale(1.1);}
+100%{transform:translateY(-50%) scale(1);}
+}
+
+.lr-box{
+position:fixed;
+right:-320px;
+top:50%;
+transform:translateY(-50%);
+width:300px;
+height:450px;
+background:#fff;
+border-radius:20px;
+box-shadow:0 0 15px rgba(0,0,0,0.3);
+z-index:21000;
+display:flex;
+flex-direction:column;
+transition:0.4s;
+}
+
+.lr-box.active{
+right:10px;
+}
+
+.lr-header{
+background:black;
+color:white;
+padding:10px;
+border-radius:20px 20px 0 0;
+font-size:14px;
+}
+
+.lr-messages{
+flex:1;
+overflow-y:auto;
+padding:10px;
+font-size:13px;
+text-align:left;
+}
+
+.lr-msg{
+margin-bottom:10px;
+}
+
+.lr-name{
+font-weight:bold;
+color:green;
+}
+
+.lr-input{
+display:flex;
+border-top:1px solid #ddd;
+}
+
+.lr-input input{
+flex:1;
+padding:8px;
+border:none;
+font-size:12px;
+}
+
+.lr-input button{
+background:red;
+color:white;
+border:none;
+padding:8px;
+cursor:pointer;
+font-size:12px;
+}
+
+.lr-close{
+position:absolute;
+top:5px;
+right:10px;
+color:white;
+cursor:pointer;
 }
 </style>
 </head>
@@ -272,14 +372,83 @@ color:black;
 <li>✔ শারীরিক শক্তি ও কর্মক্ষমতা বৃদ্ধিতে সহায়ক</li>
 </ul>
 
-<!-- ✅ Button Removed Only Here -->
 <div class="cod-highlight">
 পুরো বাংলাদেশ ক্যাশ অন ডেলিভারি ১২০৳ 🚛
 </div>
 
 </div>
 
+<!-- Live Review Tab -->
+<div class="lr-tab" id="lrTab">Live Reviews</div>
+
+<!-- Live Review Box -->
+<div class="lr-box" id="lrBox">
+<div class="lr-header">
+লাইভ রিভিউ চলছে
+<span class="lr-close" onclick="closeLR()">×</span>
+</div>
+<div class="lr-messages" id="lrMessages"></div>
+<div class="lr-input">
+<input type="text" id="lrInput" placeholder="আপনার রিভিউ লিখুন">
+<button onclick="sendLR()">Send</button>
+</div>
+</div>
+
 <script>
+
+/* Show Live Tab only on Second Page */
+function openSecondPage(){
+document.getElementById("secondPage").style.display="block";
+document.getElementById("lrTab").style.display="block";
+}
+
+/* Toggle */
+const lrTab=document.getElementById("lrTab");
+const lrBox=document.getElementById("lrBox");
+
+lrTab.onclick=function(){
+lrBox.classList.add("active");
+}
+
+function closeLR(){
+lrBox.classList.remove("active");
+}
+
+/* Fake Reviews */
+
+const lrNames=["তানভীর","মাহি","সাবিনা","শিউলি","রাকিব","সুমাইয়া","নাসরিন","আরিফ","রুবেল","মেহেদী"];
+const lrTexts=[
+"৭ দিনেই গ্যাস্ট্রিক কমেছে আলহামদুলিল্লাহ",
+"কোষ্ঠকাঠিন্য অনেকটাই ভালো হয়েছে",
+"পেট পরিষ্কার হচ্ছে নিয়মিত",
+"বুক জ্বালাপোড়া কমেছে",
+"ডায়াবেটিস নিয়ন্ত্রণে সহায়তা করছে"
+];
+
+function addLR(){
+const name=lrNames[Math.floor(Math.random()*lrNames.length)];
+const text=lrTexts[Math.floor(Math.random()*lrTexts.length)];
+const msg=document.createElement("div");
+msg.className="lr-msg";
+msg.innerHTML=`<span class="lr-name">${name}</span>: ${text}`;
+document.getElementById("lrMessages").appendChild(msg);
+document.getElementById("lrMessages").scrollTop=9999;
+}
+
+setInterval(addLR,3000);
+
+function sendLR(){
+const val=document.getElementById("lrInput").value;
+if(!val) return;
+const msg=document.createElement("div");
+msg.className="lr-msg";
+msg.innerHTML=`<span class="lr-name">আপনি</span>: ${val}`;
+document.getElementById("lrMessages").appendChild(msg);
+document.getElementById("lrInput").value="";
+document.getElementById("lrMessages").scrollTop=9999;
+}
+
+/* Existing Scratch System Below (UNCHANGED) */
 
 /* Notification */
 const names=["আমিনুল ইসলাম","সোহেল রানা","মোস্তাফিজুর রহমান","রাশেদুল ইসলাম",
@@ -301,10 +470,6 @@ document.body.appendChild(notification);
 setTimeout(()=>{notification.remove();},3000);
 }
 setInterval(showNotification,3000);
-
-function openSecondPage(){
-document.getElementById("secondPage").style.display="block";
-}
 
 /* Scratch System */
 const canvas=document.getElementById("scratchCanvas");
@@ -361,6 +526,7 @@ const message="অভিনন্দন! আপনি "+discount+"% ডিসক
 document.getElementById("messageBox").innerText=message;
 document.getElementById("orderBtn").style.display="inline-block";
 }
+
 </script>
 
 </body>
