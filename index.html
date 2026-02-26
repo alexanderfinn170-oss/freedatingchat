@@ -14,7 +14,7 @@ background:#fff;
 overflow-x:hidden;
 }
 
-/* ---------- ORIGINAL STYLE UNCHANGED ---------- */
+/* ================== ORIGINAL LANDING (UNCHANGED) ================== */
 
 .product-image{width:140px;margin-top:20px;}
 .mrp-text{margin-top:5px;font-size:18px;font-weight:bold;color:red;-webkit-text-stroke:1px black;}
@@ -34,8 +34,6 @@ transform:translateX(120%);animation:slideCorner 3s ease forwards;
 100%{transform:translateX(120%);}
 }
 
-/* ---------- SCRATCH MAIN (UNCHANGED) ---------- */
-
 .scratch-section{margin-top:40px;}
 .card-title{font-size:22px;font-weight:bold;color:black;-webkit-text-stroke:1px darkgreen;margin-bottom:10px;}
 .card-container{position:relative;width:320px;height:180px;margin:auto;border:5px solid red;border-radius:15px;overflow:hidden;}
@@ -45,8 +43,6 @@ canvas{position:absolute;top:0;left:0;}
 .message{margin-top:20px;font-size:18px;font-weight:bold;color:black;}
 .order-btn{margin-top:15px;padding:14px 35px;background:red;color:white;font-size:18px;font-weight:bold;border:2px solid black;border-radius:10px;cursor:pointer;display:none;animation:pulse 1s infinite;}
 @keyframes pulse{0%{transform:scale(1);}50%{transform:scale(1.1);}100%{transform:scale(1);}}
-
-/* ---------- SECOND PAGE UNCHANGED ---------- */
 
 .second-page{
 display:none;background:#fff;position:fixed;top:0;left:0;width:100%;height:100%;
@@ -64,43 +60,53 @@ font-size:20px;font-weight:bold;border:3px solid black;border-radius:10px;
 cursor:pointer;animation:pulse 1s infinite;
 }
 
-/* ---------- XCV NEW SECTION ---------- */
+/* ================== XCV SECTION (NEW WORK ONLY) ================== */
 
 .xcv-page{
-display:none;background:#fff;position:fixed;top:0;left:0;width:100%;height:100%;
-overflow-y:auto;z-index:11000;padding:20px;box-sizing:border-box;
+display:none;
+background:#fff;
+position:fixed;
+top:0;left:0;
+width:100%;height:100%;
+overflow-y:auto;
+z-index:11000;
+padding:20px;
+box-sizing:border-box;
 }
 
+/* COD TEXT */
 .cod-text{
+margin-top:30px;
 font-size:20px;
 font-weight:bold;
 background:yellow;
 display:inline-block;
 padding:10px 15px;
-margin-top:30px;
 color:black;
 -webkit-text-stroke:1px red;
 }
 
-.coupon-title{
+/* Coupon Title */
+.coupon-text{
 margin-top:25px;
 font-size:18px;
+font-weight:bold;
 color:black;
 -webkit-text-stroke:0.5px green;
-font-weight:bold;
 }
 
-.delivery-card-container{
+/* Delivery Scratch Card */
+.delivery-container{
 position:relative;
 width:320px;
-height:160px;
-margin:20px auto;
+height:170px;
+margin:25px auto;
 border-radius:15px;
 overflow:hidden;
 box-shadow:0 0 15px rgba(0,0,0,0.3);
 }
 
-.delivery-real-card{
+.delivery-real{
 width:100%;
 height:100%;
 background:black;
@@ -126,7 +132,7 @@ color:black;
 
 <body>
 
-<!-- ======= YOUR ORIGINAL LANDING PAGE UNCHANGED ======= -->
+<!-- ================== ORIGINAL LANDING ================== -->
 
 <img src="image.png" class="product-image">
 <div class="mrp-text">MRP-900TK</div>
@@ -168,7 +174,7 @@ color:black;
 <button class="second-order-btn" onclick="openXcvPage()">অর্ডার করবো</button>
 </div>
 
-<!-- ======= NEW XCV SECTION ======= -->
+<!-- ================== XCV SECTION ================== -->
 
 <div class="xcv-page" id="xcvPage">
 
@@ -176,18 +182,18 @@ color:black;
 পুরো বাংলাদেশে ক্যাশ অন ডেলিভারি 🚛 ডেলিভারি চার্জ ১২০৳
 </div>
 
-<div class="coupon-title">
+<div class="coupon-text">
 • ডেলিভারি চার্জ ডিসকাউন্ট কুপন
 </div>
 
-<div class="delivery-card-container">
-<div class="delivery-real-card" id="deliveryDiscountText">
+<div class="delivery-container">
+<div class="delivery-real" id="deliveryText">
 ডেলিভারি চার্জ ডিসকাউন্ট
 </div>
-<canvas id="deliveryScratchCanvas"></canvas>
+<canvas id="deliveryCanvas"></canvas>
 </div>
 
-<div class="delivery-message" id="deliveryMessage"></div>
+<div class="delivery-message" id="deliveryMsg"></div>
 
 </div>
 
@@ -199,17 +205,17 @@ function openXcvPage(){document.getElementById("xcvPage").style.display="block";
 
 /* DELIVERY SCRATCH SYSTEM */
 
-const dCanvas=document.getElementById("deliveryScratchCanvas");
+const dCanvas=document.getElementById("deliveryCanvas");
 const dCtx=dCanvas.getContext("2d");
-const dContainer=document.querySelector(".delivery-card-container");
+const dContainer=document.querySelector(".delivery-container");
 
 dCanvas.width=dContainer.offsetWidth;
 dCanvas.height=dContainer.offsetHeight;
 
-const deliveryDiscount=Math.floor(Math.random()*(20-10+1))+10;
+const dDiscount=Math.floor(Math.random()*(20-10+1))+10;
 
-document.getElementById("deliveryDiscountText").innerText=
-"ডেলিভারি চার্জ ডিসকাউন্ট "+deliveryDiscount+"%";
+document.getElementById("deliveryText").innerText=
+"ডেলিভারি চার্জ ডিসকাউন্ট "+dDiscount+"%";
 
 dCtx.fillStyle="silver";
 dCtx.fillRect(0,0,dCanvas.width,dCanvas.height);
@@ -221,11 +227,11 @@ dCtx.fillText("এখানে ঘষুন",dCanvas.width/2,dCanvas.height/2);
 
 dCtx.globalCompositeOperation="destination-out";
 
-let dDrawing=false;
-let dScratched=false;
+let drawing=false;
+let revealed=false;
 
-function dScratch(e){
-if(!dDrawing) return;
+function scratch(e){
+if(!drawing) return;
 const rect=dCanvas.getBoundingClientRect();
 const x=(e.touches?e.touches[0].clientX:e.clientX)-rect.left;
 const y=(e.touches?e.touches[0].clientY:e.clientY)-rect.top;
@@ -234,20 +240,20 @@ dCtx.arc(x,y,20,0,Math.PI*2);
 dCtx.fill();
 }
 
-dCanvas.addEventListener("mousedown",()=>dDrawing=true);
-dCanvas.addEventListener("mouseup",finishDeliveryScratch);
-dCanvas.addEventListener("mousemove",dScratch);
-dCanvas.addEventListener("touchstart",()=>dDrawing=true);
-dCanvas.addEventListener("touchend",finishDeliveryScratch);
-dCanvas.addEventListener("touchmove",dScratch);
+dCanvas.addEventListener("mousedown",()=>drawing=true);
+dCanvas.addEventListener("mouseup",finish);
+dCanvas.addEventListener("mousemove",scratch);
+dCanvas.addEventListener("touchstart",()=>drawing=true);
+dCanvas.addEventListener("touchend",finish);
+dCanvas.addEventListener("touchmove",scratch);
 
-function finishDeliveryScratch(){
-if(dScratched) return;
-dScratched=true;
-dDrawing=false;
+function finish(){
+if(revealed) return;
+revealed=true;
+drawing=false;
 
-document.getElementById("deliveryMessage").innerText=
-"অভিনন্দন! আপনি "+deliveryDiscount+"% ডেলিভারি চার্জ ডিসকাউন্ট পেয়েছেন।";
+document.getElementById("deliveryMsg").innerText=
+"অভিনন্দন! আপনি "+dDiscount+"% ডেলিভারি চার্জ ডিসকাউন্ট পেয়েছেন।";
 }
 
 </script>
