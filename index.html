@@ -158,10 +158,12 @@ box-sizing:border-box;
 
 .video-frame{
 width:100%;
+max-width:100%;
 margin:0 auto;
 border:4px solid blue;
 border-radius:8px;
 overflow:hidden;
+box-sizing:border-box;
 }
 
 .video-wrapper{
@@ -207,11 +209,11 @@ font-weight:500;
 margin-bottom:10px;
 }
 
-/* COD Text */
+/* ✅ NEW COD TEXT STYLE */
 
 .cod-highlight{
 margin-top:40px;
-margin-bottom:30px;
+margin-bottom:40px;
 display:inline-block;
 background:yellow;
 padding:12px 25px;
@@ -219,64 +221,6 @@ font-size:20px;
 font-weight:bold;
 color:black;
 -webkit-text-stroke:1px green;
-}
-
-/* ===== Lucky Wheel ===== */
-
-.wheel-section{
-margin-top:20px;
-}
-
-.wheel-container{
-position:relative;
-width:280px;
-height:280px;
-margin:20px auto;
-}
-
-#wheel{
-width:100%;
-height:100%;
-border-radius:50%;
-border:8px solid black;
-transition:transform 5s ease-out;
-}
-
-.pointer{
-position:absolute;
-top:-15px;
-left:50%;
-transform:translateX(-50%);
-font-size:30px;
-color:red;
-}
-
-.spin-btn{
-margin-top:20px;
-padding:12px 30px;
-font-size:18px;
-font-weight:bold;
-background:red;
-color:white;
-border:3px solid black;
-cursor:pointer;
-animation:wiggle 1s infinite;
-}
-
-@keyframes wiggle{
-0%{transform:rotate(0deg);}
-25%{transform:rotate(2deg);}
-50%{transform:rotate(0deg);}
-75%{transform:rotate(-2deg);}
-100%{transform:rotate(0deg);}
-}
-
-.spin-result{
-margin-top:20px;
-font-size:18px;
-font-weight:bold;
-color:black;
--webkit-text-stroke:1px yellow;
 }
 </style>
 </head>
@@ -328,86 +272,95 @@ color:black;
 <li>✔ শারীরিক শক্তি ও কর্মক্ষমতা বৃদ্ধিতে সহায়ক</li>
 </ul>
 
+<!-- ✅ Button Removed Only Here -->
 <div class="cod-highlight">
 পুরো বাংলাদেশ ক্যাশ অন ডেলিভারি ১২০৳ 🚛
-</div>
-
-<!-- Lucky Wheel Added -->
-
-<div class="wheel-section">
-
-<div class="wheel-container">
-<div class="pointer">▼</div>
-
-<canvas id="wheel"></canvas>
-
-</div>
-
-<button class="spin-btn" onclick="spinWheel()">Play Discount</button>
-
-<div class="spin-result" id="spinResult"></div>
-
 </div>
 
 </div>
 
 <script>
 
-/* ===== Lucky Wheel Script (Isolated) ===== */
+/* Notification */
+const names=["আমিনুল ইসলাম","সোহেল রানা","মোস্তাফিজুর রহমান","রাশেদুল ইসলাম",
+"নাঈম হোসেন","তানভীর হাসান","ইমরান হোসেন","মেহেদী হাসান",
+"রুবেল মিয়া","জাহিদুল ইসলাম","নাসরিন আক্তার","সুমাইয়া আক্তার",
+"তানজিলা ইসলাম","মৌসুমি আক্তার","ফারহানা রহমান","রোকসানা বেগম",
+"শাহীন আক্তার","নাজমা খাতুন","সাবিনা ইয়াসমিন","আফরোজা পারভীন",
+"রিয়াজ উদ্দিন","হাবিবুর রহমান","শাহরিয়ার কবির","আরিফুল ইসলাম",
+"নাহিদ হাসান","লিপি আক্তার","শিউলি আক্তার","জেসমিন আক্তার",
+"মাহমুদুল হাসান","সাকিব আল হাসান"];
 
-const wheelCanvas=document.getElementById("wheel");
-const wheelCtx=wheelCanvas.getContext("2d");
+function showNotification(){
+const randomName=names[Math.floor(Math.random()*names.length)];
+const randomDiscount=Math.floor(Math.random()*(30-15+1))+15;
+const notification=document.createElement("div");
+notification.className="notification";
+notification.innerHTML=`<span class="name">${randomName}</span> 🎉 ${randomDiscount}% ডিসকাউন্ট পেয়ে অর্ডার করেছে`;
+document.body.appendChild(notification);
+setTimeout(()=>{notification.remove();},3000);
+}
+setInterval(showNotification,3000);
 
-wheelCanvas.width=280;
-wheelCanvas.height=280;
-
-const discounts=[10,20,30,40,50];
-const colors=["#ff4d4d","#4da6ff","#33cc33","#ffcc00","#cc66ff"];
-const arc=Math.PI*2/5;
-
-for(let i=0;i<5;i++){
-wheelCtx.beginPath();
-wheelCtx.moveTo(140,140);
-wheelCtx.arc(140,140,140,i*arc,(i+1)*arc);
-wheelCtx.fillStyle=colors[i];
-wheelCtx.fill();
-wheelCtx.strokeStyle="white";
-wheelCtx.lineWidth=3;
-wheelCtx.stroke();
-wheelCtx.fillStyle="black";
-wheelCtx.font="bold 16px Arial";
-wheelCtx.save();
-wheelCtx.translate(140,140);
-wheelCtx.rotate(i*arc+arc/2);
-wheelCtx.fillText(discounts[i]+"% OFF 🔥",60,5);
-wheelCtx.restore();
+function openSecondPage(){
+document.getElementById("secondPage").style.display="block";
 }
 
-let spinning=false;
+/* Scratch System */
+const canvas=document.getElementById("scratchCanvas");
+const ctx=canvas.getContext("2d");
+const container=document.querySelector(".card-container");
 
-function spinWheel(){
-if(spinning) return;
-spinning=true;
+canvas.width=container.offsetWidth;
+canvas.height=container.offsetHeight;
 
-const randomIndex=Math.floor(Math.random()*5);
-const degree=(360*5)+(360-(randomIndex*72+36));
+const originalPrice=900;
+const discount=Math.floor(Math.random()*(50-25+1))+25;
+const finalPrice=Math.round(originalPrice-(originalPrice*discount/100));
 
-wheelCanvas.style.transform="rotate("+degree+"deg)";
+document.getElementById("discountText").innerText=discount+"% ডিসকাউন্ট";
 
-setTimeout(()=>{
-const winDiscount=discounts[randomIndex];
-const deliveryCharge=120;
-const finalCharge=Math.round(deliveryCharge-(deliveryCharge*winDiscount/100));
+ctx.fillStyle="gray";
+ctx.fillRect(0,0,canvas.width,canvas.height);
 
-document.getElementById("spinResult").innerText=
-"আপনি ডেলিভারি ডিসকাউন্ট "+winDiscount+
-"% ছাড় পেয়েছেন এবং আপনার জন্য প্রযোজ্য ডেলিভারি চার্জ "+finalCharge+" টাকা।";
+ctx.fillStyle="white";
+ctx.font="bold 22px Arial";
+ctx.textAlign="center";
+ctx.fillText("এখানে ঘষুন",canvas.width/2,canvas.height/2);
 
-spinning=false;
+ctx.globalCompositeOperation="destination-out";
 
-},5000);
+let isDrawing=false;
+let scratched=false;
+
+function scratch(e){
+if(!isDrawing) return;
+const rect=canvas.getBoundingClientRect();
+const x=(e.touches?e.touches[0].clientX:e.clientX)-rect.left;
+const y=(e.touches?e.touches[0].clientY:e.clientY)-rect.top;
+ctx.beginPath();
+ctx.arc(x,y,20,0,Math.PI*2);
+ctx.fill();
 }
 
+canvas.addEventListener("mousedown",()=>isDrawing=true);
+canvas.addEventListener("mouseup",finishScratch);
+canvas.addEventListener("mousemove",scratch);
+
+canvas.addEventListener("touchstart",()=>isDrawing=true);
+canvas.addEventListener("touchend",finishScratch);
+canvas.addEventListener("touchmove",scratch);
+
+function finishScratch(){
+if(scratched) return;
+scratched=true;
+isDrawing=false;
+
+const message="অভিনন্দন! আপনি "+discount+"% ডিসকাউন্ট পেয়েছেন। Methi Mixd powder এর নতুন দাম "+finalPrice+" টাকা।";
+
+document.getElementById("messageBox").innerText=message;
+document.getElementById("orderBtn").style.display="inline-block";
+}
 </script>
 
 </body>
